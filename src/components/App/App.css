@@ -1,6 +1,42 @@
 #root {
   max-width: 1440px;
   margin: 0 auto;
-  /* padding: 2rem; */
-  /* text-align: center; */
+}
+
+.pageHeader {
+  box-shadow: 0px 1px 6px 0px rgba(46, 47, 66, 0.08), 0px 1px 1px 0px rgba(46, 47, 66, 0.16),
+    0px 2px 1px 0px rgba(46, 47, 66, 0.08);
+  background-color: #000000;
+  position: sticky;
+  top: 0px;
+  z-index: 999999;
+}
+
+.container {
+  max-width: 1260px;
+  padding: 20px 7px;
+  padding-left: 7px;
+  padding-right: 7px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+
+.nav {
+  display: flex;
+  gap: 30px;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.active {
+  color: #fec90c;
+  font-weight: 600;
 }

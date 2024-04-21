@@ -27,9 +27,9 @@ export default function HomePage() {
 
   return (
     <>
-      <section>
+      <section className={css.trendMovies}>
         <div className={css.container}>
-          <h2>Топ-20 тижня</h2>
+          <h2 className={css.trendMoviesTitle}>Топ-20 тижня</h2>
           <MovieList items={movies} />
         </div>
       </section>

@@ -10,12 +10,12 @@
 .movieItem {
   box-sizing: border-box;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
   transition: transform 250ms ease-in-out;
 }
 
-.movieItem:hover {
+/* .movieItem:hover {
   transform: scale(1.04);
   transition: transform 250ms ease-in-out;
-}
+} */

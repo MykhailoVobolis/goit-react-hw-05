@@ -6,6 +6,7 @@ import { AiFillLike } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { FaPlay } from "react-icons/fa";
 import css from "./MovieDetailsPage.module.css";
+import { Link, Outlet } from "react-router-dom";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -69,15 +70,20 @@ export default function MovieDetailsPage() {
                 Рейтинг: <span className={css.accent}>TMDB {rating}</span>
               </li>
               <li>
-                Оцінка глядачів: <AiFillLike className={css.icon} />{" "}
-                <span className={css.accent}>{movies.vote_count}</span>
+                Оцінка глядачів:
+                <span className={css.accent}>
+                  <AiFillLike className={css.icon} />
+                  {movies.vote_count}
+                </span>
               </li>
               <li>
-                Тривалість: <BiTime className={css.icon} /> <span className={css.accent}>{movies.runtime} хв.</span>
+                Тривалість:
+                <span className={css.accent}>
+                  <BiTime className={css.icon} />
+                  {movies.runtime} хв.
+                </span>
               </li>
             </ul>
-            <h2 className={css.descriptionMovie}>Опис</h2>
-            <p className={css.textMovie}>{movies.overview}</p>
             <div className={css.genresContainer}>
               <p>Жанр:</p>
               <ul className={css.genreList}>
@@ -88,6 +94,19 @@ export default function MovieDetailsPage() {
                 ))}
               </ul>
             </div>
+            <h2 className={css.descriptionMovie}>Опис</h2>
+            <p className={css.textMovie}>{movies.overview}</p>
+
+            <h2 className={css.addInformation}>Додаткова інформація</h2>
+            <ul className={css.addInformationList}>
+              <li>
+                <Link to="cast">Акторський склад</Link>
+              </li>
+              <li>
+                <Link to="reviews">Відгуки</Link>
+              </li>
+            </ul>
+            <Outlet />
           </div>
         </div>
       </section>
