@@ -1,0 +1,121 @@
+.hero {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 600px;
+  min-width: 1158px;
+  max-width: 1440px;
+  padding-top: 500px;
+  text-align: center;
+}
+
+.gradientOverlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 3;
+  background: linear-gradient(
+    180deg,
+    #00000000 0%,
+    #0000000a 16%,
+    #00000021 29%,
+    #00000042 41%,
+    #0000006b 51%,
+    #00000094 61%,
+    #000000bd 70%,
+    #000000de 79%,
+    #000000f5 89%,
+    #000000ff 100%
+  );
+  /* background: linear-gradient(to bottom, rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)); */
+}
+
+.playBtn {
+  position: relative;
+  z-index: 99999;
+  font-family: inherit;
+  border: none;
+  height: 48px;
+  width: 240px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 30px;
+  box-shadow: none;
+  border-radius: 8px;
+  background-color: #f7f6f1;
+  color: #242424;
+  text-transform: uppercase;
+}
+
+.playBtn:hover {
+  background-color: yellow;
+}
+
+.title {
+  font-size: 3em;
+  line-height: 1.1;
+  margin-bottom: 30px;
+}
+
+.movie {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.container {
+  max-width: 1260px;
+  padding-left: 7px;
+  padding-right: 7px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  gap: 60px;
+}
+
+.statMovie {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.icon {
+  vertical-align: text-top;
+  margin-top: 2px;
+}
+
+.iconPlay {
+  vertical-align: text-top;
+  margin-top: 2px;
+  margin-right: 6px;
+}
+
+.accent,
+.genreItem {
+  font-weight: 600;
+}
+
+.genresContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.genreList {
+  display: flex;
+  gap: 10px;
+}
+
+.descriptionMovie {
+  margin-bottom: 12px;
+}
+
+.textMovie {
+  margin-bottom: 30px;
+}
+
+.poster {
+  border-radius: 8px;
+}

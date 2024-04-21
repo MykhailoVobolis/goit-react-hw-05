@@ -1,0 +1,21 @@
+.moviesList {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.movieItem {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 250ms ease-in-out;
+}
+
+.movieItem:hover {
+  transform: scale(1.04);
+  transition: transform 250ms ease-in-out;
+}
