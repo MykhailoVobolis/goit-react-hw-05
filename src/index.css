@@ -36,6 +36,10 @@ a {
   color: #f7f6f1;
 }
 
+a:hover {
+  color: #fec90c;
+}
+
 ul,
 ol {
   margin: 0;

@@ -6,7 +6,7 @@ import { AiFillLike } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { FaPlay } from "react-icons/fa";
 import css from "./MovieDetailsPage.module.css";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -52,7 +52,7 @@ export default function MovieDetailsPage() {
         </div>
       </section>
       <section className={css.movie}>
-        <div className={css.container}>
+        <div className={css.movieContainer}>
           <img
             className={css.poster}
             src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
@@ -96,19 +96,26 @@ export default function MovieDetailsPage() {
             </div>
             <h2 className={css.descriptionMovie}>Опис</h2>
             <p className={css.textMovie}>{movies.overview}</p>
-
-            <h2 className={css.addInformation}>Додаткова інформація</h2>
-            <ul className={css.addInformationList}>
-              <li>
-                <Link to="cast">Акторський склад</Link>
-              </li>
-              <li>
-                <Link to="reviews">Відгуки</Link>
-              </li>
-            </ul>
-            <Outlet />
           </div>
         </div>
+      </section>
+      <section className={css.addInformationSection}>
+        <div className={css.addInfoContainer}>
+          <h2 className={css.addInformation}>Додаткова інформація</h2>
+          <ul className={css.addInformationList}>
+            <li>
+              <NavLink className={css.informationLink} to="cast">
+                АКТОРСЬКИЙ СКЛАД
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={css.informationLink} to="reviews">
+                ВІДГУКИ
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+        <Outlet />
       </section>
     </>
   );

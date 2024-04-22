@@ -14,8 +14,8 @@ export default function App() {
       <header className="pageHeader">
         <div className="container">
           <nav className="nav">
-            <NavLink to="/">Додому</NavLink>
-            <NavLink to="/movies">Фільми</NavLink>
+            <NavLink to="/">ДОДОМУ</NavLink>
+            <NavLink to="/movies">ФІЛЬМИ</NavLink>
           </nav>
         </div>
       </header>

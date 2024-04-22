@@ -24,7 +24,7 @@
 
 .nav {
   display: flex;
-  gap: 30px;
+  gap: 50px;
 }
 
 .link {
@@ -38,5 +38,4 @@
 
 .active {
   color: #fec90c;
-  font-weight: 600;
 }

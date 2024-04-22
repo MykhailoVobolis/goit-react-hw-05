@@ -30,3 +30,9 @@ export async function getDetailsMovie(id) {
 //   const response = await axios.get("trending/movie/day", options);
 //   return response.data.results;
 // }
+
+export async function getMovieCast(id) {
+  const response = await axios.get(`movie/${id}/credits`, options);
+
+  return response.data;
+}

@@ -62,10 +62,10 @@
 
 .movie {
   padding-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 25px;
 }
 
-.container {
+.movieContainer {
   max-width: 1260px;
   padding-left: 7px;
   padding-right: 7px;
@@ -127,11 +127,35 @@
   border-radius: 10px;
 }
 
+.addInformationSection {
+  padding-top: 25px;
+  padding-bottom: 50px;
+}
+
+.addInfoContainer {
+  max-width: 1260px;
+  padding-left: 7px;
+  padding-right: 7px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  margin-bottom: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .addInformation {
-  margin-bottom: 20px;
+  font-size: 1.7em;
 }
 
 .addInformationList {
   display: flex;
   gap: 50px;
+  align-items: center;
+}
+
+@media (prefers-color-scheme: light) {
+  .informationLink {
+    color: #242424;
+  }
 }

@@ -14,8 +14,3 @@
   overflow: hidden;
   transition: transform 250ms ease-in-out;
 }
-
-/* .movieItem:hover {
-  transform: scale(1.04);
-  transition: transform 250ms ease-in-out;
-} */
