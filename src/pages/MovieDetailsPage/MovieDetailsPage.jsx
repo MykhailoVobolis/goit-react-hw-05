@@ -1,7 +1,6 @@
 import { useParams, useLocation, Outlet, NavLink, Link } from "react-router-dom";
 import { getDetailsMovie } from "../../tmdb-api";
 import { useState, useEffect } from "react";
-import Genre from "../../components/Genre/Genre";
 import { AiFillLike } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { FaPlay } from "react-icons/fa";
@@ -98,7 +97,7 @@ export default function MovieDetailsPage() {
               <ul className={css.genreList}>
                 {genres.map((genre) => (
                   <li className={css.genreItem} key={genre.id}>
-                    <Genre genre={genre} />
+                    {genre.name}
                   </li>
                 ))}
               </ul>
