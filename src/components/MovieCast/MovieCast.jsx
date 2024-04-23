@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import css from "./MovieCast.module.css";
 
+const defaultImg =
+  "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
+
 export default function MovieCast() {
   const { movieId } = useParams();
 
@@ -27,22 +30,24 @@ export default function MovieCast() {
 
   return (
     <>
-      <ul className={css.actorsList}>
-        {actors.map((item) => (
-          <li className={css.actorCard} key={item.id}>
-            <img
-              className={css.actorImage}
-              src={`https://image.tmdb.org/t/p/w500${item.profile_path}`}
-              alt={item.name}
-              width="191px"
-              height="285px"
-            />
-            <div className={css.nameContainer}>
-              <p className={css.actorName}>{item.name}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {actors.length > 0 && (
+        <ul className={css.actorsList}>
+          {actors.map((item) => (
+            <li className={css.actorCard} key={item.id}>
+              <img
+                className={css.actorImage}
+                src={item.profile_path ? `https://image.tmdb.org/t/p/w500${item.profile_path}` : defaultImg}
+                alt={item.name}
+                width="191px"
+                height="285px"
+              />
+              <div className={css.nameContainer}>
+                <p className={css.actorName}>{item.name}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }

@@ -4,7 +4,6 @@
   font-weight: 400;
   font-size: 18px;
 
-  color-scheme: light dark;
   color: #f7f6f1;
   background-color: #242424;
 
@@ -34,6 +33,7 @@ a {
   color: currentColor;
   text-decoration: none;
   color: #f7f6f1;
+  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 a:hover {
@@ -54,17 +54,4 @@ button {
 img {
   display: block;
   max-width: 100%;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #fec90c;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }

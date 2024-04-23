@@ -2,7 +2,6 @@ import HomePage from "../../pages/HomePage/HomePage";
 import MoviesPage from "../../pages/MoviesPage/MoviesPage";
 import MovieDetailsPage from "../../pages/MovieDetailsPage/MovieDetailsPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
-import SearchBar from "../SearchBar/SearchBar";
 import "./App.css";
 import { Routes, Route, NavLink } from "react-router-dom";
 import MovieCast from "../MovieCast/MovieCast";
@@ -28,7 +27,6 @@ export default function App() {
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      <SearchBar />
     </>
   );
 }

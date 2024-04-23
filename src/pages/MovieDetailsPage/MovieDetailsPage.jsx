@@ -1,12 +1,15 @@
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, Outlet, NavLink, Link } from "react-router-dom";
 import { getDetailsMovie } from "../../tmdb-api";
 import { useState, useEffect } from "react";
 import Genre from "../../components/Genre/Genre";
 import { AiFillLike } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { FaPlay } from "react-icons/fa";
+import { IoCaretBackOutline } from "react-icons/io5";
 import css from "./MovieDetailsPage.module.css";
-import { Outlet, NavLink } from "react-router-dom";
+
+const defaultImg =
+  "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -17,6 +20,12 @@ export default function MovieDetailsPage() {
   const [rating, setRating] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  // Для повернення на попередню сторінку !!!
+  const location = useLocation();
+  const backLink = location.state;
+  console.log(backLink);
+  // const backLink = location.state?.from ?? "/";
 
   useEffect(() => {
     async function handleClickMovie() {
@@ -55,7 +64,7 @@ export default function MovieDetailsPage() {
         <div className={css.movieContainer}>
           <img
             className={css.poster}
-            src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
+            src={movies.poster_path ? `https://image.tmdb.org/t/p/w500${movies.poster_path}` : defaultImg}
             alt={movies.title}
             width="400px"
             height="600px"
@@ -96,6 +105,9 @@ export default function MovieDetailsPage() {
             </div>
             <h2 className={css.descriptionMovie}>Опис</h2>
             <p className={css.textMovie}>{movies.overview}</p>
+            <Link className={css.linkGoBack} to={backLink}>
+              <IoCaretBackOutline /> повернутися
+            </Link>
           </div>
         </div>
       </section>

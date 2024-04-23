@@ -14,14 +14,14 @@
 
 .actorCard {
   max-width: calc((100% - 100px) / 6);
-  border-radius: 0px 0px 10px 10px;
-  box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08), 0px 1px 1px 0px rgba(46, 47, 66, 0.16),
-    0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+  border-radius: 10px;
+  border: solid 1px rgb(247, 246, 241, 0.1);
 }
 
 .actorImage {
   border-radius: 10px 10px 0px 0px;
   overflow: hidden;
+  object-fit: cover;
 }
 
 .nameContainer {
@@ -31,20 +31,13 @@
   height: 56px;
   padding: 6px 12px;
   text-align: center;
-  border-bottom: solid 1px rgb(247, 246, 241, 0.4);
-  border-left: solid 1px rgb(247, 246, 241, 0.4);
-  border-right: solid 1px rgb(247, 246, 241, 0.4);
-  border-radius: 0px 0px 10px 10px;
 }
 
 .actorName {
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.02em;
-}
-
-@media (prefers-color-scheme: light) {
-  .nameContainer {
-    border: none;
-  }
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

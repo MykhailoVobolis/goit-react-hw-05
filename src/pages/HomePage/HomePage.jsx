@@ -15,7 +15,9 @@ export default function HomePage() {
       try {
         setLoading(true);
         const data = await getTrendingMovies();
-        setMovies(data);
+        setMovies((prevMovies) => {
+          return movies.length > 0 ? [...prevMovies, ...data] : data;
+        });
       } catch (error) {
         setError(true);
       } finally {
@@ -28,10 +30,12 @@ export default function HomePage() {
   return (
     <>
       <section className={css.trendMovies}>
-        <div className={css.container}>
-          <h2 className={css.trendMoviesTitle}>Топ-20 тижня</h2>
-          <MovieList items={movies} />
-        </div>
+        {movies.length > 0 && (
+          <div className={css.container}>
+            <h2 className={css.trendMoviesTitle}>Топ 20 тижня</h2>
+            <MovieList items={movies} />
+          </div>
+        )}
       </section>
       {error && <ErrorMessage error={error} />}
       <Toaster position="top-right" />

@@ -88,6 +88,25 @@
   margin-right: 6px;
 }
 
+.linkGoBack {
+  border: solid 1px rgb(247, 246, 241, 0.2);
+  border-radius: 8px;
+  padding: 12px 15px;
+  max-width: 190px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  transition: border-color 200ms cubic-bezier(0.4, 0, 0.2, 1), color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.linkGoBack:hover {
+  border-color: #fec90c;
+}
+
 .iconPlay {
   vertical-align: text-top;
   margin-top: 1px;
@@ -125,6 +144,7 @@
 
 .poster {
   border-radius: 10px;
+  object-fit: cover;
 }
 
 .addInformationSection {
@@ -154,8 +174,6 @@
   align-items: center;
 }
 
-@media (prefers-color-scheme: light) {
-  .informationLink {
-    color: #242424;
-  }
+.informationLink {
+  text-transform: uppercase;
 }
