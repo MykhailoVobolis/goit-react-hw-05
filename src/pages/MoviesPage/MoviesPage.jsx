@@ -3,37 +3,35 @@ import { IoIosSearch } from "react-icons/io";
 import css from "./MoviesPage.module.css";
 import toast from "react-hot-toast";
 import { searchMovies } from "../../tmdb-api";
+import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import MovieList from "../../components/MovieList/MovieList";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
-  const [inputValue, setInputValue] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
-  const onSearch = (value) => {
-    setMovies([]);
-    setInputValue(value);
-  };
+  const [searchParams, setSearchParams] = useSearchParams();
+  const inputValue = searchParams.get("name");
 
   const handleSubmit = (value, actions) => {
     !value.search
-      ? toast("Please enter search term!", {
+      ? toast("Введіть назву фільму!", {
           style: {
             color: "#ffffff",
             backgroundColor: "#FF8C00",
           },
         })
-      : onSearch(value.search);
+      : setSearchParams({ name: value.search });
 
     actions.resetForm();
   };
 
   useEffect(() => {
     async function fetchMovies() {
-      if (inputValue === "") return;
+      if (!inputValue) return;
       try {
+        setMovies([]);
         setError(false);
         setLoading(true);
         const data = await searchMovies(inputValue);
@@ -56,7 +54,7 @@ export default function MoviesPage() {
       }
     }
     fetchMovies();
-  }, [inputValue]);
+  }, [searchParams]);
 
   return (
     <>

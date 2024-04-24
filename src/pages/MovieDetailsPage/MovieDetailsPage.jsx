@@ -1,6 +1,6 @@
 import { useParams, useLocation, Outlet, NavLink, Link } from "react-router-dom";
 import { getDetailsMovie } from "../../tmdb-api";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AiFillLike } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { FaPlay } from "react-icons/fa";
@@ -20,11 +20,16 @@ export default function MovieDetailsPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  // Для повернення на попередню сторінку !!!
+  // Повернення на попередню сторінку
   const location = useLocation();
-  const backLink = location.state;
-  console.log(backLink);
-  // const backLink = location.state?.from ?? "/";
+  // Використання useRef для збереження попереднього значення location.state при рендері компонентів Cast або Review
+  const backLink = useRef(location.state);
+  // На випадок, коли користувач перейшов по збереженому раніше посиланню фільму в новій вкладці браузера
+  useEffect(() => {
+    {
+      !location.state && (backLink.current = "/");
+    }
+  }, [location.state]);
 
   useEffect(() => {
     async function handleClickMovie() {
@@ -104,7 +109,7 @@ export default function MovieDetailsPage() {
             </div>
             <h2 className={css.descriptionMovie}>Опис</h2>
             <p className={css.textMovie}>{movies.overview}</p>
-            <Link className={css.linkGoBack} to={backLink}>
+            <Link className={css.linkGoBack} to={backLink.current}>
               <IoCaretBackOutline /> повернутися
             </Link>
           </div>
