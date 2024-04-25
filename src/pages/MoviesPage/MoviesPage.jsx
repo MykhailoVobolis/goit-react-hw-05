@@ -1,11 +1,13 @@
 import { Field, Form, Formik } from "formik";
 import { IoIosSearch } from "react-icons/io";
 import css from "./MoviesPage.module.css";
-import toast from "react-hot-toast";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import toast, { Toaster } from "react-hot-toast";
 import { searchMovies } from "../../tmdb-api";
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import MovieList from "../../components/MovieList/MovieList";
+import Loader from "../../components/Loader/Loader";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -36,7 +38,7 @@ export default function MoviesPage() {
         setLoading(true);
         const data = await searchMovies(inputValue);
         if (!data.length) {
-          toast("Sorry, there are no movies matching your search query. Please try again!", {
+          toast("На жаль, немає фільмів, які відповідають вашому пошуковому запиту. Будь ласка спробуйте ще раз!", {
             style: {
               color: "#ffffff",
               backgroundColor: "#ef4040",
@@ -75,11 +77,12 @@ export default function MoviesPage() {
               </button>
             </Form>
           </Formik>
-          <div>
-            <MovieList items={movies} />
-          </div>
+          {loading && <Loader loading={loading} />}
+          {error && <ErrorMessage error={error} />}
+          {movies.length > 0 && <MovieList items={movies} />}
         </div>
       </section>
+      <Toaster position="top-right" containerStyle={{ zIndex: 99999999 }} />
     </>
   );
 }

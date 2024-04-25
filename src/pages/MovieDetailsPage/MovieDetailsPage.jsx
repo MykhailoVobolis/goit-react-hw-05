@@ -5,7 +5,16 @@ import { AiFillLike } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { FaPlay } from "react-icons/fa";
 import { IoCaretBackOutline } from "react-icons/io5";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import css from "./MovieDetailsPage.module.css";
+import Loader from "../../components/Loader/Loader";
+import clsx from "clsx";
+import { Suspense } from "react";
+import MovieModal from "../../components/MovieModal/MovieModal";
+
+const getNavLinkClass = ({ isActive }) => {
+  return clsx(css.link, isActive && css.active);
+};
 
 const defaultImg =
   "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
@@ -19,6 +28,7 @@ export default function MovieDetailsPage() {
   const [rating, setRating] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   // Повернення на попередню сторінку
   const location = useLocation();
@@ -29,7 +39,7 @@ export default function MovieDetailsPage() {
     {
       !location.state && (backLink.current = "/");
     }
-  }, [location.state]);
+  }, [movieId]);
 
   useEffect(() => {
     async function handleClickMovie() {
@@ -49,20 +59,30 @@ export default function MovieDetailsPage() {
     handleClickMovie();
   }, [movieId]);
 
+  const openModal = (item) => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
   return (
     <>
       <section>
+        {loading && <Loader loading={loading} />}
         <div
           className={css.hero}
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/original${movies.backdrop_path})`,
           }}>
           <span className={css.gradientOverlay}></span>
-          <button className={css.playBtn} type="button">
+          <button className={css.playBtn} type="button" onClick={() => openModal()}>
             <FaPlay className={css.iconPlay} />
             Офіційний трейлер
           </button>
         </div>
+        {modalIsOpen && <MovieModal isOpen={modalIsOpen} onClose={closeModal} />}
       </section>
       <section className={css.movie}>
         <div className={css.movieContainer}>
@@ -120,19 +140,22 @@ export default function MovieDetailsPage() {
           <h2 className={css.addInformation}>Додаткова інформація</h2>
           <ul className={css.addInformationList}>
             <li>
-              <NavLink className={css.informationLink} to="cast">
+              <NavLink to="cast" className={getNavLinkClass}>
                 АКТОРСЬКИЙ СКЛАД
               </NavLink>
             </li>
             <li>
-              <NavLink className={css.informationLink} to="reviews">
+              <NavLink to="reviews" className={getNavLinkClass}>
                 ВІДГУКИ
               </NavLink>
             </li>
           </ul>
         </div>
-        <Outlet />
+        <Suspense fallback={<div>Please wait loading page...</div>}>
+          <Outlet />
+        </Suspense>
       </section>
+      {error && <ErrorMessage error={error} />}
     </>
   );
 }

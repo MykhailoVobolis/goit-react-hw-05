@@ -2,6 +2,8 @@ import { getMovieCast } from "../../tmdb-api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import css from "./MovieCast.module.css";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import Loader from "../../components/Loader/Loader";
 
 const defaultImg =
   "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
@@ -30,6 +32,7 @@ export default function MovieCast() {
 
   return (
     <>
+      {/* {loading && <Loader loading={loading} />} */}
       {actors.length > 0 && (
         <ul className={css.actorsList}>
           {actors.map((item) => (
@@ -48,6 +51,7 @@ export default function MovieCast() {
           ))}
         </ul>
       )}
+      {error && <ErrorMessage error={error} />}
     </>
   );
 }

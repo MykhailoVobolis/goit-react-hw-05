@@ -2,7 +2,8 @@ import MovieList from "../../components/MovieList/MovieList";
 import { useState, useEffect } from "react";
 import { getTrendingMovies } from "../../tmdb-api";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import toast, { Toaster } from "react-hot-toast";
+import Loader from "../../components/Loader/Loader";
+
 import css from "./HomePage.module.css";
 
 export default function HomePage() {
@@ -30,6 +31,7 @@ export default function HomePage() {
   return (
     <>
       <section className={css.trendMovies}>
+        {loading && <Loader loading={loading} />}
         {movies.length > 0 && (
           <div className={css.container}>
             <h2 className={css.trendMoviesTitle}>Топ 20 тижня</h2>
@@ -38,7 +40,6 @@ export default function HomePage() {
         )}
       </section>
       {error && <ErrorMessage error={error} />}
-      <Toaster position="top-right" />
     </>
   );
 }

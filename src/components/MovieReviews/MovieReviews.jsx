@@ -2,6 +2,8 @@ import { getMovieReviews } from "../../tmdb-api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import css from "./MovieReviews.module.css";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import Loader from "../../components/Loader/Loader";
 
 export default function MovieReviews() {
   const { movieId } = useParams();
@@ -27,17 +29,18 @@ export default function MovieReviews() {
 
   return (
     <>
+      {/* {loading && <Loader loading={loading} />} */}
       {reviews.length > 0 && (
         <ul className={css.reviewsList}>
           {reviews.map((item) => (
             <li className={css.reviewItem} key={item.id}>
               <h3 className={css.authorReviewName}>{item.author}</h3>
-              {/* <p>{item.updated_at}</p> */}
               <p>{item.content}</p>
             </li>
           ))}
         </ul>
       )}
+      {error && <ErrorMessage error={error} />}
     </>
   );
 }
