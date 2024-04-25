@@ -2,7 +2,6 @@ import Layout from "../Layout/Layout";
 
 import { Routes, Route } from "react-router-dom";
 import { lazy } from "react";
-// import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 import "./App.css";
 
@@ -16,7 +15,6 @@ const MovieReviews = lazy(() => import("../MovieReviews/MovieReviews"));
 export default function App() {
   return (
     <Layout>
-      {/* <ScrollToTop /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />

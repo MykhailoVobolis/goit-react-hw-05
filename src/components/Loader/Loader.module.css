@@ -1,19 +1,16 @@
 .preloader {
-  position: absolute;
+  top: 1;
   left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
+  position: fixed;
+  z-index: 99999999999;
   background-color: #242424;
-  z-index: 999999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .colorRingLoading {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80px;

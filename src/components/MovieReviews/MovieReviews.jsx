@@ -2,7 +2,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Spinner from "../Spinner/Spinner";
 
 import { getMovieReviews } from "../../tmdb-api";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 
 import css from "./MovieReviews.module.css";
@@ -13,6 +13,8 @@ export default function MovieReviews() {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const ulRef = useRef();
 
   useEffect(() => {
     async function handleClickReviews() {
@@ -31,11 +33,15 @@ export default function MovieReviews() {
     handleClickReviews();
   }, [movieId]);
 
+  useEffect(() => {
+    ulRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [reviews]);
+
   return (
     <>
       {loading && <Spinner loading={loading} />}
       {reviews.length > 0 && (
-        <ul className={css.reviewsList}>
+        <ul ref={ulRef} className={css.reviewsList}>
           {reviews.map((item) => (
             <li className={css.reviewItem} key={item.id}>
               <h3 className={css.authorReviewName}>{item.author}</h3>
