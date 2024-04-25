@@ -11,6 +11,7 @@ import { AiFillLike } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { IoCaretBackOutline } from "react-icons/io5";
 import { getDetailsMovie, getMovieVideo } from "../../tmdb-api";
+import { FaPlay } from "react-icons/fa6";
 
 import css from "./MovieDetailsPage.module.css";
 
@@ -154,7 +155,9 @@ export default function MovieDetailsPage() {
       </section>
       <section className={css.addInformationSection}>
         <div className={css.addInfoContainer}>
-          <h2 className={css.addInformation}>Додаткова інформація</h2>
+          <h2 className={css.addInformation}>
+            Додаткова інформація <FaPlay className={css.iconInfo} />
+          </h2>
           <ul className={css.addInformationList}>
             <li>
               <NavLink to="cast" className={getNavLinkClass}>
