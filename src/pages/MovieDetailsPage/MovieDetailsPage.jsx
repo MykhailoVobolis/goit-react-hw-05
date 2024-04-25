@@ -168,7 +168,7 @@ export default function MovieDetailsPage() {
             </li>
           </ul>
         </div>
-        <Suspense fallback={<div>Зачекайте завантаження...</div>}>
+        <Suspense fallback={<div></div>}>
           <Outlet />
         </Suspense>
       </section>

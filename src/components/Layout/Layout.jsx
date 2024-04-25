@@ -6,7 +6,7 @@ export default function Layout({ children }) {
   return (
     <div>
       <Navigation />
-      <Suspense fallback={<div>Зачекайте завантаження сторінки...</div>}>{children}</Suspense>
+      <Suspense fallback={<div></div>}>{children}</Suspense>
     </div>
   );
 }
