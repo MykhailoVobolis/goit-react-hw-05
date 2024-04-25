@@ -1,13 +1,16 @@
 import { Field, Form, Formik } from "formik";
-import { IoIosSearch } from "react-icons/io";
-import css from "./MoviesPage.module.css";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import toast, { Toaster } from "react-hot-toast";
-import { searchMovies } from "../../tmdb-api";
-import { useSearchParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+
 import MovieList from "../../components/MovieList/MovieList";
 import Loader from "../../components/Loader/Loader";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import { IoIosSearch } from "react-icons/io";
+import { searchMovies } from "../../tmdb-api";
+
+import css from "./MoviesPage.module.css";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);

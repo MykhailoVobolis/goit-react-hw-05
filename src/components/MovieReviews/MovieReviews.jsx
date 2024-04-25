@@ -1,9 +1,11 @@
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import Spinner from "../Spinner/Spinner";
+
 import { getMovieReviews } from "../../tmdb-api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 import css from "./MovieReviews.module.css";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import Loader from "../../components/Loader/Loader";
 
 export default function MovieReviews() {
   const { movieId } = useParams();
@@ -17,7 +19,9 @@ export default function MovieReviews() {
       try {
         setLoading(true);
         const data = await getMovieReviews(movieId);
-        setReviews(data.results);
+        setReviews((prevReview) => {
+          return reviews.length > 0 ? [...prevReview, ...data.results] : data.results;
+        });
       } catch (error) {
         setError(true);
       } finally {
@@ -29,7 +33,7 @@ export default function MovieReviews() {
 
   return (
     <>
-      {/* {loading && <Loader loading={loading} />} */}
+      {loading && <Spinner loading={loading} />}
       {reviews.length > 0 && (
         <ul className={css.reviewsList}>
           {reviews.map((item) => (

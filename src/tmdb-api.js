@@ -49,3 +49,9 @@ export async function getMovieReviews(id) {
 
   return response.data;
 }
+
+export async function getMovieVideo(id) {
+  const response = await axios.get(`movie/${id}/videos`, options);
+
+  return response.data.results;
+}

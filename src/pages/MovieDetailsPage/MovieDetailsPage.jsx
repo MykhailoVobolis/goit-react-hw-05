@@ -1,16 +1,18 @@
+import clsx from "clsx";
+
+import MovieModal from "../../components/MovieModal/MovieModal";
+import PlayBtn from "../../components/PlayBtn/PlayBtn";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import Loader from "../../components/Loader/Loader";
+
 import { useParams, useLocation, Outlet, NavLink, Link } from "react-router-dom";
-import { getDetailsMovie } from "../../tmdb-api";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { AiFillLike } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
-import { FaPlay } from "react-icons/fa";
 import { IoCaretBackOutline } from "react-icons/io5";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import { getDetailsMovie, getMovieVideo } from "../../tmdb-api";
+
 import css from "./MovieDetailsPage.module.css";
-import Loader from "../../components/Loader/Loader";
-import clsx from "clsx";
-import { Suspense } from "react";
-import MovieModal from "../../components/MovieModal/MovieModal";
 
 const getNavLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
@@ -29,6 +31,7 @@ export default function MovieDetailsPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [trailerUrl, setTrailerUrl] = useState("");
 
   // Повернення на попередню сторінку
   const location = useLocation();
@@ -59,13 +62,29 @@ export default function MovieDetailsPage() {
     handleClickMovie();
   }, [movieId]);
 
-  const openModal = (item) => {
+  const openModal = () => {
     setModalIsOpen(true);
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
   };
+
+  useEffect(() => {
+    async function handleClickPlayBtn() {
+      try {
+        setLoading(true);
+        const data = await getMovieVideo(movieId);
+        setTrailerUrl(data[0].key);
+      } catch (error) {
+        setError(true);
+      } finally {
+        setLoading(false);
+        setError(false);
+      }
+    }
+    handleClickPlayBtn();
+  }, [modalIsOpen]);
 
   return (
     <>
@@ -77,12 +96,9 @@ export default function MovieDetailsPage() {
             backgroundImage: `url(https://image.tmdb.org/t/p/original${movies.backdrop_path})`,
           }}>
           <span className={css.gradientOverlay}></span>
-          <button className={css.playBtn} type="button" onClick={() => openModal()}>
-            <FaPlay className={css.iconPlay} />
-            Офіційний трейлер
-          </button>
+          <PlayBtn movieId={movieId} openModal={openModal} />
         </div>
-        {modalIsOpen && <MovieModal isOpen={modalIsOpen} onClose={closeModal} />}
+        {modalIsOpen && <MovieModal isOpen={modalIsOpen} onClose={closeModal} trailerUrl={trailerUrl} />}
       </section>
       <section className={css.movie}>
         <div className={css.movieContainer}>
@@ -100,7 +116,8 @@ export default function MovieDetailsPage() {
                 Дата випуску: <span className={css.accent}>{release} рік</span>
               </li>
               <li>
-                Рейтинг: <span className={css.accent}>TMDB {rating}</span>
+                Рейтинг: <span className={css.rating}>TMDB </span>
+                {rating}
               </li>
               <li>
                 Оцінка глядачів:
@@ -151,7 +168,7 @@ export default function MovieDetailsPage() {
             </li>
           </ul>
         </div>
-        <Suspense fallback={<div>Please wait loading page...</div>}>
+        <Suspense fallback={<div>Зачекайте завантаження...</div>}>
           <Outlet />
         </Suspense>
       </section>

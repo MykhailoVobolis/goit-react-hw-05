@@ -1,10 +1,10 @@
 import { ColorRing } from "react-loader-spinner";
 
-import css from "./Loader.module.css";
+import css from "./Spinner.module.css";
 
-export default function Loader({ loading }) {
+export default function Spinner({ loading }) {
   return (
-    <div className={css.preloader}>
+    <div className={css.spinner}>
       <ColorRing
         visible={loading}
         height="80"

@@ -1,8 +1,9 @@
 import MovieList from "../../components/MovieList/MovieList";
-import { useState, useEffect } from "react";
-import { getTrendingMovies } from "../../tmdb-api";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
+
+import { getTrendingMovies } from "../../tmdb-api";
+import { useState, useEffect } from "react";
 
 import css from "./HomePage.module.css";
 
