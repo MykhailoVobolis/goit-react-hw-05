@@ -24,7 +24,7 @@ export default function MoviesPage() {
       ? toast("Введіть назву фільму!", {
           style: {
             color: "#ffffff",
-            backgroundColor: "#FF8C00",
+            backgroundColor: "#ef4040",
           },
         })
       : setSearchParams({ name: value.search });
@@ -44,7 +44,7 @@ export default function MoviesPage() {
           toast("На жаль, немає фільмів, які відповідають вашому пошуковому запиту. Будь ласка спробуйте ще раз!", {
             style: {
               color: "#ffffff",
-              backgroundColor: "#ef4040",
+              backgroundColor: "#FF8C00",
             },
           });
           return;

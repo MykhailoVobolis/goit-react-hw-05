@@ -1,5 +1,6 @@
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Spinner from "../Spinner/Spinner";
+import toast, { Toaster } from "react-hot-toast";
 
 import { getMovieCast } from "../../tmdb-api";
 import { useState, useEffect, useRef } from "react";
@@ -24,6 +25,15 @@ export default function MovieCast() {
       try {
         setLoading(true);
         const data = await getMovieCast(movieId);
+        if (!data.length) {
+          toast("На жаль, ми зараз не маємо даних про акторів цього фільму. Будь ласка спробуйте пізніше", {
+            style: {
+              color: "#ffffff",
+              backgroundColor: "#FF8C00",
+            },
+          });
+          return;
+        }
         setActors((prevActors) => {
           return actors.length > 0 ? [...prevActors, ...data.cast] : data.cast;
         });
@@ -62,6 +72,7 @@ export default function MovieCast() {
         </ul>
       )}
       {error && <ErrorMessage error={error} />}
+      <Toaster position="top-right" containerStyle={{ zIndex: 99999999 }} />
     </>
   );
 }
