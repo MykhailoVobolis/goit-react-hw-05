@@ -25,7 +25,7 @@ export default function MovieCast() {
       try {
         setLoading(true);
         const data = await getMovieCast(movieId);
-        if (!data.length) {
+        if (!data.cast.length) {
           toast("На жаль, ми зараз не маємо даних про акторів цього фільму. Будь ласка спробуйте пізніше", {
             style: {
               color: "#ffffff",
