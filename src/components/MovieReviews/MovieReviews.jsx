@@ -1,5 +1,6 @@
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Spinner from "../Spinner/Spinner";
+import toast, { Toaster } from "react-hot-toast";
 
 import { getMovieReviews } from "../../tmdb-api";
 import { useState, useEffect, useRef } from "react";
@@ -21,6 +22,15 @@ export default function MovieReviews() {
       try {
         setLoading(true);
         const data = await getMovieReviews(movieId);
+        if (!data.results.length) {
+          toast("На жаль, зараз немає відгуків до цього фільму. Будь ласка спробуйте пізніше", {
+            style: {
+              color: "#ffffff",
+              backgroundColor: "#ef4040",
+            },
+          });
+          return;
+        }
         setReviews((prevReview) => {
           return reviews.length > 0 ? [...prevReview, ...data.results] : data.results;
         });
@@ -51,6 +61,7 @@ export default function MovieReviews() {
         </ul>
       )}
       {error && <ErrorMessage error={error} />}
+      <Toaster position="top-right" containerStyle={{ zIndex: 99999999 }} />
     </>
   );
 }
