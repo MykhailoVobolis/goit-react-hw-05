@@ -15,8 +15,6 @@ export default function MovieReviews() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const ulRef = useRef();
-
   useEffect(() => {
     async function handleClickReviews() {
       try {
@@ -44,14 +42,17 @@ export default function MovieReviews() {
   }, [movieId]);
 
   useEffect(() => {
-    ulRef.current?.scrollIntoView({ behavior: "smooth" });
+    window.scrollTo({
+      top: "1280",
+      behavior: "smooth",
+    });
   }, [reviews]);
 
   return (
     <>
       {loading && <Spinner loading={loading} />}
       {reviews.length > 0 && (
-        <ul ref={ulRef} className={css.reviewsList}>
+        <ul className={css.reviewsList}>
           {reviews.map((item) => (
             <li className={css.reviewItem} key={item.id}>
               <h3 className={css.authorReviewName}>{item.author}</h3>

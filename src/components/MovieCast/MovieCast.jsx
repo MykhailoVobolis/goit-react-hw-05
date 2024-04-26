@@ -3,7 +3,7 @@ import Spinner from "../Spinner/Spinner";
 import toast, { Toaster } from "react-hot-toast";
 
 import { getMovieCast } from "../../tmdb-api";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import css from "./MovieCast.module.css";
@@ -17,8 +17,6 @@ export default function MovieCast() {
   const [actors, setActors] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
-  const ulRef = useRef();
 
   useEffect(() => {
     async function handleClickActors() {
@@ -47,14 +45,17 @@ export default function MovieCast() {
   }, [movieId]);
 
   useEffect(() => {
-    ulRef.current?.scrollIntoView({ behavior: "smooth" });
+    window.scrollTo({
+      top: "1280",
+      behavior: "smooth",
+    });
   }, [actors]);
 
   return (
     <>
       {loading && <Spinner loading={loading} />}
       {actors.length > 0 && (
-        <ul ref={ulRef} className={css.actorsList}>
+        <ul className={css.actorsList}>
           {actors.map((item) => (
             <li className={css.actorCard} key={item.id}>
               <img
