@@ -1,6 +1,7 @@
 import clsx from "clsx";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+import { RiMovie2Line } from "react-icons/ri";
 
 import css from "./Navigation.module.css";
 
@@ -13,6 +14,9 @@ export default function Navigation() {
     <header className={css.pageHeader}>
       <div className={css.container}>
         <nav className={css.nav}>
+          <Link to="/" className={getNavLinkClass}>
+            <RiMovie2Line className={css.logo} />
+          </Link>
           <NavLink to="/" className={getNavLinkClass}>
             ДОДОМУ
           </NavLink>
