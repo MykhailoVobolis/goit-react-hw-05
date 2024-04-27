@@ -117,8 +117,8 @@ export default function MovieDetailsPage() {
                 Дата випуску: <span className={css.accent}>{release} рік</span>
               </li>
               <li>
-                Рейтинг: <span className={css.rating}>TMDB </span>
-                {rating}
+                Рейтинг: <span className={css.rating}>TMDB</span>
+                <span className={css.ratingValue}>{rating}</span>
               </li>
               <li>
                 Оцінка глядачів:

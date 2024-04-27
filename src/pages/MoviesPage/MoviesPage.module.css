@@ -20,8 +20,7 @@
   box-sizing: border-box;
   width: 280px;
   height: 42px;
-  border: none;
-  border: solid 1px #242424;
+  border: solid 1px transparent;
   border-radius: 8px;
   background-color: transparent;
   background-color: #3b3b3b;

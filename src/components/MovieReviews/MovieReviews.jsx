@@ -3,7 +3,7 @@ import Spinner from "../Spinner/Spinner";
 import toast, { Toaster } from "react-hot-toast";
 
 import { getMovieReviews } from "../../tmdb-api";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import css from "./MovieReviews.module.css";
@@ -56,7 +56,7 @@ export default function MovieReviews() {
           {reviews.map((item) => (
             <li className={css.reviewItem} key={item.id}>
               <h3 className={css.authorReviewName}>{item.author}</h3>
-              <p>{item.content}</p>
+              <p className={css.textReview}>{item.content}</p>
             </li>
           ))}
         </ul>

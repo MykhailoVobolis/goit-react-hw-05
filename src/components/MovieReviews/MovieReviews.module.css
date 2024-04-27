@@ -18,3 +18,7 @@
   border: solid 1px rgb(247, 246, 241, 0.2);
   border-radius: 10px;
 }
+
+.textReview {
+  line-height: 1.6;
+}

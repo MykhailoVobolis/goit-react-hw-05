@@ -58,14 +58,15 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .icon {
   vertical-align: text-top;
-  margin-top: 2px;
   margin-right: 6px;
   fill: #fec90c;
+  width: 21px;
+  height: 21px;
 }
 
 .linkGoBack {
@@ -73,7 +74,7 @@
   color: #fec90c;
   border-radius: 8px;
   padding: 12px 15px;
-  max-width: 190px;
+  max-width: 184px;
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
@@ -93,9 +94,22 @@
   margin-left: 20px;
 }
 
+.ratingValue {
+  font-weight: 600;
+}
+
 .rating {
   composes: accent;
   color: #fec90c;
+  border: solid 1px #fec90c;
+  border-radius: 5px;
+  width: 58px;
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .genreItem {
@@ -105,7 +119,7 @@
 .genresContainer {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .genreList {
@@ -123,6 +137,7 @@
 
 .textMovie {
   margin-bottom: 30px;
+  line-height: 1.6;
 }
 
 .poster {
@@ -132,7 +147,7 @@
 
 .addInformationSection {
   padding-top: 25px;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 
 .addInfoContainer {
@@ -143,7 +158,7 @@
   margin-right: auto;
   display: flex;
   margin-bottom: 30px;
-  align-items: center;
+  align-items: end;
   justify-content: space-between;
 }
 
