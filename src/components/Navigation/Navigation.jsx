@@ -14,7 +14,7 @@ export default function Navigation() {
     <header className={css.pageHeader}>
       <div className={css.container}>
         <nav className={css.nav}>
-          <Link to="/" className={getNavLinkClass}>
+          <Link to="/">
             <RiMovie2Line className={css.logo} />
           </Link>
           <NavLink to="/" className={getNavLinkClass}>

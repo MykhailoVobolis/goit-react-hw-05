@@ -31,11 +31,16 @@ export default function HomePage() {
 
   return (
     <>
+      <section>
+        <div className={css.hero}>
+          <h1 className={css.mainTitle}>Світові новинки кіно на CINEMA HALL</h1>
+        </div>
+      </section>
       <section className={css.trendMovies}>
         {loading && <Loader loading={loading} />}
         {movies.length > 0 && (
           <div className={css.container}>
-            <h2 className={css.trendMoviesTitle}>Топ 20 тижня</h2>
+            <h2 className={css.trendMoviesTitle}>Топ 20 цього тижня</h2>
             <MovieList items={movies} />
           </div>
         )}

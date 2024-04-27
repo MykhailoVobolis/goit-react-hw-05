@@ -111,7 +111,7 @@ export default function MovieDetailsPage() {
             height="600px"
           />
           <div>
-            <h1 className={css.title}>{movies.title}</h1>
+            <h2 className={css.title}>{movies.title}</h2>
             <ul className={css.statMovie}>
               <li>
                 Дата випуску: <span className={css.accent}>{release} рік</span>

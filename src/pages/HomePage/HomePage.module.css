@@ -1,3 +1,37 @@
+.hero {
+  background-image: linear-gradient(
+      180deg,
+      #00000000 0%,
+      #0000000a 16%,
+      #00000021 29%,
+      #00000042 41%,
+      #0000006b 51%,
+      #00000094 61%,
+      #000000bd 70%,
+      #000000de 79%,
+      #000000f5 89%,
+      #000000ff 100%
+    ),
+    url("../../img/header.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 600px;
+  min-width: 1158px;
+  max-width: 1440px;
+  padding-top: 180px;
+  text-align: center;
+}
+
+.mainTitle {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.2;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .trendMovies {
   padding-top: 30px;
   padding-bottom: 40px;
@@ -12,5 +46,8 @@
 }
 
 .trendMoviesTitle {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 42px;
   margin-bottom: 30px;
 }
