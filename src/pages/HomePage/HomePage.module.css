@@ -12,7 +12,7 @@
       #000000f5 89%,
       #000000ff 100%
     ),
-    url("src/img/header.png");
+    url("../../img/header.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
