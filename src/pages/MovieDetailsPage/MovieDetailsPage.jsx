@@ -19,7 +19,7 @@ const getNavLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
 };
 
-const defaultBg = "../../img/header.png";
+const defaultBg = "../src/img/header.png";
 const defaultImg = "/src/img/noFoto.jpg";
 
 export default function MovieDetailsPage() {
