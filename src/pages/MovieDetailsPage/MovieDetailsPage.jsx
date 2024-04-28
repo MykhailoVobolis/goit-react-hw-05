@@ -19,8 +19,8 @@ const getNavLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
 };
 
-const defaultImg =
-  "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
+const defaultBg = "/src/img/header.png";
+const defaultImg = "/src/img/noFoto.jpg";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -93,9 +93,15 @@ export default function MovieDetailsPage() {
         {loading && <Loader loading={loading} />}
         <div
           className={css.hero}
-          style={{
-            backgroundImage: `url(https://image.tmdb.org/t/p/original${movies.backdrop_path})`,
-          }}>
+          style={
+            movies.backdrop_path
+              ? {
+                  backgroundImage: `url(https://image.tmdb.org/t/p/original${movies.backdrop_path})`,
+                }
+              : {
+                  backgroundImage: `url(${defaultBg})`,
+                }
+          }>
           <span className={css.gradientOverlay}></span>
           <PlayBtn movieId={movieId} openModal={openModal} />
         </div>

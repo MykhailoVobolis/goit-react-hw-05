@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 import css from "./MovieCast.module.css";
 
 const defaultImg =
-  "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
+  "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg";
 
 export default function MovieCast() {
   const { movieId } = useParams();
@@ -32,8 +32,10 @@ export default function MovieCast() {
           });
           return;
         }
+        // Відбір із масиву учасників фільму тільки акторів
+        const onlyActors = data.cast.filter((actor) => actor.known_for_department === "Acting");
         setActors((prevActors) => {
-          return actors.length > 0 ? [...prevActors, ...data.cast] : data.cast;
+          return actors.length > 0 ? [...prevActors, ...onlyActors] : onlyActors;
         });
       } catch (error) {
         setError(true);
