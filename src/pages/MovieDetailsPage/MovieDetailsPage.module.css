@@ -142,7 +142,7 @@
 
 .poster {
   border-radius: 10px;
-  object-fit: cover;
+  background-color: #969696;
 }
 
 .addInformationSection {
