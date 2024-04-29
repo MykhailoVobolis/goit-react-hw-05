@@ -19,6 +19,7 @@ const getNavLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
 };
 
+const defaultBg = "/src/img/header.png"; // Це працює на LocalHost але не працює при деплої на Versel !!!
 const defaultImg =
   "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg";
 
@@ -93,9 +94,15 @@ export default function MovieDetailsPage() {
         {loading && <Loader loading={loading} />}
         <div
           className={css.hero}
-          style={{
-            backgroundImage: `url(https://image.tmdb.org/t/p/original${movies.backdrop_path})`,
-          }}>
+          style={
+            movies.backdrop_path
+              ? {
+                  backgroundImage: `url(https://image.tmdb.org/t/p/original${movies.backdrop_path})`,
+                }
+              : {
+                  backgroundImage: `url(${defaultBg})`,
+                }
+          }>
           <span className={css.gradientOverlay}></span>
           <PlayBtn movieId={movieId} openModal={openModal} />
         </div>

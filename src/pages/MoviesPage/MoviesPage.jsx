@@ -8,16 +8,38 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { IoIosSearch } from "react-icons/io";
-import { searchMovies } from "../../tmdb-api";
+import { searchMovies, getPopularMovies } from "../../tmdb-api";
 
 import css from "./MoviesPage.module.css";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const inputValue = searchParams.get("name");
+
+  // test !!!
+
+  useEffect(() => {
+    async function fetchMovies() {
+      try {
+        setLoading(true);
+        const data = await getPopularMovies();
+        setPopularMovies((prevPopularMovies) => {
+          return popularMovies.length > 0 ? [...prevPopularMovies, ...data] : data;
+        });
+      } catch (error) {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchMovies();
+  }, []);
+
+  // test !!!
 
   const handleSubmit = (value, actions) => {
     !value.search
@@ -82,6 +104,8 @@ export default function MoviesPage() {
           </Formik>
           {loading && <Loader loading={loading} />}
           {error && <ErrorMessage error={error} />}
+          {movies.length === 0 && <h2 className={css.popularTitle}>Найбільш популярні</h2>}
+          {movies.length === 0 && <MovieList items={popularMovies} />}
           {movies.length > 0 && <MovieList items={movies} />}
         </div>
       </section>

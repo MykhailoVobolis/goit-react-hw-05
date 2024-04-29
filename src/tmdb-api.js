@@ -55,3 +55,8 @@ export async function getMovieVideo(id) {
 
   return response.data.results;
 }
+
+export async function getPopularMovies() {
+  const response = await axios.get("movie/popular", options);
+  return response.data.results;
+}
