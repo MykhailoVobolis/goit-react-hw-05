@@ -1,13 +1,12 @@
-import { Field, Form, Formik } from "formik";
 import toast, { Toaster } from "react-hot-toast";
 
 import MovieList from "../../components/MovieList/MovieList";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { IoIosSearch } from "react-icons/io";
 import { searchMovies, getPopularMovies } from "../../tmdb-api";
 
 import css from "./MoviesPage.module.css";
@@ -19,8 +18,6 @@ export default function MoviesPage() {
   const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const inputValue = searchParams.get("name");
-
-  // test !!!
 
   useEffect(() => {
     async function fetchMovies() {
@@ -39,19 +36,8 @@ export default function MoviesPage() {
     fetchMovies();
   }, []);
 
-  // test !!!
-
-  const handleSubmit = (value, actions) => {
-    !value.search
-      ? toast("Введіть назву фільму!", {
-          style: {
-            color: "#ffffff",
-            backgroundColor: "#ef4040",
-          },
-        })
-      : setSearchParams({ name: value.search });
-
-    actions.resetForm();
+  const changeSearch = (value) => {
+    setSearchParams({ name: value });
   };
 
   useEffect(() => {
@@ -87,24 +73,13 @@ export default function MoviesPage() {
     <>
       <section className={css.movies}>
         <div className={css.container}>
-          <Formik initialValues={{ search: "" }} onSubmit={handleSubmit}>
-            <Form className={css.searchForm}>
-              <Field
-                className={css.searchInput}
-                autoComplete="off"
-                autoFocus
-                type="text"
-                name="search"
-                placeholder="Пошук"
-              />
-              <button className={css.searchBtn} type="submit">
-                <IoIosSearch className={css.searchIcon} />
-              </button>
-            </Form>
-          </Formik>
+          <div className={css.titleContainer}>
+            {movies.length === 0 && <h2 className={css.popularTitle}>Найбільш популярні</h2>}
+            <SearchBar onSearch={changeSearch} />
+          </div>
           {loading && <Loader loading={loading} />}
           {error && <ErrorMessage error={error} />}
-          {movies.length === 0 && <h2 className={css.popularTitle}>Найбільш популярні</h2>}
+
           {movies.length === 0 && <MovieList items={popularMovies} />}
           {movies.length > 0 && <MovieList items={movies} />}
         </div>
