@@ -168,12 +168,12 @@ export default function MovieDetailsPage() {
           <ul className={css.addInformationList}>
             <li>
               <NavLink to="cast" className={getNavLinkClass}>
-                АКТОРСЬКИЙ СКЛАД
+                Акторський склад
               </NavLink>
             </li>
             <li>
               <NavLink to="reviews" className={getNavLinkClass}>
-                ВІДГУКИ
+                Відгуки
               </NavLink>
             </li>
           </ul>

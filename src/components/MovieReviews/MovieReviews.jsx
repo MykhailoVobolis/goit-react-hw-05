@@ -21,7 +21,7 @@ export default function MovieReviews() {
         setLoading(true);
         const data = await getMovieReviews(movieId);
         if (!data.results.length) {
-          toast("На жаль, зараз немає відгуків до цього фільму. Будь ласка спробуйте пізніше", {
+          toast("На жаль, ще немає відгуків до цього фільму. Будь ласка, спробуйте пізніше.", {
             style: {
               color: "#ffffff",
               backgroundColor: "#FF8C00",

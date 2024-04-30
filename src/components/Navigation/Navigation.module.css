@@ -10,13 +10,24 @@
   padding: 14px 7px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.navItemsContainer {
   display: flex;
+  gap: 50px;
+  align-items: center;
 }
 
 .nav {
   display: flex;
-  gap: 50px;
   align-items: center;
+  justify-content: space-between;
+}
+
+.searchIcon {
+  width: 27px;
+  height: 27px;
+  vertical-align: text-top;
 }
 
 .link {
@@ -25,6 +36,18 @@
 
 .active {
   color: #fec90c;
+  position: relative;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: #fec90c;
+  border-radius: 2px;
 }
 
 .logo {
