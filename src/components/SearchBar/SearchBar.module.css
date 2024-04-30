@@ -5,11 +5,10 @@
 
 .searchInput {
   box-sizing: border-box;
-  width: 280px;
+  width: 486px;
   height: 42px;
   border: solid 1px transparent;
   border-radius: 8px;
-  background-color: transparent;
   background-color: #3b3b3b;
   color: #f7f6f1;
   padding-left: 45px;
@@ -21,10 +20,6 @@
   outline: transparent;
   outline-offset: 4px;
   transition: border-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.searchInput:hover {
-  border-color: #fec90c;
 }
 
 .searchBtn {
