@@ -60,3 +60,8 @@ export async function getPopularMovies() {
   const response = await axios.get("movie/popular", options);
   return response.data.results;
 }
+
+export async function getMostRatingMovies() {
+  const response = await axios.get("movie/top_rated", options);
+  return response.data.results;
+}

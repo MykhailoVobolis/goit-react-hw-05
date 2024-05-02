@@ -12,6 +12,7 @@ import { BiTime } from "react-icons/bi";
 import { IoCaretBackOutline } from "react-icons/io5";
 import { getDetailsMovie, getMovieVideo } from "../../tmdb-api";
 import { FaPlay } from "react-icons/fa6";
+import defaultBg from "../../img/header.png";
 
 import css from "./MovieDetailsPage.module.css";
 
@@ -19,7 +20,6 @@ const getNavLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
 };
 
-const defaultBg = "/src/img/header.png"; // Це працює на LocalHost але не працює при деплої на Versel !!!
 const defaultImg =
   "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg";
 

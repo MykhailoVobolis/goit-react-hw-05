@@ -11,7 +11,18 @@
   margin-right: auto;
 }
 
-.popularTitle {
+.moviesContainer {
+  max-width: 1260px;
+  padding-left: 7px;
+  padding-right: 7px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.moviesTitle {
   font-weight: 700;
   font-size: 36px;
   line-height: 42px;

@@ -12,6 +12,7 @@ export default function Player({ trailerUrl }) {
         height={"540px"}
         width={"960px"}
         controls={true}
+        playing={"playing"}
         className={"css.overflowHidden"}
       />
     </div>
