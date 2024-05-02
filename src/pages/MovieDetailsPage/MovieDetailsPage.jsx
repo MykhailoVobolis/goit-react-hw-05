@@ -121,7 +121,7 @@ export default function MovieDetailsPage() {
             <h2 className={css.title}>{movies.title}</h2>
             <ul className={css.statMovie}>
               <li>
-                Дата випуску: <span className={css.accent}>{release} рік</span>
+                Дата релізу: <span className={css.accent}>{release} рік</span>
               </li>
               <li>
                 Рейтинг: <span className={css.rating}>TMDB</span>
