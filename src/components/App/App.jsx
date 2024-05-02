@@ -12,6 +12,7 @@ const MovieDetailsPage = lazy(() => import("../../pages/MovieDetailsPage/MovieDe
 const NotFoundPage = lazy(() => import("../../pages/NotFoundPage/NotFoundPage"));
 const MovieCast = lazy(() => import("../MovieCast/MovieCast"));
 const MovieReviews = lazy(() => import("../MovieReviews/MovieReviews"));
+const BestFilmsWeekPage = lazy(() => import("../../pages/BestFilmsWeekPage/BestFilmsWeekPage"));
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/search" element={<SearchMoviesPage />} />
         <Route path="/movies" element={<MoviesPage />} />
+        <Route path="/collection/best_films_week" element={<BestFilmsWeekPage />} />
         <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
           <Route path="cast" element={<MovieCast />} />
           <Route path="reviews" element={<MovieReviews />} />

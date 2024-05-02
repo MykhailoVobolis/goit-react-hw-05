@@ -1,0 +1,19 @@
+.trendMovies {
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+
+.container {
+  max-width: 1260px;
+  padding-left: 7px;
+  padding-right: 7px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.trendMoviesTitle {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 42px;
+  margin-bottom: 30px;
+}

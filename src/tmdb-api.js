@@ -22,7 +22,7 @@ const optionsUs = {
   },
 };
 
-export async function getTrendingMovies() {
+export async function getWeekMovies() {
   const response = await axios.get("trending/movie/week", options);
   return response.data.results;
 }

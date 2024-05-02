@@ -49,5 +49,8 @@
   font-weight: 700;
   font-size: 36px;
   line-height: 42px;
+}
+
+.titleContainer {
   margin-bottom: 30px;
 }
