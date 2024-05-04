@@ -1,4 +1,3 @@
-// import MovieList from "../../components/MovieList/MovieList";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Slider from "../../components/Slider/Slider";
@@ -6,6 +5,7 @@ import Slider from "../../components/Slider/Slider";
 import { useState, useEffect } from "react";
 import { getPopularMovies } from "../../tmdb-api";
 import { getMostRatingMovies } from "../../tmdb-api";
+import { Link } from "react-router-dom";
 
 import css from "./MoviesPage.module.css";
 
@@ -53,21 +53,23 @@ export default function MoviesPage() {
     <>
       <section className={css.movies}>
         <div className={css.moviesContainer}>
-          {/* {popularMovies.length > 0 && (
-            <div>
-              <h2 className={css.moviesTitle}>Найбільш популярні</h2>
-              <MovieList items={popularMovies} />
-            </div>
-          )} */}
           {popularMovies.length > 0 && (
             <div className={css.container}>
-              <h2 className={css.moviesTitle}>Найбільш популярні</h2>
+              <div className={css.titleContainer}>
+                <Link className={css.moviesTitle} to={`/collection/most_popular_films`}>
+                  Найбільш популярні
+                </Link>
+              </div>
               <Slider items={popularMovies} />
             </div>
           )}
           {mostRatingMovies.length > 0 && (
             <div className={css.container}>
-              <h2 className={css.moviesTitle}>Найкраще за рейтингом TMDB</h2>
+              <div className={css.titleContainer}>
+                <Link className={css.moviesTitle} to={`/collection/best_rating_films`}>
+                  Найкраще за рейтингом TMDB
+                </Link>
+              </div>
               <Slider items={mostRatingMovies} />
             </div>
           )}

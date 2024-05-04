@@ -1,4 +1,4 @@
-.movies {
+.bestMovies {
   padding-top: 30px;
   padding-bottom: 40px;
 }
@@ -11,24 +11,9 @@
   margin-right: auto;
 }
 
-.moviesContainer {
-  max-width: 1260px;
-  padding-left: 7px;
-  padding-right: 7px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-}
-
-.moviesTitle {
+.bestMoviesTitle {
   font-weight: 500;
   font-size: 28px;
   line-height: 1.2;
-  margin-bottom: 30px;
-}
-
-.titleContainer {
   margin-bottom: 30px;
 }
