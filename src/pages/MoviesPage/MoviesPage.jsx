@@ -12,6 +12,7 @@ import css from "./MoviesPage.module.css";
 export default function MoviesPage() {
   const [mostRatingMovies, setMostRatingMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
+  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -19,9 +20,9 @@ export default function MoviesPage() {
     async function fetchMovies() {
       try {
         setLoading(true);
-        const data = await getPopularMovies();
+        const data = await getPopularMovies(page);
         setPopularMovies((prevPopularMovies) => {
-          return popularMovies.length > 0 ? [...prevPopularMovies, ...data] : data;
+          return popularMovies.length > 0 ? [...prevPopularMovies, ...data.results] : data.results;
         });
       } catch (error) {
         setError(true);
@@ -36,9 +37,9 @@ export default function MoviesPage() {
     async function fetchMovies() {
       try {
         setLoading(true);
-        const data = await getMostRatingMovies();
+        const data = await getMostRatingMovies(page);
         setMostRatingMovies((prevMostRatingMovies) => {
-          return mostRatingMovies.length > 0 ? [...prevMostRatingMovies, ...data] : data;
+          return mostRatingMovies.length > 0 ? [...prevMostRatingMovies, ...data.results] : data.results;
         });
       } catch (error) {
         setError(true);

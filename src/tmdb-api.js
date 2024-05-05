@@ -33,9 +33,9 @@ export async function getDetailsMovie(id) {
   return response.data;
 }
 
-export async function searchMovies(search) {
-  const response = await axios.get(`search/movie?page=1&query=${search}`, options);
-  return response.data.results;
+export async function searchMovies(search, page) {
+  const response = await axios.get(`search/movie?page=${page}&query=${search}`, options);
+  return response.data;
 }
 
 export async function getMovieCast(id) {
@@ -56,12 +56,12 @@ export async function getMovieVideo(id) {
   return response.data.results;
 }
 
-export async function getPopularMovies() {
-  const response = await axios.get("movie/popular", options);
-  return response.data.results;
+export async function getPopularMovies(page) {
+  const response = await axios.get(`movie/popular?page=${page}`, options);
+  return response.data;
 }
 
-export async function getMostRatingMovies() {
-  const response = await axios.get("movie/top_rated", options);
-  return response.data.results;
+export async function getMostRatingMovies(page) {
+  const response = await axios.get(`movie/top_rated?page=${page}`, options);
+  return response.data;
 }
