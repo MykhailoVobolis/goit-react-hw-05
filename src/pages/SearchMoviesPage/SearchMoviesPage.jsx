@@ -4,9 +4,9 @@ import MovieList from "../../components/MovieList/MovieList";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
+import PaginateBar from "../../components/PaginateBar/PaginateBar";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { searchMovies } from "../../tmdb-api";
 
@@ -16,32 +16,36 @@ export default function SearchMoviesPage() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [loaderBtn, setLoaderBtn] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const inputValue = searchParams.get("name");
+  const page = Number(searchParams.get("page")) || 1;
 
-  // Реалізація плавного скролу при додаванні нових зображень
-  const firstNewFilmRef = useRef();
-
-  useEffect(() => {
-    firstNewFilmRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-  }, [movies]);
+  const [totalPages, setTotalPages] = useState(0);
+  const [paginate, setPaginate] = useState(false);
 
   const changeSearch = (value) => {
-    setSearchParams({ name: value });
-    setLoaderBtn(false);
+    setSearchParams({ name: value, page: 1 });
     setMovies([]);
-    setPage(1);
+    setPaginate(false);
   };
 
   const nextPage = () => {
-    setLoaderBtn(false);
-    setLoading(true);
-    setPage(page + 1);
+    if (page < totalPages) {
+      setLoading(true);
+      setSearchParams({ name: inputValue, page: page + 1 });
+      setPaginate(true);
+    }
+  };
+
+  const prevPage = () => {
+    if (page !== 1) {
+      setLoading(true);
+      setSearchParams({ name: inputValue, page: page - 1 });
+    }
   };
 
   useEffect(() => {
+    setMovies([]);
     async function fetchMovies() {
       if (!inputValue) return;
       try {
@@ -60,7 +64,10 @@ export default function SearchMoviesPage() {
         setMovies((prevMovies) => {
           return movies.length > 0 ? [...prevMovies, ...data.results] : data.results;
         });
-        setLoaderBtn(true);
+        setTotalPages(data.total_pages);
+        if (data.total_pages > 1) {
+          setPaginate(true);
+        }
         // Перевірка, чи це остання завантажена сторінка?
         if (page === data.total_pages) {
           //  Повідомлення про досягнення кінця результатів запиту
@@ -70,7 +77,6 @@ export default function SearchMoviesPage() {
               backgroundColor: "#0099FF",
             },
           });
-          setLoaderBtn(false);
         }
       } catch (error) {
         setError(true);
@@ -88,8 +94,8 @@ export default function SearchMoviesPage() {
           <SearchBar onSearch={changeSearch} />
           {loading && <Loader loading={loading} />}
           {error && <ErrorMessage error={error} />}
-          {movies.length > 0 && <MovieList ref={firstNewFilmRef} items={movies} />}
-          {loaderBtn && <LoadMoreBtn nextPage={nextPage} />}
+          {movies.length > 0 && <MovieList items={movies} />}
+          {paginate && <PaginateBar prevPage={prevPage} nextPage={nextPage} page={page} />}
         </div>
       </section>
       <Toaster position="top-right" containerStyle={{ zIndex: 99999999 }} />
