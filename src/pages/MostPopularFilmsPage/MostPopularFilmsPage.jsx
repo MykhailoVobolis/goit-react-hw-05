@@ -3,34 +3,40 @@ import toast, { Toaster } from "react-hot-toast";
 import MovieList from "../../components/MovieList/MovieList";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
-import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
+import PaginateBar from "../../components/PaginateBar/PaginateBar";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { getPopularMovies } from "../../tmdb-api";
 
 import css from "./MostPopularFilmsPage.module.css";
 
 export default function MostPopularFilmsPage() {
   const [popularMovies, setPopularMovies] = useState([]);
-  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [loaderBtn, setLoaderBtn] = useState(false);
-
-  // Реалізація плавного скролу при додаванні нових зображень
-  const firstNewFilmRef = useRef();
-
-  useEffect(() => {
-    firstNewFilmRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-  }, [popularMovies]);
+  const [totalPages, setTotalPages] = useState(0);
+  const [paginate, setPaginate] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = Number(searchParams.get("page")) || 1;
 
   const nextPage = () => {
-    setLoaderBtn(false);
-    setLoading(true);
-    setPage(page + 1);
+    if (page < totalPages) {
+      setLoading(true);
+      setSearchParams({ page: page + 1 });
+      setPaginate(true);
+    }
+  };
+
+  const prevPage = () => {
+    if (page !== 1) {
+      setLoading(true);
+      setSearchParams({ page: page - 1 });
+    }
   };
 
   useEffect(() => {
+    setPopularMovies([]);
     async function fetchMovies() {
       try {
         setError(false);
@@ -39,7 +45,10 @@ export default function MostPopularFilmsPage() {
         setPopularMovies((prevPopularMovies) => {
           return popularMovies.length > 0 ? [...prevPopularMovies, ...data.results] : data.results;
         });
-        setLoaderBtn(true);
+        setTotalPages(data.total_pages);
+        if (data.total_pages > 1) {
+          setPaginate(true);
+        }
         // Перевірка, чи це остання завантажена сторінка?
         if (page === data.total_pages) {
           //  Повідомлення про досягнення кінця результатів запиту
@@ -49,7 +58,6 @@ export default function MostPopularFilmsPage() {
               backgroundColor: "#0099FF",
             },
           });
-          setLoaderBtn(false);
         }
       } catch (error) {
         setError(true);
@@ -67,8 +75,8 @@ export default function MostPopularFilmsPage() {
         {popularMovies.length > 0 && (
           <div className={css.container}>
             <h2 className={css.popularMoviesTitle}>Найбільш популярні</h2>
-            <MovieList ref={firstNewFilmRef} items={popularMovies} />
-            {loaderBtn && <LoadMoreBtn nextPage={nextPage} />}
+            <MovieList items={popularMovies} />
+            {paginate && <PaginateBar prevPage={prevPage} nextPage={nextPage} page={page} />}
           </div>
         )}
       </section>

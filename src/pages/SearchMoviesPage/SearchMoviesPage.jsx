@@ -16,12 +16,11 @@ export default function SearchMoviesPage() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [totalPages, setTotalPages] = useState(0);
+  const [paginate, setPaginate] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const inputValue = searchParams.get("name");
   const page = Number(searchParams.get("page")) || 1;
-
-  const [totalPages, setTotalPages] = useState(0);
-  const [paginate, setPaginate] = useState(false);
 
   const changeSearch = (value) => {
     setSearchParams({ name: value, page: 1 });
@@ -71,12 +70,12 @@ export default function SearchMoviesPage() {
         // Перевірка, чи це остання завантажена сторінка?
         if (page === data.total_pages) {
           //  Повідомлення про досягнення кінця результатів запиту
-          toast("Вибачте, але ви досягли кінця результатів пошуку.", {
-            style: {
-              color: "#ffffff",
-              backgroundColor: "#0099FF",
-            },
-          });
+          // toast("Вибачте, але ви досягли кінця результатів пошуку.", {
+          //   style: {
+          //     color: "#ffffff",
+          //     backgroundColor: "#0099FF",
+          //   },
+          // });
         }
       } catch (error) {
         setError(true);
