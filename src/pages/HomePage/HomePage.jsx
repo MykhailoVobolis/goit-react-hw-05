@@ -1,6 +1,7 @@
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
 import Slider from "../../components/Slider/Slider";
+import TvAdvertising from "../../components/TvAdvertising/TvAdvertising";
 
 import { getWeekMovies } from "../../tmdb-api";
 import { useState, useEffect } from "react";
@@ -37,6 +38,7 @@ export default function HomePage() {
           <h1 className={css.mainTitle}>Світові новинки кіно на CINEMA HALL</h1>
         </div>
       </section>
+      <TvAdvertising />
       <section className={css.trendMovies}>
         {loading && <Loader loading={loading} />}
         {moviesWeek.length > 0 && (
