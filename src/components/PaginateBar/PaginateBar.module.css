@@ -41,3 +41,7 @@
 .iconBtn:hover {
   stroke: #fec90c;
 }
+
+.loadBtn:disabled {
+  pointer-events: none;
+}

@@ -18,6 +18,8 @@ export default function SearchMoviesPage() {
   const [error, setError] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const [paginate, setPaginate] = useState(false);
+  const [prevDisabled, setPrevDisabled] = useState(false);
+  const [nextDisabled, setNextDisabled] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const inputValue = searchParams.get("name");
   const page = Number(searchParams.get("page")) || 1;
@@ -30,6 +32,7 @@ export default function SearchMoviesPage() {
 
   const nextPage = () => {
     if (page < totalPages) {
+      setPrevDisabled(false);
       setLoading(true);
       setSearchParams({ name: inputValue, page: page + 1 });
       setPaginate(true);
@@ -38,6 +41,7 @@ export default function SearchMoviesPage() {
 
   const prevPage = () => {
     if (page !== 1) {
+      setNextDisabled(false);
       setLoading(true);
       setSearchParams({ name: inputValue, page: page - 1 });
     }
@@ -69,13 +73,11 @@ export default function SearchMoviesPage() {
         }
         // Перевірка, чи це остання завантажена сторінка?
         if (page === data.total_pages) {
-          //  Повідомлення про досягнення кінця результатів запиту
-          // toast("Вибачте, але ви досягли кінця результатів пошуку.", {
-          //   style: {
-          //     color: "#ffffff",
-          //     backgroundColor: "#0099FF",
-          //   },
-          // });
+          setNextDisabled(true);
+        }
+        // Перевірка, чи це перша завантажена сторінка?
+        if (page === 1) {
+          setPrevDisabled(true);
         }
       } catch (error) {
         setError(true);
@@ -94,7 +96,15 @@ export default function SearchMoviesPage() {
           {loading && <Loader loading={loading} />}
           {error && <ErrorMessage error={error} />}
           {movies.length > 0 && <MovieList items={movies} />}
-          {paginate && <PaginateBar prevPage={prevPage} nextPage={nextPage} page={page} />}
+          {paginate && (
+            <PaginateBar
+              prevPage={prevPage}
+              nextPage={nextPage}
+              page={page}
+              prevDisabled={prevDisabled}
+              nextDisabled={nextDisabled}
+            />
+          )}
         </div>
       </section>
       <Toaster position="top-right" containerStyle={{ zIndex: 99999999 }} />
