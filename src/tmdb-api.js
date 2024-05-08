@@ -65,3 +65,8 @@ export async function getMostRatingMovies(page) {
   const response = await axios.get(`movie/top_rated?page=${page}`, options);
   return response.data;
 }
+
+export async function getNowPlaying() {
+  const response = await axios.get(`movie/now_playing`, options);
+  return response.data.results;
+}

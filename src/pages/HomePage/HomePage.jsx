@@ -38,7 +38,7 @@ export default function HomePage() {
           <h1 className={css.mainTitle}>Світові новинки кіно на CINEMA HALL</h1>
         </div>
       </section>
-      <TvAdvertising />
+      <TvAdvertising movies={moviesWeek} />
       <section className={css.trendMovies}>
         {loading && <Loader loading={loading} />}
         {moviesWeek.length > 0 && (
