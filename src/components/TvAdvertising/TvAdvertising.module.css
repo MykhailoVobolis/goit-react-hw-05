@@ -34,7 +34,7 @@
 
 .macup {
   position: absolute;
-  top: 0;
+  top: 1px;
   z-index: 999999;
 }
 
