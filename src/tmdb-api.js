@@ -70,3 +70,8 @@ export async function getNowPlaying() {
   const response = await axios.get(`movie/now_playing`, options);
   return response.data.results;
 }
+
+export async function getSimilarFilms(movieId) {
+  const response = await axios.get(`/movie/${movieId}/similar`, options);
+  return response.data.results;
+}

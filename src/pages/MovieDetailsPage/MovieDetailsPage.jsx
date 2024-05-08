@@ -4,6 +4,7 @@ import MovieModal from "../../components/MovieModal/MovieModal";
 import PlayBtn from "../../components/PlayBtn/PlayBtn";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
+import SimilarFilms from "../../components/SimilarFilms/SimilarFilms";
 
 import { useParams, useLocation, Outlet, NavLink, Link } from "react-router-dom";
 import { useState, useEffect, useRef, Suspense } from "react";
@@ -89,7 +90,7 @@ export default function MovieDetailsPage() {
   }, [modalIsOpen]);
 
   return (
-    <>
+    <div className={css.movieDetailsPage}>
       <section>
         {loading && <Loader loading={loading} />}
         <div
@@ -155,7 +156,7 @@ export default function MovieDetailsPage() {
             <h2 className={css.descriptionMovie}>Опис</h2>
             <p className={css.textMovie}>{movies.overview}</p>
             <Link className={css.linkGoBack} to={backLink.current}>
-              <IoCaretBackOutline /> повернутися
+              <IoCaretBackOutline className={css.iconBack} /> повернутися
             </Link>
           </div>
         </div>
@@ -182,7 +183,8 @@ export default function MovieDetailsPage() {
           <Outlet />
         </Suspense>
       </section>
+      <SimilarFilms movieId={movieId} />
       {error && <ErrorMessage error={error} />}
-    </>
+    </div>
   );
 }

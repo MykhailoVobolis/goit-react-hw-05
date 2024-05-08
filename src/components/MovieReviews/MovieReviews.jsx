@@ -55,7 +55,7 @@ export default function MovieReviews() {
         <ul className={css.reviewsList}>
           {reviews.map((item) => (
             <li className={css.reviewItem} key={item.id}>
-              <h3 className={css.authorReviewName}>{item.author}</h3>
+              <p className={css.authorReviewName}>{item.author}</p>
               <p className={css.textReview}>{item.content}</p>
             </li>
           ))}

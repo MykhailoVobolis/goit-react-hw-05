@@ -9,7 +9,7 @@ export default function SliderTv({ items }) {
     <>
       <Swiper
         modules={[A11y, Autoplay, EffectFade]}
-        autoplay={{ delay: 5000 }}
+        autoplay={{ delay: 3000 }}
         speed={1000}
         loop={true}
         effect={"fade"}
