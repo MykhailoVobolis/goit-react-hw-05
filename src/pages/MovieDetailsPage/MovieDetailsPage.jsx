@@ -130,7 +130,7 @@ export default function MovieDetailsPage() {
               </li>
               <li>
                 <span className={css.colorAccent}>Оцінка глядачів:</span>
-                <span className={css.accentValue}>
+                <span className={css.accent}>
                   <AiFillLike className={css.icon} />
                   {movies.vote_count}
                 </span>
