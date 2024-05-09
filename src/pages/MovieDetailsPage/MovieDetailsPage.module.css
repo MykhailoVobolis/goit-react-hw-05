@@ -101,6 +101,10 @@
   height: 20px;
 }
 
+.colorAccent {
+  color: #fafafa99;
+}
+
 .accent {
   font-weight: 600;
   margin-left: 20px;
@@ -150,6 +154,7 @@
 .textMovie {
   margin-bottom: 30px;
   line-height: 1.6;
+  color: #fafafa99;
 }
 
 .poster {
@@ -177,6 +182,7 @@
   font-weight: 500;
   font-size: 28px;
   line-height: 1.2;
+  color: #fafafa99;
 }
 
 .iconInfo {

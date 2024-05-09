@@ -3,6 +3,7 @@ import Spinner from "../Spinner/Spinner";
 import toast, { Toaster } from "react-hot-toast";
 
 import { getMovieReviews } from "../../tmdb-api";
+import { formatDate } from "../../helpers/formatData";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -55,7 +56,10 @@ export default function MovieReviews() {
         <ul className={css.reviewsList}>
           {reviews.map((item) => (
             <li className={css.reviewItem} key={item.id}>
-              <p className={css.authorReviewName}>{item.author}</p>
+              <div className={css.authorDataReview}>
+                <p className={css.authorReviewName}>{item.author}</p>
+                <p className={css.dataReview}>{formatDate(item.created_at)}</p>
+              </div>
               <p className={css.textReview}>{item.content}</p>
             </li>
           ))}

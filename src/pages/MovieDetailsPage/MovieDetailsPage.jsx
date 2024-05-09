@@ -122,21 +122,21 @@ export default function MovieDetailsPage() {
             <h2 className={css.title}>{movies.title}</h2>
             <ul className={css.statMovie}>
               <li>
-                Дата релізу: <span className={css.accent}>{release} рік</span>
+                <span className={css.colorAccent}>Дата релізу:</span> <span className={css.accent}>{release} рік</span>
               </li>
               <li>
-                Рейтинг: <span className={css.rating}>TMDB</span>
+                <span className={css.colorAccent}>Рейтинг:</span> <span className={css.rating}>TMDB</span>
                 <span className={css.ratingValue}>{rating}</span>
               </li>
               <li>
-                Оцінка глядачів:
-                <span className={css.accent}>
+                <span className={css.colorAccent}>Оцінка глядачів:</span>
+                <span className={css.accentValue}>
                   <AiFillLike className={css.icon} />
                   {movies.vote_count}
                 </span>
               </li>
               <li>
-                Тривалість:
+                <span className={css.colorAccent}>Тривалість:</span>
                 <span className={css.accent}>
                   <BiTime className={css.icon} />
                   {movies.runtime} хв.
@@ -144,7 +144,7 @@ export default function MovieDetailsPage() {
               </li>
             </ul>
             <div className={css.genresContainer}>
-              <p>Жанр:</p>
+              <p className={css.colorAccent}>Жанр:</p>
               <ul className={css.genreList}>
                 {genres.map((genre) => (
                   <li className={css.genreItem} key={genre.id}>
