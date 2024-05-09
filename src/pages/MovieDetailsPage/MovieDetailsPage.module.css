@@ -10,6 +10,8 @@
   height: 600px;
   min-width: 1158px;
   max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
   padding-top: 500px;
   text-align: center;
 }
