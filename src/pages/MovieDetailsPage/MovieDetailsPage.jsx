@@ -24,6 +24,8 @@ const getNavLinkClass = ({ isActive }) => {
 const defaultImg =
   "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg";
 
+const defaultUrl = "https://www.youtube.com/watch?v=KVZA8xsnC28";
+
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
 
@@ -78,7 +80,9 @@ export default function MovieDetailsPage() {
       try {
         setLoading(true);
         const data = await getMovieVideo(movieId);
-        setTrailerUrl(data[0].key);
+        {
+          data[0] ? setTrailerUrl(data[0].key) : setTrailerUrl(defaultUrl);
+        }
       } catch (error) {
         setError(true);
       } finally {
