@@ -5,6 +5,8 @@ import "swiper/swiper-bundle.css";
 import css from "./SliderTv.module.css";
 
 export default function SliderTv({ items }) {
+  // Фільтрація масиву фільмів тільки з наявним бекдропом
+  const newArrayFilms = items.filter((i) => i.backdrop_path);
   return (
     <>
       <Swiper
@@ -14,7 +16,7 @@ export default function SliderTv({ items }) {
         loop={true}
         effect={"fade"}
         fadeEffect={{ crossFade: "true" }}>
-        {items.map((item) => (
+        {newArrayFilms.map((item) => (
           <SwiperSlide className={css.movieItem} key={item.id}>
             <div className={css.tvImageContainer}>
               <img

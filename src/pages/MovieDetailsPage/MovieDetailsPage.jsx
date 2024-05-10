@@ -76,6 +76,7 @@ export default function MovieDetailsPage() {
   };
 
   useEffect(() => {
+    setTrailerUrl("");
     async function handleClickPlayBtn() {
       try {
         setLoading(true);
