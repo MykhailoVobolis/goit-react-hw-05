@@ -11,6 +11,9 @@ const defaultImg =
 export default function Slider({ items }) {
   const location = useLocation();
 
+  // Фільтрація масиву фільмів тільки з наявним бекдропом
+  const newArrayFilms = items.filter((i) => i.poster_path);
+
   return (
     <>
       <Swiper
@@ -21,7 +24,7 @@ export default function Slider({ items }) {
         speed={900}
         loop={true}
         navigation>
-        {items.map((item) => (
+        {newArrayFilms.map((item) => (
           <SwiperSlide className={css.movieItem} key={item.id}>
             <Link to={`/movies/${item.id}`} state={location}>
               <div className={css.overlay}>
