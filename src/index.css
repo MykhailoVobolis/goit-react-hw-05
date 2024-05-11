@@ -17,6 +17,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+  background: rgba(255, 255, 255, 0);
+}
+
 body {
   margin: 0;
   min-width: 320px;

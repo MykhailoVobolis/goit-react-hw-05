@@ -32,8 +32,10 @@ export default function MovieCast() {
           });
           return;
         }
-        // Відбір із масиву учасників фільму тільки акторів
-        const onlyActors = data.cast.filter((actor) => actor.known_for_department === "Acting");
+        // Відбір із масиву учасників фільму тільки акторів і тих хто мають profile_path
+        const onlyActors = data.cast.filter(
+          (actor) => actor.known_for_department === "Acting" && actor.profile_path !== null
+        );
         setActors((prevActors) => {
           return actors.length > 0 ? [...prevActors, ...onlyActors] : onlyActors;
         });

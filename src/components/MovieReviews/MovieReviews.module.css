@@ -34,7 +34,10 @@
   padding: 20px;
   border: solid 1px rgb(250, 250, 250, 0.2);
   border-radius: 10px;
-  height: 190px;
+}
+
+.textReviewContainer {
+  max-height: 144px;
   overflow-y: scroll;
 }
 

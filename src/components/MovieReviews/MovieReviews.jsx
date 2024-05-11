@@ -60,7 +60,9 @@ export default function MovieReviews() {
                 <p className={css.authorReviewName}>{item.author}</p>
                 <p className={css.dataReview}>{formatDate(item.created_at)}</p>
               </div>
-              <p className={css.textReview}>{item.content}</p>
+              <div className={css.textReviewContainer}>
+                <p className={css.textReview}>{item.content}</p>
+              </div>
             </li>
           ))}
         </ul>

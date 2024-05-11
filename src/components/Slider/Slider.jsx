@@ -22,7 +22,6 @@ export default function Slider({ items }) {
         slidesPerView={5}
         slidesPerGroup={5}
         speed={900}
-        loop={true}
         navigation>
         {newArrayFilms.map((item) => (
           <SwiperSlide className={css.movieItem} key={item.id}>
