@@ -65,7 +65,7 @@ export default function MoviesPage() {
             </div>
           )}
           {mostRatingMovies.length > 0 && (
-            <div className={css.container}>
+            <div>
               <div className={css.titleContainer}>
                 <Link className={css.moviesTitle} to={`/collection/best_rating_films`}>
                   Найкраще за рейтингом TMDB

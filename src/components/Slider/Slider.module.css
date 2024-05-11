@@ -4,10 +4,12 @@
   border-radius: 10px;
   overflow: hidden;
   transition: transform 250ms ease-in-out;
+  width: calc((100% - 80px) / 5);
 }
 
 .movieImage {
   background-color: #969696;
+  object-fit: cover;
 }
 
 .overlay {

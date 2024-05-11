@@ -11,8 +11,8 @@ export default function SliderTv({ items }) {
     <>
       <Swiper
         modules={[A11y, Autoplay, EffectFade]}
-        autoplay={{ delay: 3000 }}
-        speed={1000}
+        autoplay={{ delay: 2600 }}
+        speed={1800}
         loop={true}
         effect={"fade"}
         fadeEffect={{ crossFade: "true" }}>

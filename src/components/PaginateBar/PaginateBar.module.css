@@ -33,7 +33,7 @@
 }
 
 .iconBtn {
-  stroke: #626262;
+  stroke: #f7f6f1;
   width: 28px;
   height: 28px;
   transition: stroke 200ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -45,4 +45,8 @@
 
 .loadBtn:disabled {
   pointer-events: none;
+}
+
+.loadBtn:disabled .iconBtn {
+  stroke: #626262;
 }
