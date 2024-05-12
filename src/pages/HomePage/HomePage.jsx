@@ -47,6 +47,7 @@ export default function HomePage() {
               <Link className={css.trendMoviesTitle} to={`/collection/best_films_week`}>
                 Топ 20 цього тижня
               </Link>
+              <Link to={`/collection/best_films_week`}>Показати більше</Link>
             </div>
             <Slider items={moviesWeek} />
           </div>

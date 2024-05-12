@@ -4,7 +4,7 @@ axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
 const options = {
   method: "GET",
-  params: { language: "uk" },
+  params: { language: "uk-UA" },
   headers: {
     accept: "application/json",
     Authorization:

@@ -48,11 +48,14 @@
 }
 
 .trendMoviesTitle {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 28px;
   line-height: 1.2;
 }
 
 .titleContainer {
   margin-bottom: 30px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
 }

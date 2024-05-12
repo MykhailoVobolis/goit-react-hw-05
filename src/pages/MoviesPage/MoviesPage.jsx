@@ -60,6 +60,7 @@ export default function MoviesPage() {
                 <Link className={css.moviesTitle} to={`/collection/most_popular_films`}>
                   Найбільш популярні
                 </Link>
+                <Link to={`/collection/most_popular_films`}>Показати більше</Link>
               </div>
               <Slider items={popularMovies} />
             </div>
@@ -70,6 +71,7 @@ export default function MoviesPage() {
                 <Link className={css.moviesTitle} to={`/collection/best_rating_films`}>
                   Найкраще за рейтингом TMDB
                 </Link>
+                <Link to={`/collection/best_rating_films`}>Показати більше</Link>
               </div>
               <Slider items={mostRatingMovies} />
             </div>

@@ -39,6 +39,7 @@ p {
 }
 
 a {
+  font-weight: 600;
   color: currentColor;
   text-decoration: none;
   color: #f7f6f1;
