@@ -1,5 +1,6 @@
 .tvAdvertising {
-  padding-bottom: 160px;
+  padding-top: 40px;
+  padding-bottom: 180px;
   background-color: #000000;
   min-width: 1158px;
   max-width: 1920px;
@@ -18,7 +19,7 @@
 }
 
 .titleContainer {
-  padding-top: 140px;
+  padding-top: 136px;
 }
 
 .title {
