@@ -4,7 +4,7 @@ axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
 const options = {
   method: "GET",
-  params: { language: "uk-UA" },
+  params: { language: "uk-UA", region: "ua" },
   headers: {
     accept: "application/json",
     Authorization:
@@ -66,9 +66,9 @@ export async function getMostRatingMovies(page) {
   return response.data;
 }
 
-export async function getNowPlaying() {
-  const response = await axios.get(`movie/now_playing`, options);
-  return response.data.results;
+export async function getNowPlaying(page) {
+  const response = await axios.get(`movie/now_playing?page=${page}`, options);
+  return response.data;
 }
 
 export async function getSimilarFilms(movieId) {

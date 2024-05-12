@@ -3,15 +3,15 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Slider from "../../components/Slider/Slider";
 
 import { useState, useEffect } from "react";
-import { getPopularMovies } from "../../tmdb-api";
-import { getMostRatingMovies } from "../../tmdb-api";
+import { getPopularMovies, getMostRatingMovies, getNowPlaying } from "../../tmdb-api";
 import { Link } from "react-router-dom";
 
 import css from "./MoviesPage.module.css";
 
 export default function MoviesPage() {
-  const [mostRatingMovies, setMostRatingMovies] = useState([]);
+  const [moviesNowPlaying, setMoviesNowPlaying] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
+  const [mostRatingMovies, setMostRatingMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -50,10 +50,38 @@ export default function MoviesPage() {
     fetchMovies();
   }, []);
 
+  useEffect(() => {
+    async function fetchMovies() {
+      try {
+        setLoading(true);
+        const data = await getNowPlaying(page);
+        setMoviesNowPlaying((prevMoviesNowPlaying) => {
+          return moviesNowPlaying.length > 0 ? [...prevMoviesNowPlaying, ...data.results] : data.results;
+        });
+      } catch (error) {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchMovies();
+  }, []);
+
   return (
     <>
       <section className={css.movies}>
         <div className={css.moviesContainer}>
+          {moviesNowPlaying.length > 0 && (
+            <div className={css.container}>
+              <div className={css.titleContainer}>
+                <Link className={css.moviesTitle} to={`/collection/now_playing_films`}>
+                  Зараз у кінотеатрах
+                </Link>
+                <Link to={`/collection/now_playing_films`}>Показати більше</Link>
+              </div>
+              <Slider items={moviesNowPlaying} />
+            </div>
+          )}
           {popularMovies.length > 0 && (
             <div className={css.container}>
               <div className={css.titleContainer}>

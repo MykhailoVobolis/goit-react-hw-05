@@ -10,6 +10,7 @@ import css from "./TvAdvertising.module.css";
 
 export default function TvAdvertising() {
   const [moviesNowPlaying, setMoviesNowPlaying] = useState([]);
+  const [page, setPage] = useState(1);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -17,9 +18,9 @@ export default function TvAdvertising() {
     async function fetchMovies() {
       try {
         setLoading(true);
-        const data = await getNowPlaying();
+        const data = await getNowPlaying(page);
         setMoviesNowPlaying((prevNowPlaying) => {
-          return moviesNowPlaying.length > 0 ? [...prevNowPlaying, ...data] : data;
+          return moviesNowPlaying.length > 0 ? [...prevNowPlaying, ...data.results] : data.results;
         });
       } catch (error) {
         setError(true);
