@@ -84,3 +84,22 @@ img {
 .swiper .swiper-button-next:hover::after {
   color: #fec90c;
 }
+
+.swiper {
+  --swiper-theme-color: transparent;
+  --swiper-pagination-bottom: 25px;
+}
+
+.swiper .swiper-pagination {
+  position: relative;
+  display: flex;
+  margin-bottom: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper .swiper-pagination-bullet {
+  width: 11px;
+  height: 11px;
+  border: solid 2px #fec90c;
+}

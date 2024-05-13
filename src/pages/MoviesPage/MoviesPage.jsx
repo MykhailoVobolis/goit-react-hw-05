@@ -1,9 +1,10 @@
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Slider from "../../components/Slider/Slider";
+import SliderMoviesMain from "../../components/SliderMoviesMain/SliderMoviesMain";
 
 import { useState, useEffect } from "react";
-import { getPopularMovies, getMostRatingMovies, getNowPlaying } from "../../tmdb-api";
+import { getPopularMovies, getMostRatingMovies, getNowPlaying, getUpcomingMovies } from "../../tmdb-api";
 import { Link } from "react-router-dom";
 
 import css from "./MoviesPage.module.css";
@@ -12,6 +13,7 @@ export default function MoviesPage() {
   const [moviesNowPlaying, setMoviesNowPlaying] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
   const [mostRatingMovies, setMostRatingMovies] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -67,9 +69,27 @@ export default function MoviesPage() {
     fetchMovies();
   }, []);
 
+  useEffect(() => {
+    async function fetchMovies() {
+      try {
+        setLoading(true);
+        const data = await getUpcomingMovies(page);
+        setUpcomingMovies((prevUpcomingMovies) => {
+          return upcomingMovies.length > 0 ? [...prevUpcomingMovies, ...data.results] : data.results;
+        });
+      } catch (error) {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchMovies();
+  }, []);
+
   return (
     <>
       <section className={css.movies}>
+        <SliderMoviesMain items={upcomingMovies} />
         <div className={css.moviesContainer}>
           {moviesNowPlaying.length > 0 && (
             <div className={css.container}>

@@ -75,3 +75,8 @@ export async function getSimilarFilms(movieId) {
   const response = await axios.get(`/movie/${movieId}/similar`, options);
   return response.data.results;
 }
+
+export async function getUpcomingMovies(page) {
+  const response = await axios.get(`movie/upcoming?page=${page}`, options);
+  return response.data;
+}
