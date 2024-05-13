@@ -4,7 +4,7 @@ axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
 const options = {
   method: "GET",
-  params: { language: "uk-UA", region: "ua" },
+  params: { language: "uk-UA", region: "UA" },
   headers: {
     accept: "application/json",
     Authorization:
@@ -40,13 +40,11 @@ export async function searchMovies(search, page) {
 
 export async function getMovieCast(id) {
   const response = await axios.get(`movie/${id}/credits`, options);
-
   return response.data;
 }
 
 export async function getMovieReviews(id) {
   const response = await axios.get(`movie/${id}/reviews`, optionsUs);
-
   return response.data;
 }
 

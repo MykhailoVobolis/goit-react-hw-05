@@ -103,13 +103,12 @@
   height: 20px;
 }
 
-.colorAccent {
+.statItem {
   color: #fafafa99;
 }
 
-.accent {
+.statValue {
   font-weight: 600;
-  margin-left: 20px;
 }
 
 .ratingValue {
@@ -117,7 +116,7 @@
 }
 
 .rating {
-  composes: accent;
+  composes: statValue;
   color: #431f05;
   background-color: #fec90c;
   border-radius: 4px;
@@ -134,16 +133,9 @@
   font-weight: 600;
 }
 
-.genresContainer {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-
 .genreList {
   display: flex;
   gap: 10px;
-  margin-left: 10px;
 }
 
 .descriptionMovie {
@@ -162,6 +154,12 @@
 .poster {
   border-radius: 10px;
   background-color: #969696;
+}
+
+.abautFilmContainer {
+  display: flex;
+  gap: 100px;
+  margin-bottom: 30px;
 }
 
 .addInformationSection {

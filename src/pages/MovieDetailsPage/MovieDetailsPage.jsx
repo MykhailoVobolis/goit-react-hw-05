@@ -12,6 +12,7 @@ import { AiFillLike } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { IoCaretBackOutline } from "react-icons/io5";
 import { getDetailsMovie, getMovieVideo } from "../../tmdb-api";
+import { formatDateRelease } from "../../helpers/formatData";
 import { FaPlay } from "react-icons/fa6";
 import defaultBg from "../../img/header.png";
 
@@ -56,7 +57,7 @@ export default function MovieDetailsPage() {
         const data = await getDetailsMovie(movieId);
         setMovies(data);
         setGenres(data.genres);
-        setRelease(data.release_date.slice(0, 4));
+        setRelease(data.release_date);
         setRating(Math.round(data.vote_average * 10) / 10);
       } catch (error) {
         setError(true);
@@ -125,38 +126,38 @@ export default function MovieDetailsPage() {
           />
           <div>
             <h2 className={css.title}>{movies.title}</h2>
-            <ul className={css.statMovie}>
-              <li>
-                <span className={css.colorAccent}>Дата релізу:</span> <span className={css.accent}>{release} рік</span>
-              </li>
-              <li>
-                <span className={css.colorAccent}>Рейтинг:</span> <span className={css.rating}>TMDB</span>
-                <span className={css.ratingValue}>{rating}</span>
-              </li>
-              <li>
-                <span className={css.colorAccent}>Оцінка глядачів:</span>
-                <span className={css.accent}>
-                  <AiFillLike className={css.icon} />
-                  {movies.vote_count}
-                </span>
-              </li>
-              <li>
-                <span className={css.colorAccent}>Тривалість:</span>
-                <span className={css.accent}>
-                  <BiTime className={css.icon} />
-                  {movies.runtime} хв.
-                </span>
-              </li>
-            </ul>
-            <div className={css.genresContainer}>
-              <p className={css.colorAccent}>Жанр:</p>
-              <ul className={css.genreList}>
-                {genres.map((genre) => (
-                  <li className={css.genreItem} key={genre.id}>
-                    {genre.name}
-                  </li>
-                ))}
+            <div className={css.abautFilmContainer}>
+              <ul className={css.statMovie}>
+                <li className={css.statItem}>Дата релізу:</li>
+                <li className={css.statItem}>Рейтинг:</li>
+                <li className={css.statItem}>Оцінка глядачів:</li>
+                <li className={css.statItem}>Тривалість:</li>
+                <li className={css.statItem}>Жанр:</li>
               </ul>
+              <div>
+                <ul className={css.statMovie}>
+                  <li className={css.statValue}>{formatDateRelease(release)}</li>
+                  <li>
+                    <span className={css.rating}>TMDB</span>
+                    <span className={css.ratingValue}>{rating}</span>
+                  </li>
+                  <li className={css.statValue}>
+                    <AiFillLike className={css.icon} />
+                    {movies.vote_count}
+                  </li>
+                  <li className={css.statValue}>
+                    <BiTime className={css.icon} />
+                    {movies.runtime} хв.
+                  </li>
+                </ul>
+                <ul className={css.genreList}>
+                  {genres.map((genre) => (
+                    <li className={css.genreItem} key={genre.id}>
+                      {genre.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
             <h2 className={css.descriptionMovie}>Опис</h2>
             <p className={css.textMovie}>{movies.overview}</p>
