@@ -2,6 +2,7 @@ import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Slider from "../../components/Slider/Slider";
 import SliderMoviesMain from "../../components/SliderMoviesMain/SliderMoviesMain";
+import InfoBestMovies from "../../components/InfoBestMovies/InfoBestMovies";
 
 import { useState, useEffect } from "react";
 import { getPopularMovies, getMostRatingMovies, getNowPlaying, getUpcomingMovies } from "../../tmdb-api";
@@ -90,7 +91,7 @@ export default function MoviesPage() {
     <>
       <section className={css.movies}>
         <SliderMoviesMain items={upcomingMovies} />
-        <div className={css.moviesContainer}>
+        <div className={css.nowPlayMoviesContainer}>
           {moviesNowPlaying.length > 0 && (
             <div className={css.container}>
               <div className={css.titleContainer}>
@@ -102,6 +103,9 @@ export default function MoviesPage() {
               <Slider items={moviesNowPlaying} />
             </div>
           )}
+        </div>
+        <InfoBestMovies />
+        <div className={css.moviesContainer}>
           {popularMovies.length > 0 && (
             <div className={css.container}>
               <div className={css.titleContainer}>
