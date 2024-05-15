@@ -90,8 +90,9 @@ export default function MoviesPage() {
   return (
     <>
       <section className={css.movies}>
+        {error && <ErrorMessage error={error} />}
         {loading && <Loader loading={loading} />}
-        <SliderMoviesMain items={upcomingMovies} />
+        {upcomingMovies.length > 0 && <SliderMoviesMain items={upcomingMovies} />}
         <div className={css.nowPlayMoviesContainer}>
           {moviesNowPlaying.length > 0 && (
             <div className={css.container}>
