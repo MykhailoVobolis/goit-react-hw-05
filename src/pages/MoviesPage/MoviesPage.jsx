@@ -104,7 +104,7 @@ export default function MoviesPage() {
             </div>
           )}
         </div>
-        <InfoBestMovies />
+        {upcomingMovies.length > 0 && <InfoBestMovies />}
         <div className={css.moviesContainer}>
           {popularMovies.length > 0 && (
             <div className={css.container}>
@@ -128,9 +128,9 @@ export default function MoviesPage() {
               <Slider items={mostRatingMovies} />
             </div>
           )}
-          {loading && <Loader loading={loading} />}
-          {error && <ErrorMessage error={error} />}
         </div>
+        {loading && <Loader loading={loading} />}
+        {error && <ErrorMessage error={error} />}
       </section>
     </>
   );
