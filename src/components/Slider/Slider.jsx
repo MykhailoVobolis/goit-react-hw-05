@@ -22,8 +22,9 @@ export default function Slider({ items }) {
         slidesPerView={2.25}
         touchAngle={30}
         speed={500}
-        resistance={true}
+        resistance={false}
         resistanceRatio={0.1}
+        preventClicks={true}
         freeMode={true}
         navigation={true}
         breakpoints={{
