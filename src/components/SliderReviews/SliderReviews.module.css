@@ -1,62 +1,64 @@
-.reviewsList {
-  max-width: 1260px;
-  padding-left: 7px;
-  padding-right: 7px;
-  margin-left: auto;
-  margin-right: auto;
-}
+@media screen and (min-width: 1280px) {
+  .reviewsList {
+    max-width: 1260px;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-.authorReviewContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 32px;
-}
+  .authorReviewContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
 
-.authorReviewPhoto {
-  border-radius: 10px;
-  background-color: #969696;
-  object-fit: cover;
-}
+  .authorReviewPhoto {
+    border-radius: 10px;
+    background-color: #969696;
+    object-fit: cover;
+  }
 
-.authorDataReview {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: end;
-}
+  .authorDataReview {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: end;
+  }
 
-.authorReviewName {
-  font-size: 22px;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  max-width: 260px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+  .authorReviewName {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    max-width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
-.dataReview {
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.6;
-  color: #fafafa99;
-}
+  .dataReview {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #fafafa99;
+  }
 
-.reviewItem {
-  padding: 32px 24px;
-  border: solid 1px rgb(250, 250, 250, 0.2);
-  border-radius: 10px;
-  width: calc((100% - 40px) / 3);
-}
+  .reviewItem {
+    padding: 32px 24px;
+    border: solid 1px rgb(250, 250, 250, 0.2);
+    border-radius: 10px;
+    width: calc((100% - 40px) / 3);
+  }
 
-.textReviewContainer {
-  height: 175px;
-  overflow-y: scroll;
-}
+  .textReviewContainer {
+    height: 175px;
+    overflow-y: scroll;
+  }
 
-.textReview {
-  color: #fafafa99;
-  line-height: 1.6;
+  .textReview {
+    color: #fafafa99;
+    line-height: 1.6;
+  }
 }

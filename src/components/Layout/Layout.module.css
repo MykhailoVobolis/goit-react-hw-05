@@ -1,9 +1,11 @@
-.pageContainer {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+@media screen and (min-width: 1280px) {
+  .pageContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 
-.mainContainer {
-  flex-grow: 1;
+  .mainContainer {
+    flex-grow: 1;
+  }
 }

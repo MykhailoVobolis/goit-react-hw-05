@@ -1,38 +1,40 @@
-.movies {
-  padding-top: 30px;
-  padding-bottom: 40px;
-}
+@media screen and (min-width: 1280px) {
+  .movies {
+    padding-top: 30px;
+    padding-bottom: 40px;
+  }
 
-.nowPlayMoviesContainer {
-  max-width: 1260px;
-  padding-left: 7px;
-  padding-right: 7px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 50px;
-}
+  .nowPlayMoviesContainer {
+    max-width: 1260px;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px;
+  }
 
-.moviesContainer {
-  max-width: 1260px;
-  padding-left: 7px;
-  padding-right: 7px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 50px;
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-}
+  .moviesContainer {
+    max-width: 1260px;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
 
-.moviesTitle {
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 1.2;
-}
+  .moviesTitle {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.2;
+  }
 
-.titleContainer {
-  margin-bottom: 30px;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  .titleContainer {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
 }

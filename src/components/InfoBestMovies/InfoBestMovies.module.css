@@ -1,38 +1,40 @@
-.ibmContainer {
-  padding-top: 45px;
-  padding-bottom: 45px;
-  background-color: #000000;
-  min-width: 1158px;
-  max-width: 1920px;
-  margin-left: auto;
-  margin-right: auto;
-}
+@media screen and (min-width: 1280px) {
+  .ibmContainer {
+    padding-top: 45px;
+    padding-bottom: 45px;
+    background-color: #000000;
+    min-width: 1158px;
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-.container {
-  max-width: 1260px;
-  padding-left: 7px;
-  padding-right: 7px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  .container {
+    max-width: 1260px;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.ibmTitle {
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 1.2;
-  margin-bottom: 35px;
-}
+  .ibmTitle {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 35px;
+  }
 
-.ibmText {
-  font-weight: 500;
-  line-height: 1.6;
-  margin-bottom: 35px;
-}
+  .ibmText {
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 35px;
+  }
 
-.logoList {
-  display: flex;
-  gap: 60px;
+  .logoList {
+    display: flex;
+    gap: 60px;
+  }
 }

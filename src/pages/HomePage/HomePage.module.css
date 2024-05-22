@@ -12,67 +12,198 @@
       #000000f5 89%,
       #000000ff 100%
     ),
-    url("../../img/header.png");
+    url("../../img/header-mob.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  height: 600px;
-  min-width: 1158px;
-  max-width: 1920px;
+  min-width: 320px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-.heroContainer {
-  max-width: 1260px;
-  padding-left: 7px;
-  padding-right: 7px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-}
-
-.mainTitle {
-  font-size: 64px;
-  font-weight: 700;
-  line-height: 1.2;
-  max-width: 636px;
-  margin-top: 110px;
-}
-
-.heroImage {
-  margin-top: 140px;
-}
-
-.sectionBorder {
-  width: 100%;
-  height: 8px;
-}
-
-.trendMovies {
   padding-top: 50px;
   padding-bottom: 40px;
 }
 
+.heroContainer {
+  min-width: 320px;
+  max-width: 375px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainTitle {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  min-width: 290px;
+  max-width: 340px;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.lineBreak {
+  white-space: pre;
+}
+
+.heroImage {
+  min-width: 290px;
+  max-width: 100%;
+  height: auto;
+}
+
+.sectionBorder {
+  width: 100%;
+  height: 6px;
+}
+
+.trendMovies {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
 .container {
-  max-width: 1260px;
-  padding-left: 7px;
-  padding-right: 7px;
+  min-width: 320px;
+  max-width: 100%;
+  padding-left: 15px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .trendMoviesTitle {
   font-weight: 600;
-  font-size: 28px;
+  font-size: 20px;
   line-height: 1.2;
 }
 
 .titleContainer {
   margin-bottom: 30px;
+  max-width: 375px;
+  padding-right: 15px;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.moreLink {
+  display: none;
+}
+
+.moreLinkMob {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moreIcon {
+  width: 14px;
+  height: 14px;
+}
+
+@media screen and (min-width: 1280px) {
+  .hero {
+    background-image: linear-gradient(
+        180deg,
+        #00000000 0%,
+        #0000000a 16%,
+        #00000021 29%,
+        #00000042 41%,
+        #0000006b 51%,
+        #00000094 61%,
+        #000000bd 70%,
+        #000000de 79%,
+        #000000f5 89%,
+        #000000ff 100%
+      ),
+      url("../../img/header.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height: 600px;
+    min-width: 1158px;
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .heroContainer {
+    max-width: 1260px;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+  }
+
+  .mainTitle {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.2;
+    max-width: 636px;
+    margin-top: 110px;
+    text-align: start;
+  }
+
+  .lineBreak {
+    white-space: pre-line;
+  }
+
+  .heroImage {
+    width: 612px;
+    height: 400px;
+    margin-top: 140px;
+  }
+
+  .sectionBorder {
+    width: 100%;
+    height: 8px;
+  }
+
+  .trendMovies {
+    padding-top: 50px;
+    padding-bottom: 40px;
+  }
+
+  .container {
+    max-width: 1260px;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .trendMoviesTitle {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .titleContainer {
+    margin-bottom: 30px;
+    min-width: 1260px;
+    max-width: 1260px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .moreLink {
+    display: inline-block;
+  }
+
+  .moreLinkMob {
+    display: none;
+  }
 }

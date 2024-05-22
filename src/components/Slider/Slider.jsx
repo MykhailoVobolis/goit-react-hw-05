@@ -18,11 +18,16 @@ export default function Slider({ items }) {
     <>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={20}
-        slidesPerView={5}
-        slidesPerGroup={5}
+        spaceBetween={15}
+        slidesPerView={2.2}
+        slidesPerGroup={2}
         speed={900}
-        navigation>
+        navigation={true}
+        breakpoints={{
+          375: { slidesPerView: 2.3 },
+          1280: { slidesPerView: 5, slidesPerGroup: 5, spaceBetween: 20 },
+          // 768: { slidesPerView: 1.15 },
+        }}>
         {newArrayFilms.map((item) => (
           <SwiperSlide className={css.movieItem} key={item.id}>
             <Link to={`/movies/${item.id}`} state={location}>

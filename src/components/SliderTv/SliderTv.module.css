@@ -1,6 +1,24 @@
 .tvImageContainer {
-  width: 473px;
-  height: 264px;
+  max-width: 270px;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
+}
+
+.movieImage {
+  max-width: 277px;
+  height: auto;
+}
+
+@media screen and (min-width: 1280px) {
+  .tvImageContainer {
+    max-width: 473px;
+    height: 264px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .movieImage {
+    max-width: 468px;
+  }
 }
