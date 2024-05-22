@@ -21,10 +21,10 @@
 }
 
 .title {
-  width: 280px;
-  font-size: 24px;
+  max-width: 300px;
+  font-size: 26px;
   font-weight: 700;
-  line-height: 28px;
+  line-height: 1.2;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 40px;
@@ -54,49 +54,33 @@
   .tvAdvertising {
     padding-top: 40px;
     padding-bottom: 180px;
-    background-color: #000000;
     min-width: 1158px;
     max-width: 1920px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .container {
-    display: flex;
     flex-direction: row;
-    justify-content: space-between;
     max-width: 1260px;
     padding-left: 7px;
     padding-right: 7px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .titleContainer {
-    padding-top: 136px;
+    padding-top: 100px;
   }
 
   .title {
-    width: 600px;
+    max-width: 400px;
     font-size: 48px;
-    font-weight: 700;
-    line-height: 56px;
     margin-bottom: 0;
   }
 
   .tvMacupContainer {
-    position: relative;
     padding-top: 100px;
     width: 640px;
   }
 
   .macup {
-    position: absolute;
     top: 1px;
-    z-index: 999999;
-  }
-
-  .tvImage {
-    margin-left: 83px;
   }
 }

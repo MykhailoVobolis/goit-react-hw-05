@@ -14,29 +14,21 @@
 
 .descriptionFooter {
   font-size: 14px;
-  line-height: 1.2;
+  line-height: 1.4;
   color: #626262;
   width: 210px;
   text-align: center;
 }
 
 @media screen and (min-width: 1280px) {
-  .footer {
-    background-color: #000000;
-  }
-
   .footerContainer {
     max-width: 1260px;
     padding: 22px 7px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
     justify-content: start;
   }
 
   .descriptionFooter {
     font-size: 16px;
-    color: #626262;
     width: 100%;
     text-align: start;
   }

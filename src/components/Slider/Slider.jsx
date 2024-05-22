@@ -19,14 +19,13 @@ export default function Slider({ items }) {
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={15}
-        slidesPerView={2.3}
-        touchRatio={1}
+        slidesPerView={2.25}
         touchAngle={30}
         speed={500}
         freeMode={true}
         navigation={true}
         breakpoints={{
-          375: { slidesPerView: 2.4 },
+          375: { slidesPerView: 2.3 },
           // 768: { slidesPerView: 1.15 },
           1280: { slidesPerView: 5, slidesPerGroup: 5, spaceBetween: 20, speed: 900 },
         }}>
