@@ -20,6 +20,7 @@ export default function Slider({ items }) {
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={15}
         slidesPerView={2.3}
+        touchRatio={3}
         // speed={300}
         freeMode={true}
         navigation={true}
