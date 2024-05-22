@@ -21,7 +21,7 @@ export default function Slider({ items }) {
         spaceBetween={15}
         slidesPerView={2.25}
         touchAngle={30}
-        speed={100}
+        speed={300}
         resistance={false}
         resistanceRatio={0.85}
         preventClicks={true}
