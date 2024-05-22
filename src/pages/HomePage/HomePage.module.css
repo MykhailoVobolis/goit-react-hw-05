@@ -81,7 +81,7 @@
 
 .titleContainer {
   margin-bottom: 30px;
-  max-width: 375px;
+  max-width: 360px;
   padding-right: 15px;
   display: flex;
   align-items: baseline;
@@ -176,8 +176,8 @@
 
   .titleContainer {
     margin-bottom: 30px;
-    min-width: 1260px;
-    max-width: 1260px;
+    min-width: 1246px;
+    padding: 0;
   }
 
   .moreLink {
