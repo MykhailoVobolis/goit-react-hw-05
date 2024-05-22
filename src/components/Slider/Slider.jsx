@@ -21,7 +21,7 @@ export default function Slider({ items }) {
         spaceBetween={15}
         slidesPerView={2.3}
         touchRatio={3}
-        // speed={300}
+        speed={900}
         freeMode={true}
         navigation={true}
         breakpoints={{
