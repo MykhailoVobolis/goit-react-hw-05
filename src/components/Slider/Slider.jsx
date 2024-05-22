@@ -21,14 +21,13 @@ export default function Slider({ items }) {
         spaceBetween={15}
         slidesPerView={2.25}
         touchAngle={30}
-        speed={500}
+        speed={100}
         resistance={false}
-        resistanceRatio={0.1}
+        resistanceRatio={0.85}
         preventClicks={true}
         freeMode={true}
         navigation={true}
         breakpoints={{
-          375: { slidesPerView: 2.3 },
           // 768: { slidesPerView: 1.15 },
           1280: { slidesPerView: 5, slidesPerGroup: 5, spaceBetween: 20, speed: 900 },
         }}>
