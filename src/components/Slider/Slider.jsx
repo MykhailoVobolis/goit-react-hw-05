@@ -20,8 +20,8 @@ export default function Slider({ items }) {
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={15}
         slidesPerView={2.3}
-        slidesPerGroup={2}
-        speed={300}
+        // speed={300}
+        freeMode={true}
         navigation={true}
         breakpoints={{
           375: { slidesPerView: 2.4 },
