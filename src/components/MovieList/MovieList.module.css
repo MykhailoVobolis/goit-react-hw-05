@@ -9,8 +9,6 @@
 
 .movieItem {
   width: calc((100% - 15px) / 2);
-  aspect-ratio: 1/1.5;
-  max-height: 248px;
   box-sizing: border-box;
   border: none;
   border-radius: 10px;
@@ -19,8 +17,7 @@
 
 .movieImage {
   background-color: #969696;
-  width: 100%;
-  max-height: 248px;
+  aspect-ratio: 1/1.5;
 }
 
 @media screen and (min-width: 1280px) {
@@ -32,10 +29,6 @@
     width: calc((100% - 80px) / 5);
     max-height: 350px;
     transition: transform 250ms ease-in-out;
-  }
-
-  .movieImage {
-    max-height: 350px;
   }
 
   .overlay {

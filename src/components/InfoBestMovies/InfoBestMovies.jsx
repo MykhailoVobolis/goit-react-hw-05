@@ -13,16 +13,16 @@ export default function InfoBestMovies() {
         <p className={css.ibmText}>Найкращі культові фільми та мультфільми в HD-якості з українським дубляжем</p>
         <ul className={css.logoList}>
           <li>
-            <img src={wb} alt="worner browsers" width={83} height={80} />
+            <img className={css.wbIcon} src={wb} alt="worner browsers" width={83} height={80} />
           </li>
           <li>
-            <img src={paramount} alt="paramount" width={89} height={80} />
+            <img className={css.paramountIcon} src={paramount} alt="paramount" width={89} height={80} />
           </li>
           <li>
-            <img src={dreamWorks} alt="dream works" width={107} height={80} />
+            <img className={css.dreamWorksIcon} src={dreamWorks} alt="dream works" width={107} height={80} />
           </li>
           <li>
-            <img src={twentyCentury} alt="twenty century" width={102} height={80} />
+            <img className={css.twentyCenturyIcon} src={twentyCentury} alt="twenty century" width={102} height={80} />
           </li>
         </ul>
       </div>

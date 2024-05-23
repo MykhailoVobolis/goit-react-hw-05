@@ -15,12 +15,17 @@ export default function SliderMoviesMain({ items }) {
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         autoplay={{ delay: 4000 }}
-        spaceBetween={40}
-        slidesPerView={1}
+        spaceBetween={15}
+        slidesPerView={1.2}
         slidesPerGroup={1}
         speed={700}
         loop={true}
-        breakpoints={{ 1280: { slidesPerView: 1 }, 1440: { slidesPerView: 1.15 }, 1920: { slidesPerView: 1.48 } }}
+        breakpoints={{
+          375: { spaceBetween: 20 },
+          1280: { slidesPerView: 1, spaceBetween: 40 },
+          1440: { slidesPerView: 1.15 },
+          1920: { slidesPerView: 1.48 },
+        }}
         pagination={{ clickable: true }}
         centeredSlides={true}
         initialSlide={0}>
@@ -33,7 +38,7 @@ export default function SliderMoviesMain({ items }) {
                 src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
                 alt={item.title}
                 width="1246px"
-                height="356px"
+                // height="356px"
               />
             </Link>
             <div className={css.titleContainer}>

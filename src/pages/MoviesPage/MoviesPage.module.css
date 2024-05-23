@@ -1,16 +1,65 @@
-@media screen and (min-width: 1280px) {
-  .movies {
-    padding-top: 30px;
-    padding-bottom: 40px;
-  }
+.movies {
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
 
+.nowPlayMoviesContainer {
+  min-width: 320px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-bottom: 50px;
+}
+
+.moviesContainer {
+  min-width: 320px;
+  max-width: 100%;
+  padding-left: 15px;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.moviesTitle {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.titleContainer {
+  margin-bottom: 30px;
+  max-width: 360px;
+  padding-right: 15px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.moreLink {
+  display: none;
+}
+
+.moreLinkMob {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moreIcon {
+  width: 14px;
+  height: 14px;
+}
+
+@media screen and (min-width: 1280px) {
   .nowPlayMoviesContainer {
     max-width: 1260px;
-    padding-left: 7px;
-    padding-right: 7px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 50px;
+    padding-left: 0;
   }
 
   .moviesContainer {
@@ -19,22 +68,23 @@
     padding-right: 7px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
   }
 
   .moviesTitle {
-    font-weight: 600;
     font-size: 28px;
-    line-height: 1.2;
   }
 
   .titleContainer {
     margin-bottom: 30px;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
+    max-width: 1246px;
+    padding-right: 0;
+  }
+
+  .moreLink {
+    display: inline-block;
+  }
+
+  .moreLinkMob {
+    display: none;
   }
 }

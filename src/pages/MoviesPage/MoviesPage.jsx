@@ -7,6 +7,7 @@ import InfoBestMovies from "../../components/InfoBestMovies/InfoBestMovies";
 import { useState, useEffect } from "react";
 import { getPopularMovies, getMostRatingMovies, getNowPlaying, getUpcomingMovies } from "../../tmdb-api";
 import { Link } from "react-router-dom";
+import { GrNext } from "react-icons/gr";
 
 import css from "./MoviesPage.module.css";
 
@@ -100,7 +101,12 @@ export default function MoviesPage() {
                 <Link className={css.moviesTitle} to={`/collection/now_playing_films`}>
                   Зараз у кінотеатрах
                 </Link>
-                <Link to={`/collection/now_playing_films`}>Показати більше</Link>
+                <Link className={css.moreLink} to={`/collection/now_playing_films`}>
+                  Показати більше
+                </Link>
+                <Link className={css.moreLinkMob} to={`/collection/now_playing_films`}>
+                  <GrNext className={css.moreIcon} />
+                </Link>
               </div>
               <Slider items={moviesNowPlaying} />
             </div>
@@ -114,7 +120,12 @@ export default function MoviesPage() {
                 <Link className={css.moviesTitle} to={`/collection/most_popular_films`}>
                   Найбільш популярні
                 </Link>
-                <Link to={`/collection/most_popular_films`}>Показати більше</Link>
+                <Link className={css.moreLink} to={`/collection/most_popular_films`}>
+                  Показати більше
+                </Link>
+                <Link className={css.moreLinkMob} to={`/collection/most_popular_films`}>
+                  <GrNext className={css.moreIcon} />
+                </Link>
               </div>
               <Slider items={popularMovies} />
             </div>
@@ -125,7 +136,12 @@ export default function MoviesPage() {
                 <Link className={css.moviesTitle} to={`/collection/best_rating_films`}>
                   Найкраще за рейтингом TMDB
                 </Link>
-                <Link to={`/collection/best_rating_films`}>Показати більше</Link>
+                <Link className={css.moreLink} to={`/collection/best_rating_films`}>
+                  Показати більше
+                </Link>
+                <Link className={css.moreLinkMob} to={`/collection/best_rating_films`}>
+                  <GrNext className={css.moreIcon} />
+                </Link>
               </div>
               <Slider items={mostRatingMovies} />
             </div>

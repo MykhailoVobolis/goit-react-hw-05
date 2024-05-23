@@ -113,4 +113,13 @@ img {
   .swiper .swiper-button-next {
     display: none;
   }
+
+  .swiper .swiper-pagination {
+    margin-bottom: 35px;
+  }
+
+  .swiper .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+  }
 }
