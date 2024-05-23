@@ -20,18 +20,10 @@ export default function Slider({ items }) {
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={15}
         slidesPerView={2.25}
-        // test
         slidesPerGroup={2}
-        speed={600}
+        speed={500}
         touchAngle={30}
         preventClicks={true}
-        // test
-        // touchAngle={30}
-        // speed={300}
-        // resistance={false}
-        // resistanceRatio={0.85}
-        // preventClicks={true}
-        // freeMode={true}
         navigation={true}
         breakpoints={{
           // 768: { slidesPerView: 1.15 },

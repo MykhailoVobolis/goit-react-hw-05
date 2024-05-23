@@ -20,6 +20,8 @@ export default function SliderMoviesMain({ items }) {
         slidesPerGroup={1}
         speed={700}
         loop={true}
+        touchAngle={30}
+        preventClicks={true}
         breakpoints={{
           375: { spaceBetween: 20 },
           1280: { slidesPerView: 1, spaceBetween: 40 },
