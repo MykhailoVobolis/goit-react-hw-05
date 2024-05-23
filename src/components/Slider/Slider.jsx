@@ -22,9 +22,9 @@ export default function Slider({ items }) {
         slidesPerView={2.25}
         // test
         slidesPerGroup={2}
-        speed={700}
-        // centeredSlides={true}
-        // initialSlide={0}
+        speed={600}
+        touchAngle={30}
+        preventClicks={true}
         // test
         // touchAngle={30}
         // speed={300}
