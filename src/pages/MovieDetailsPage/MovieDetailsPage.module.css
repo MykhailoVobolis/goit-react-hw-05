@@ -7,7 +7,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  height: 210px;
+  height: 197px;
   min-width: 320px;
   max-width: 100%;
   margin-left: auto;
@@ -25,14 +25,13 @@
 }
 
 .title {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 30px;
 }
 
 .movie {
-  padding-top: 30px;
   padding-bottom: 5px;
 }
 
@@ -131,8 +130,8 @@
 
 .descriptionMovie {
   margin-bottom: 12px;
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: 600;
+  font-size: 22px;
   line-height: 1.2;
 }
 
@@ -142,16 +141,12 @@
   color: #fafafa99;
 }
 
-.poster {
-  display: none;
-}
-
 .abautFilmContainer {
   display: flex;
   min-width: 290px;
   max-width: 345px;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .addInformationSection {
@@ -189,24 +184,12 @@
 .addInformationList {
   display: flex;
   justify-content: space-between;
-  /* gap: 50px; */
   align-items: center;
 }
 
 .active {
   color: #fec90c;
   position: relative;
-}
-
-.active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 100%;
-  height: 2px;
-  background-color: #fec90c;
-  border-radius: 2px;
 }
 
 @media screen and (min-width: 1280px) {
@@ -299,10 +282,10 @@
 
   .descriptionMovie {
     font-size: 28px;
+    font-weight: 700;
   }
 
   .poster {
-    display: block;
     border-radius: 10px;
     background-color: #969696;
   }
@@ -311,6 +294,7 @@
     max-width: 100%;
     gap: 100px;
     justify-content: start;
+    margin-bottom: 30px;
   }
 
   .addInfoContainer {
@@ -339,11 +323,6 @@
     display: flex;
     gap: 50px;
     align-items: center;
-  }
-
-  .active {
-    color: #fec90c;
-    position: relative;
   }
 
   .active::after {

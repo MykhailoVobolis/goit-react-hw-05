@@ -40,6 +40,8 @@ export default function MovieDetailsPage() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [trailerUrl, setTrailerUrl] = useState("");
 
+  const isWide = useMedia("(min-width: 768px)");
+
   // Повернення на попередню сторінку
   const location = useLocation();
   // Використання useRef для збереження попереднього значення location.state при рендері компонентів Cast або Review
@@ -96,8 +98,6 @@ export default function MovieDetailsPage() {
     handleClickPlayBtn();
   }, [modalIsOpen]);
 
-  const isWide = useMedia("(min-width: 768px)");
-
   return (
     <div className={css.movieDetailsPage}>
       <section>
@@ -120,13 +120,15 @@ export default function MovieDetailsPage() {
       </section>
       <section className={css.movie}>
         <div className={css.movieContainer}>
-          <img
-            className={css.poster}
-            src={movies.poster_path ? `https://image.tmdb.org/t/p/w500${movies.poster_path}` : defaultImg}
-            alt={movies.title}
-            width="400px"
-            height="600px"
-          />
+          {isWide && (
+            <img
+              className={css.poster}
+              src={movies.poster_path ? `https://image.tmdb.org/t/p/w500${movies.poster_path}` : defaultImg}
+              alt={movies.title}
+              width="400px"
+              height="600px"
+            />
+          )}
           <div>
             <h2 className={css.title}>{movies.title}</h2>
             {!isWide && <PlayBtn movieId={movieId} openModal={openModal} />}
