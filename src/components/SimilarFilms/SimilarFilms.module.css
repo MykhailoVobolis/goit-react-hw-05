@@ -1,3 +1,18 @@
+.container {
+  min-width: 320px;
+  max-width: 100%;
+  padding-left: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.similarFilmsTitle {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
 @media screen and (min-width: 1280px) {
   .container {
     max-width: 1260px;
