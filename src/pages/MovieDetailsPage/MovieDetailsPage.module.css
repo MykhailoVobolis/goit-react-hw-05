@@ -15,6 +15,7 @@
   margin-right: auto;
   padding-top: 460px;
   text-align: center;
+  display: none;
 }
 
 .gradientOverlay {

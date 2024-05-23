@@ -30,10 +30,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .lageImage {
-    max-height: 100%;
-  }
-
   .modalContent {
     transform: translateY(50px);
     transition: transform 500ms;
