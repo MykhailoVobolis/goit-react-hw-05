@@ -14,6 +14,7 @@ import { IoCaretBackOutline } from "react-icons/io5";
 import { getDetailsMovie, getMovieVideo } from "../../tmdb-api";
 import { formatDateRelease } from "../../helpers/formatData";
 import { FaPlay } from "react-icons/fa6";
+import { useMedia } from "react-use";
 import defaultBg from "../../img/header.png";
 
 import css from "./MovieDetailsPage.module.css";
@@ -95,6 +96,8 @@ export default function MovieDetailsPage() {
     handleClickPlayBtn();
   }, [modalIsOpen]);
 
+  const isWide = useMedia("(min-width: 768px)");
+
   return (
     <div className={css.movieDetailsPage}>
       <section>
@@ -111,7 +114,7 @@ export default function MovieDetailsPage() {
                 }
           }>
           <span className={css.gradientOverlay}></span>
-          <PlayBtn movieId={movieId} openModal={openModal} />
+          {isWide && <PlayBtn movieId={movieId} openModal={openModal} />}
         </div>
         {modalIsOpen && <MovieModal isOpen={modalIsOpen} onClose={closeModal} trailerUrl={trailerUrl} />}
       </section>
@@ -126,6 +129,7 @@ export default function MovieDetailsPage() {
           />
           <div>
             <h2 className={css.title}>{movies.title}</h2>
+            {!isWide && <PlayBtn movieId={movieId} openModal={openModal} />}
             <div className={css.abautFilmContainer}>
               <ul className={css.statMovie}>
                 <li className={css.statItem}>Дата релізу:</li>

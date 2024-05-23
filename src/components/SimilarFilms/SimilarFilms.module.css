@@ -6,11 +6,18 @@
   margin-right: auto;
 }
 
+.titleContainer {
+  min-width: 305px;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
 .similarFilmsTitle {
   font-weight: 600;
   font-size: 22px;
   line-height: 1.2;
-  margin-bottom: 30px;
 }
 
 @media screen and (min-width: 1280px) {
@@ -18,14 +25,13 @@
     max-width: 1260px;
     padding-left: 7px;
     padding-right: 7px;
-    margin-left: auto;
-    margin-right: auto;
+  }
+
+  .titleContainer {
+    max-width: 1245px;
   }
 
   .similarFilmsTitle {
-    font-weight: 600;
     font-size: 28px;
-    line-height: 1.2;
-    margin-bottom: 30px;
   }
 }

@@ -35,7 +35,9 @@ export default function SimilarFilms({ movieId }) {
         {loading && <Loader loading={loading} />}
         {similarFilms.length > 0 && (
           <div className={css.container}>
-            <h2 className={css.similarFilmsTitle}>Що ще подивитися</h2>
+            <div className={css.titleContainer}>
+              <h2 className={css.similarFilmsTitle}>Що ще подивитися</h2>
+            </div>
             <Slider items={similarFilms} />
           </div>
         )}
