@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { format } from "date-fns";
 
 import MovieModal from "../../components/MovieModal/MovieModal";
 import PlayBtn from "../../components/PlayBtn/PlayBtn";
@@ -33,7 +34,7 @@ export default function MovieDetailsPage() {
 
   const [movies, setMovies] = useState([]);
   const [genres, setGenres] = useState([]);
-  const [release, setRelease] = useState("");
+  // const [release, setRelease] = useState("");
   const [rating, setRating] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -60,7 +61,7 @@ export default function MovieDetailsPage() {
         const data = await getDetailsMovie(movieId);
         setMovies(data);
         setGenres(data.genres);
-        setRelease(data.release_date);
+        // setRelease(data.release_date);
         setRating(Math.round(data.vote_average * 10) / 10);
       } catch (error) {
         setError(true);
@@ -142,7 +143,11 @@ export default function MovieDetailsPage() {
               </ul>
               <div>
                 <ul className={css.statMovie}>
-                  <li className={css.statValue}>{formatDateRelease(release)}</li>
+                  {/* <li className={css.statValue}>{formatDateRelease(release)}</li> */}
+                  {/* {movies.release_date && (
+                    <li className={css.statValue}>{format(movies.release_date, "dd MMMM yyyy")}</li>
+                  )} */}
+                  {movies.release_date && <li className={css.statValue}>{formatDateRelease(movies.release_date)}</li>}
                   <li>
                     <span className={css.rating}>TMDB</span>
                     <span className={css.ratingValue}>{rating}</span>
