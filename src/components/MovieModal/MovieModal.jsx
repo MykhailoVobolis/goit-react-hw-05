@@ -12,17 +12,17 @@ export default function MovieModal({ isOpen, onClose, trailerUrl }) {
       isOpen={isOpen}
       overlayClassName={{
         base: css.modalContainer,
-        afterOpen: css.afterModalContainerOpen,
-        beforeClose: css.beforeModalContainerClose,
+        afterOpen: css.openedModalContainer,
+        beforeClose: css.closedModalContainer,
       }}
       className={{
         base: css.modalContent,
-        afterOpen: css.afterModalContentOpen,
-        beforeClose: css.beforeModalContentClose,
+        afterOpen: css.openedModalContent,
+        beforeClose: css.closedModalContent,
       }}
       closeTimeoutMS={500}
       onRequestClose={onClose}>
-      <Player trailerUrl={trailerUrl} />
+      <Player isOpen={isOpen} trailerUrl={trailerUrl} />
     </Modal>
   );
 }

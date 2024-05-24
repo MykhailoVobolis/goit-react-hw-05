@@ -7,8 +7,6 @@ import { getMovieReviews } from "../../tmdb-api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import css from "./MovieReviews.module.css";
-
 export default function MovieReviews() {
   const { movieId } = useParams();
 
@@ -42,12 +40,13 @@ export default function MovieReviews() {
     handleClickReviews();
   }, [movieId]);
 
-  useEffect(() => {
-    window.scrollTo({
-      top: "1280",
-      behavior: "smooth",
-    });
-  }, [reviews]);
+  // Плавний скрол колекції відгуків до верха сторінки. За потреби!!!
+  // useEffect(() => {
+  //   window.scrollTo({
+  //     top: "1280",
+  //     behavior: "smooth",
+  //   });
+  // }, [reviews]);
 
   return (
     <>

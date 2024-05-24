@@ -7,8 +7,6 @@ import { getMovieCast } from "../../tmdb-api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import css from "./MovieCast.module.css";
-
 export default function MovieCast() {
   const { movieId } = useParams();
 
@@ -46,12 +44,13 @@ export default function MovieCast() {
     handleClickActors();
   }, [movieId]);
 
-  useEffect(() => {
-    window.scrollTo({
-      top: "1280",
-      behavior: "smooth",
-    });
-  }, [actors]);
+  // Плавний скрол колекції акторів до верха сторінки. За потреби!!!
+  // useEffect(() => {
+  //   window.scrollTo({
+  //     top: "1280",
+  //     behavior: "smooth",
+  //   });
+  // }, [actors]);
 
   return (
     <>
