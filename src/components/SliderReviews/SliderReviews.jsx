@@ -14,11 +14,17 @@ export default function SliderReviews({ reviews }) {
     <div className={css.reviewsList}>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={20}
-        slidesPerView={3}
-        slidesPerGroup={3}
-        speed={900}
-        navigation>
+        spaceBetween={15}
+        slidesPerView={1.13}
+        slidesPerGroup={1}
+        speed={400}
+        touchAngle={30}
+        navigation={true}
+        watchOverflow={true}
+        breakpoints={{
+          // 768: { slidesPerView: 1.15 },
+          1280: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 20, speed: 900 },
+        }}>
         {reviews.map((item) => (
           <SwiperSlide className={css.reviewItem} key={item.id}>
             <div className={css.authorReviewContainer}>
