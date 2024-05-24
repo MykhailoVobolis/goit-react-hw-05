@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { format } from "date-fns";
+import { uk } from "date-fns/locale";
 
 import MovieModal from "../../components/MovieModal/MovieModal";
 import PlayBtn from "../../components/PlayBtn/PlayBtn";
@@ -144,10 +145,10 @@ export default function MovieDetailsPage() {
               <div>
                 <ul className={css.statMovie}>
                   {/* <li className={css.statValue}>{formatDateRelease(release)}</li> */}
-                  {/* {movies.release_date && (
-                    <li className={css.statValue}>{format(movies.release_date, "dd MMMM yyyy")}</li>
-                  )} */}
-                  {movies.release_date && <li className={css.statValue}>{formatDateRelease(movies.release_date)}</li>}
+                  {movies.release_date && (
+                    <li className={css.statValue}>{format(movies.release_date, "dd MMMM yyyy", { locale: uk })}</li>
+                  )}
+                  {/* {movies.release_date && <li className={css.statValue}>{formatDateRelease(movies.release_date)}</li>} */}
                   <li>
                     <span className={css.rating}>TMDB</span>
                     <span className={css.ratingValue}>{rating}</span>
