@@ -12,11 +12,10 @@ export default function SliderCast({ actors }) {
         spaceBetween={15}
         slidesPerView={2.25}
         slidesPerGroup={2}
-        speed={400}
+        speed={500}
         touchAngle={30}
         preventClicks={true}
         navigation={true}
-        watchOverflow={true}
         breakpoints={{
           // 768: { slidesPerView: 1.15 },
           1280: { slidesPerView: 6, slidesPerGroup: 6, spaceBetween: 20, speed: 900 },
