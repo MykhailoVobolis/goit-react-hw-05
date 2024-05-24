@@ -25,6 +25,7 @@ export default function Slider({ items }) {
         touchAngle={30}
         preventClicks={true}
         navigation={true}
+        resistanceRatio={0.1}
         breakpoints={{
           // 768: { slidesPerView: 1.15 },
           1280: { slidesPerView: 5, slidesPerGroup: 5, spaceBetween: 20, speed: 900 },
