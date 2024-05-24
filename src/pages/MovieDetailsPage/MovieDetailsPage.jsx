@@ -14,7 +14,6 @@ import { AiFillLike } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { IoCaretBackOutline } from "react-icons/io5";
 import { getDetailsMovie, getMovieVideo } from "../../tmdb-api";
-import { formatDateRelease } from "../../helpers/formatData";
 import { FaPlay } from "react-icons/fa6";
 import { useMedia } from "react-use";
 import defaultBg from "../../img/header.png";
@@ -35,7 +34,6 @@ export default function MovieDetailsPage() {
 
   const [movies, setMovies] = useState([]);
   const [genres, setGenres] = useState([]);
-  // const [release, setRelease] = useState("");
   const [rating, setRating] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -62,7 +60,6 @@ export default function MovieDetailsPage() {
         const data = await getDetailsMovie(movieId);
         setMovies(data);
         setGenres(data.genres);
-        // setRelease(data.release_date);
         setRating(Math.round(data.vote_average * 10) / 10);
       } catch (error) {
         setError(true);
@@ -144,11 +141,9 @@ export default function MovieDetailsPage() {
               </ul>
               <div>
                 <ul className={css.statMovie}>
-                  {/* <li className={css.statValue}>{formatDateRelease(release)}</li> */}
                   {movies.release_date && (
                     <li className={css.statValue}>{format(movies.release_date, "dd MMMM yyyy", { locale: uk })}</li>
                   )}
-                  {/* {movies.release_date && <li className={css.statValue}>{formatDateRelease(movies.release_date)}</li>} */}
                   <li>
                     <span className={css.rating}>TMDB</span>
                     <span className={css.ratingValue}>{rating}</span>

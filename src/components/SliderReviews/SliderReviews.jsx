@@ -1,7 +1,8 @@
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { format } from "date-fns";
+import { uk } from "date-fns/locale";
 
-import { formatDate } from "../../helpers/formatData";
 import "swiper/swiper-bundle.css";
 import css from "./SliderReviews.module.css";
 
@@ -34,7 +35,9 @@ export default function SliderReviews({ reviews }) {
                 loading="lazy"></img>
               <div className={css.authorDataReview}>
                 <p className={css.authorReviewName}>{item.author}</p>
-                <p className={css.dataReview}>{formatDate(item.created_at)}</p>
+                {item.created_at && (
+                  <p className={css.dataReview}>{format(item.created_at, "dd MMMM yyyy", { locale: uk })}</p>
+                )}
               </div>
             </div>
             <div className={css.textReviewContainer}>
