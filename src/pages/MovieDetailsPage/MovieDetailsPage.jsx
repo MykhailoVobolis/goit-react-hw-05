@@ -176,9 +176,11 @@ export default function MovieDetailsPage() {
       </section>
       <section className={css.addInformationSection}>
         <div className={css.addInfoContainer}>
-          <h2 className={css.addInformation}>
-            Додаткова інформація <FaPlay className={css.iconInfo} />
-          </h2>
+          {isWide && (
+            <h2 className={css.addInformation}>
+              Додаткова інформація <FaPlay className={css.iconInfo} />
+            </h2>
+          )}
           <ul className={css.addInformationList}>
             <li>
               <NavLink to="cast" className={getNavLinkClass}>
