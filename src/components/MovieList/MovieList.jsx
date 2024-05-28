@@ -10,7 +10,7 @@ const MovieList = forwardRef(({ items }, ref) => {
   const location = useLocation();
 
   const newFilmIndex = items.length - 20;
-  // Функція перевірки співпадіння індексу масиву зображень
+  // Функція перевірки співпадіння індексу масиву фільмів
   // Повертає true або false
   const isNewFilm = (index) => index === newFilmIndex;
 
@@ -25,7 +25,6 @@ const MovieList = forwardRef(({ items }, ref) => {
                 src={item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : defaultImg}
                 alt={item.title}
                 width="233px"
-                // height="350px"
               />
             </div>
           </Link>

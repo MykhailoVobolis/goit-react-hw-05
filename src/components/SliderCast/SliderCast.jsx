@@ -28,7 +28,6 @@ export default function SliderCast({ actors }) {
               src={`https://image.tmdb.org/t/p/w500${item.profile_path}`}
               alt={item.name}
               width="191px"
-              // height="285px"
             />
             <div className={css.nameContainer}>
               <p className={css.actorName}>{item.name}</p>

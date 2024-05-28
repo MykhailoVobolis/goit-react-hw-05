@@ -74,12 +74,32 @@
 
   .ibmText {
     font-size: 18px;
-    max-width: 500px;
+    max-width: 480px;
   }
 
   .logoList {
     flex-wrap: nowrap;
     max-width: 700px;
+  }
+
+  .wbIcon {
+    width: 73px;
+    height: 70px;
+  }
+
+  .paramountIcon {
+    width: 78px;
+    height: 70px;
+  }
+
+  .dreamWorksIcon {
+    width: 94px;
+    height: 70px;
+  }
+
+  .twentyCenturyIcon {
+    width: 89px;
+    height: 70px;
   }
 }
 

@@ -41,7 +41,6 @@ export default function SliderMoviesMain({ items }) {
                 src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
                 alt={item.title}
                 width="1246px"
-                // height="356px"
               />
             </Link>
             <div className={css.titleContainer}>
