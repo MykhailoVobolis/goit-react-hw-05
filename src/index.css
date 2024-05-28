@@ -111,7 +111,7 @@ img {
   }
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1279px) {
   .swiper .swiper-button-prev,
   .swiper .swiper-button-next {
     display: none;
