@@ -3,7 +3,6 @@
   gap: 15px;
   align-items: center;
   flex-wrap: wrap;
-  flex-direction: row;
   justify-content: start;
 }
 
@@ -20,6 +19,12 @@
   aspect-ratio: 1/1.5;
 }
 
+@media screen and (min-width: 768px) {
+  .movieItem {
+    width: calc((104% - 75px) / 4);
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .moviesList {
     gap: 20px;
@@ -27,7 +32,6 @@
 
   .movieItem {
     width: calc((100% - 80px) / 5);
-    max-height: 350px;
     transition: transform 250ms ease-in-out;
   }
 

@@ -11,17 +11,15 @@
   margin-right: auto;
 }
 
-@media screen and (min-width: 1280px) {
-  .movies {
-    padding-top: 30px;
-    padding-bottom: 40px;
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
   }
+}
 
+@media screen and (min-width: 1280px) {
   .container {
     max-width: 1260px;
-    padding-left: 7px;
-    padding-right: 7px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 0 7px;
   }
 }

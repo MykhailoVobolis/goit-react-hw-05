@@ -40,46 +40,14 @@
   fill: #fec90c;
 }
 
-@media screen and (min-width: 1280px) {
-  .searchForm {
-    position: relative;
-    margin-bottom: 30px;
-  }
-
+@media screen and (min-width: 768px) {
   .searchInput {
-    box-sizing: border-box;
+    width: 361px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .searchInput {
     width: 486px;
-    height: 42px;
-    border: solid 1px transparent;
-    border-radius: 8px;
-    background-color: #3b3b3b;
-    color: #f7f6f1;
-    padding-left: 45px;
-    font-family: inherit;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.5;
-    letter-spacing: 0.64px;
-    outline: transparent;
-    outline-offset: 4px;
-    transition: border-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .searchBtn {
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 50%;
-    background-color: transparent;
-    position: absolute;
-    left: 2px;
-    top: 2px;
-    z-index: 9999;
-  }
-
-  .searchIcon {
-    width: 22px;
-    height: 22px;
-    fill: #fec90c;
   }
 }
