@@ -128,6 +128,10 @@
   .titleContainer {
     max-width: 768px;
   }
+
+  .trendMoviesTitle {
+    font-size: 28px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
