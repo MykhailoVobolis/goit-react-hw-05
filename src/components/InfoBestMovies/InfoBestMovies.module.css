@@ -63,6 +63,26 @@
   height: 60px;
 }
 
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+
+  .ibmTitle {
+    font-size: 28px;
+  }
+
+  .ibmText {
+    font-size: 18px;
+    max-width: 500px;
+  }
+
+  .logoList {
+    flex-wrap: nowrap;
+    max-width: 700px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .ibmContainer {
     min-width: 1158px;
@@ -75,19 +95,12 @@
     padding-right: 7px;
   }
 
-  .ibmTitle {
-    font-size: 28px;
-  }
-
   .ibmText {
-    font-size: 18px;
     max-width: 700px;
   }
 
   .logoList {
-    flex-wrap: nowrap;
-    gap: 60px;
-    max-width: 700px;
+    gap: 70px;
   }
 
   .wbIcon {

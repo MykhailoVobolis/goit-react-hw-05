@@ -40,7 +40,8 @@ export default function MovieDetailsPage() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [trailerUrl, setTrailerUrl] = useState("");
 
-  const isWide = useMedia("(min-width: 768px)");
+  const isWide = useMedia("(min-width: 1280px)");
+  const isTablet = useMedia("(min-width: 768px)");
 
   // Повернення на попередню сторінку
   const location = useLocation();
@@ -176,7 +177,7 @@ export default function MovieDetailsPage() {
       </section>
       <section className={css.addInformationSection}>
         <div className={css.addInfoContainer}>
-          {isWide && (
+          {isTablet && (
             <h2 className={css.addInformation}>
               Додаткова інформація <FaPlay className={css.iconInfo} />
             </h2>

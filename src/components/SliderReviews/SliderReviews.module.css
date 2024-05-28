@@ -58,6 +58,13 @@
   line-height: 1.6;
 }
 
+@media screen and (min-width: 768px) {
+  .authorReviewName {
+    font-size: 22px;
+    max-width: 185px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .reviewsList {
     max-width: 1260px;
@@ -69,7 +76,6 @@
   }
 
   .authorReviewName {
-    font-size: 22px;
     max-width: 260px;
   }
 

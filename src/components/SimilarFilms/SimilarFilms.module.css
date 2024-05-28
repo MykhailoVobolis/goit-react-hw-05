@@ -20,11 +20,20 @@
   line-height: 1.2;
 }
 
+@media screen and (min-width: 768px) {
+  .titleContainer {
+    max-width: 768px;
+  }
+
+  .similarFilmsTitle {
+    font-size: 26px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .container {
     max-width: 1260px;
-    padding-left: 7px;
-    padding-right: 7px;
+    padding: 0 7px;
   }
 
   .titleContainer {

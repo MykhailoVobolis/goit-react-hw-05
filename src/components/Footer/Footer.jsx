@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className={css.footer}>
       <div className={css.footerContainer}>
-        <p className={css.descriptionFooter}>© 2024 CINEMA HALL. v1.1.2. Всі права захищені.</p>
+        <p className={css.descriptionFooter}>© 2024 CINEMA HALL. v1.1.3. Всі права захищені.</p>
       </div>
     </footer>
   );

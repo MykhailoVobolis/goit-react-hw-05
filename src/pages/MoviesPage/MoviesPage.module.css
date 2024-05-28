@@ -56,6 +56,21 @@
   height: 14px;
 }
 
+@media screen and (min-width: 768px) {
+  .titleContainer {
+    max-width: 768px;
+  }
+
+  .moviesTitle {
+    font-size: 26px;
+  }
+
+  .moreIcon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .nowPlayMoviesContainer {
     max-width: 1260px;
@@ -70,10 +85,6 @@
     margin-right: auto;
   }
 
-  .moviesTitle {
-    font-size: 28px;
-  }
-
   .titleContainer {
     margin-bottom: 30px;
     max-width: 1246px;
@@ -86,5 +97,9 @@
 
   .moreLinkMob {
     display: none;
+  }
+
+  .moviesTitle {
+    font-size: 28px;
   }
 }

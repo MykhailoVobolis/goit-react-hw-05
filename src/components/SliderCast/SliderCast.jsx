@@ -17,7 +17,8 @@ export default function SliderCast({ actors }) {
         preventClicks={true}
         navigation={true}
         breakpoints={{
-          // 768: { slidesPerView: 1.15 },
+          768: { slidesPerView: 4.25, slidesPerGroup: 4 },
+          980: { slidesPerView: 5.25, slidesPerGroup: 5 },
           1280: { slidesPerView: 6, slidesPerGroup: 6, spaceBetween: 20, speed: 900 },
         }}>
         {actors.map((item) => (

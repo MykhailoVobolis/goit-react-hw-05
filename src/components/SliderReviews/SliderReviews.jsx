@@ -22,7 +22,8 @@ export default function SliderReviews({ reviews }) {
         navigation={true}
         watchOverflow={true}
         breakpoints={{
-          // 768: { slidesPerView: 1.15 },
+          768: { slidesPerView: 2.13, slidesPerGroup: 2 },
+          980: { slidesPerView: 3.15, slidesPerGroup: 3 },
           1280: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 20, speed: 900 },
         }}>
         {reviews.map((item) => (
