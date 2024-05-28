@@ -109,13 +109,6 @@ img {
   :root {
     font-size: 16px;
   }
-}
-
-@media screen and (max-width: 1279px) {
-  .swiper .swiper-button-prev,
-  .swiper .swiper-button-next {
-    display: none;
-  }
 
   .swiper .swiper-pagination {
     margin-bottom: 35px;
@@ -124,5 +117,12 @@ img {
   .swiper .swiper-pagination-bullet {
     width: 8px;
     height: 8px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .swiper .swiper-button-prev,
+  .swiper .swiper-button-next {
+    display: none;
   }
 }
