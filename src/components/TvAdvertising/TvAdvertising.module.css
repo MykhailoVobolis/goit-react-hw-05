@@ -50,10 +50,36 @@
   margin-right: auto;
 }
 
+@media screen and (min-width: 768px) {
+  .tvAdvertising {
+    padding-top: 60px;
+    padding-bottom: 180px;
+  }
+
+  .container {
+    max-width: 768px;
+  }
+
+  .title {
+    max-width: 100%;
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .tvMacupContainer {
+    padding-top: 50px;
+  }
+
+  .macup {
+    left: 51px;
+    top: -1px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .tvAdvertising {
     padding-top: 40px;
-    padding-bottom: 180px;
     min-width: 1158px;
     max-width: 1920px;
   }
@@ -73,6 +99,7 @@
     max-width: 400px;
     font-size: 48px;
     margin-bottom: 0;
+    text-align: start;
   }
 
   .tvMacupContainer {
@@ -81,6 +108,7 @@
   }
 
   .macup {
+    left: 2px;
     top: 1px;
   }
 }

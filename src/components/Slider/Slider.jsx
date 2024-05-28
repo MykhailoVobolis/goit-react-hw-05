@@ -27,7 +27,7 @@ export default function Slider({ items }) {
         navigation={true}
         resistanceRatio={0.1}
         breakpoints={{
-          // 768: { slidesPerView: 1.15 },
+          768: { slidesPerView: 4.25, slidesPerGroup: 4 },
           1280: { slidesPerView: 5, slidesPerGroup: 5, spaceBetween: 20, speed: 900 },
         }}>
         {newArrayFilms.map((item) => (

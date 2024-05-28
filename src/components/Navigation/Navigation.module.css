@@ -47,14 +47,20 @@
   vertical-align: top;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 768px) {
   .container {
-    max-width: 1260px;
-    padding: 14px 7px;
+    max-width: 768px;
   }
 
   .navItemsContainer {
     gap: 50px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1260px;
+    padding: 14px 7px;
   }
 
   .active::after {
