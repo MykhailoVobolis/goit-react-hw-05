@@ -49,7 +49,7 @@ export default function HomePage() {
             <ul className={css.devicesList}>
               <li className={css.deviceItem}>
                 <IoTvOutline className={css.deviceIcon} />
-                <p className={css.deviceName}>телевизор</p>
+                <p className={css.deviceName}>телевізор</p>
               </li>
               <li className={css.deviceItem}>
                 <IoLaptopOutline className={css.deviceIcon} />
