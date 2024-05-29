@@ -26,8 +26,8 @@ export default function SliderMoviesMain({ items }) {
           375: { spaceBetween: 20 },
           768: { slidesPerView: 1.15, spaceBetween: 25 },
           1280: { slidesPerView: 1, spaceBetween: 40 },
-          1440: { slidesPerView: 1.15 },
-          1920: { slidesPerView: 1.48 },
+          1440: { slidesPerView: 1.15, spaceBetween: 40 },
+          1920: { slidesPerView: 1.48, spaceBetween: 40 },
         }}
         pagination={{ clickable: true }}
         centeredSlides={true}
