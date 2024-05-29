@@ -261,6 +261,7 @@
     flex-direction: row;
     justify-content: space-between;
     padding-top: 24px;
+    align-items: start;
   }
 
   .devicesContainer::before {
