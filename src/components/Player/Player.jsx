@@ -8,7 +8,7 @@ export default function Player({ isOpen, trailerUrl }) {
         width={"100%"}
         height={"100%"}
         controls={true}
-        // playing={isOpen}
+        playing={isOpen}
         className={"css.overflowHidden"}
       />
     </>
