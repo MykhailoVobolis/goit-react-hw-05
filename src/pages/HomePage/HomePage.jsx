@@ -2,6 +2,7 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
 import Slider from "../../components/Slider/Slider";
 import TvAdvertising from "../../components/TvAdvertising/TvAdvertising";
+import { IoTvOutline, IoLaptopOutline, IoPhonePortraitOutline, IoTabletPortraitOutline } from "react-icons/io5";
 
 import { getWeekMovies } from "../../tmdb-api";
 import { useState, useEffect } from "react";
@@ -42,6 +43,27 @@ export default function HomePage() {
               Світові новинки кіно на <span className={css.lineBreak}>CINEMA HALL</span>
             </h1>
             <img className={css.heroImage} src={popcornImg} alt="popcorn" width={612} height={400} />
+          </div>
+          <div className={css.devicesContainer}>
+            <h2 className={css.deviceTitle}>Дивись на будь-якому пристрої</h2>
+            <ul className={css.devicesList}>
+              <li className={css.deviceItem}>
+                <IoTvOutline className={css.deviceIcon} />
+                <p className={css.deviceName}>телевизор</p>
+              </li>
+              <li className={css.deviceItem}>
+                <IoLaptopOutline className={css.deviceIcon} />
+                <p className={css.deviceName}>комп'ютер</p>
+              </li>
+              <li className={css.deviceItem}>
+                <IoPhonePortraitOutline className={css.deviceIcon} />
+                <p className={css.deviceName}>телефон</p>
+              </li>
+              <li className={css.deviceItem}>
+                <IoTabletPortraitOutline className={css.deviceIcon} />
+                <p className={css.deviceName}>планшет</p>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
