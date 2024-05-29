@@ -45,7 +45,12 @@ export default function HomePage() {
             <img className={css.heroImage} src={popcornImg} alt="popcorn" width={612} height={400} />
           </div>
           <div className={css.devicesContainer}>
-            <h2 className={css.deviceTitle}>Дивись на будь-якому пристрої</h2>
+            <div className={css.deviceTitleContainer}>
+              <h2 className={css.deviceTitle}>Дивись на будь-якому пристрої</h2>
+              <p className={css.deviceDescription}>
+                Дивіться фільми й мультфільми без обмежень на смартфоні, планшеті, ноутбуці й телевізорі.
+              </p>
+            </div>
             <ul className={css.devicesList}>
               <li className={css.deviceItem}>
                 <IoTvOutline className={css.deviceIcon} />

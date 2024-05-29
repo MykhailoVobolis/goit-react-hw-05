@@ -81,9 +81,23 @@
   display: block;
 }
 
+.deviceTitleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
 .deviceTitle {
   font-size: 18px;
   font-weight: 700;
+  text-align: center;
+}
+
+.deviceDescription {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #626262;
   text-align: center;
 }
 
@@ -267,6 +281,11 @@
 
   .devicesContainer::before {
     width: calc(100% - 14px);
+  }
+
+  .deviceTitleContainer {
+    gap: 8px;
+    align-items: start;
   }
 
   .deviceTitle {
