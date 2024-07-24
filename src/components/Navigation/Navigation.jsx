@@ -6,6 +6,7 @@ import { RiMovie2Line } from "react-icons/ri";
 import { IoIosSearch } from "react-icons/io";
 
 import css from "./Navigation.module.css";
+import { UserMenu } from "../UserMenu/UserMenu.jsx";
 
 const getNavLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
@@ -31,6 +32,7 @@ export default function Navigation() {
             <IoIosSearch className={css.searchIcon} />
           </Link>
         </nav>
+        <UserMenu />
       </div>
     </header>
   );
