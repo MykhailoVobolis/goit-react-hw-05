@@ -7,13 +7,13 @@ export async function registerUser(newUser) {
   return response.data.data;
 }
 
-export async function loginUser(newUser) {
-  const response = await axios.post("https://cinema-hall-app.onrender.com/auth/login", newUser);
+export async function loginUser(user) {
+  const response = await axios.post("https://cinema-hall-app.onrender.com/auth/login", user);
   return response.data.data;
 }
 
-export async function logoutUser() {
-  const response = await axios.post("https://cinema-hall-app.onrender.com/auth/logout");
+export async function logoutUser(email) {
+  const response = await axios.post("https://cinema-hall-app.onrender.com/auth/logout", email);
   return response.data.data;
 }
 

@@ -37,7 +37,6 @@ export const UserProvider = ({ children }) => {
       setError(true);
     } finally {
       setLoading(false);
-      setError(false);
     }
   };
 
@@ -45,16 +44,16 @@ export const UserProvider = ({ children }) => {
     try {
       setLoading(true);
       const response = await loginUser(value);
-      setUser(response.data);
+      setUser(response.user);
       setIsLoggedIn(true);
       localStorage.setItem("token", response.accessToken);
       // Додавання хедерів з токіном до всіх наступних будь яких типів запитів (common)
       setAuthHeader(response.accessToken);
     } catch (error) {
+      console.log("error!!!!");
       setError(true);
     } finally {
       setLoading(false);
-      setError(false);
     }
   };
 
@@ -71,7 +70,6 @@ export const UserProvider = ({ children }) => {
       setError(true);
     } finally {
       setLoading(false);
-      setError(false);
     }
   };
 
@@ -82,7 +80,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <userContext.Provider value={{ isLoggedIn, user, loading, logIn, logOut, register, googleAuthContext }}>
+    <userContext.Provider value={{ isLoggedIn, user, loading, error, logIn, logOut, register, googleAuthContext }}>
       {children}
       {loading && <Loader loading={loading} />}
       {error && <ErrorMessage error={error} />}

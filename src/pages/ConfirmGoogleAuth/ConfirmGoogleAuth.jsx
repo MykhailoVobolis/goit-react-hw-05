@@ -27,7 +27,6 @@ export default function ConfirmGoogleAuth() {
         setError(true);
       } finally {
         setLoading(false);
-        setError(false);
       }
     }
     if (code) {
