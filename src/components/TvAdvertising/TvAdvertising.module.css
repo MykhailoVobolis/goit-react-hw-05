@@ -39,7 +39,7 @@
 .macup {
   position: absolute;
   top: 5px;
-  z-index: 999999;
+  z-index: 99;
   min-width: 290px;
   max-width: 100%;
   height: auto;

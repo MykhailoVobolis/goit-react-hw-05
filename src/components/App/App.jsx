@@ -6,6 +6,8 @@ import { lazy } from "react";
 import "./App.css";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
+const RegisterPage = lazy(() => import("../../pages/RegisterPage/RegisterPage.jsx"));
+const ConfirmGoogleAuth = lazy(() => import("../../pages/ConfirmGoogleAuth/ConfirmGoogleAuth.jsx"));
 const SearchMoviesPage = lazy(() => import("../../pages/SearchMoviesPage/SearchMoviesPage"));
 const MoviesPage = lazy(() => import("../../pages/MoviesPage/MoviesPage"));
 const MovieDetailsPage = lazy(() => import("../../pages/MovieDetailsPage/MovieDetailsPage"));
@@ -22,6 +24,8 @@ export default function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/confirm-google-auth" element={<ConfirmGoogleAuth />} />
         <Route path="/search" element={<SearchMoviesPage />} />
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/collection/best_films_week" element={<BestFilmsWeekPage />} />

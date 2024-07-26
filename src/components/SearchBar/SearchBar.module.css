@@ -6,7 +6,7 @@
 .searchInput {
   box-sizing: border-box;
   width: 100%;
-  height: 42px;
+  height: 52px;
   border: solid 1px transparent;
   border-radius: 8px;
   background-color: #3b3b3b;
@@ -23,14 +23,14 @@
 }
 
 .searchBtn {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border: none;
   border-radius: 50%;
   background-color: transparent;
   position: absolute;
   left: 2px;
-  top: 2px;
+  top: 7px;
   z-index: 9999;
 }
 
