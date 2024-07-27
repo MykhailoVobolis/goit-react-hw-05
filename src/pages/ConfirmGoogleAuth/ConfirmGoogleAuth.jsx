@@ -31,8 +31,6 @@ export default function ConfirmGoogleAuth() {
     }
     if (code) {
       googleAuth(code);
-    } else {
-      console.error('Error: "code" is missing from URL parameters.');
     }
   }, [location, code]);
 
