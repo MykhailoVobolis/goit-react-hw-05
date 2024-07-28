@@ -27,6 +27,17 @@ export async function logoutUser() {
   return response.data.data;
 }
 
+export async function refreshUser() {
+  const response = await axios.post(
+    "https://cinema-hall-app.onrender.com/auth/refresh",
+    {},
+    {
+      withCredentials: true, // Важливо для відправки куків
+    }
+  );
+  return response.data.data;
+}
+
 export async function getGoogleUrl() {
   const response = await axios.get("https://cinema-hall-app.onrender.com/auth/get-oauth-url", {
     withCredentials: true, // Важливо для відправки куків

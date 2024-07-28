@@ -73,14 +73,14 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const googleAuthContext = (data) => {
+  const authContext = (data) => {
     setUser(data.user);
     setIsLoggedIn(true);
     setAuthHeader(data.accessToken);
   };
 
   return (
-    <userContext.Provider value={{ isLoggedIn, user, loading, error, logIn, logOut, register, googleAuthContext }}>
+    <userContext.Provider value={{ isLoggedIn, user, loading, error, logIn, logOut, register, authContext }}>
       {children}
       {loading && <Loader loading={loading} />}
       {error && <ErrorMessage error={error} />}

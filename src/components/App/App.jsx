@@ -1,7 +1,11 @@
 import Layout from "../Layout/Layout";
 
 import { Routes, Route } from "react-router-dom";
-import { lazy } from "react";
+import { lazy, useEffect, useState } from "react";
+
+import { refreshUser } from "../../cinema-server-api.js";
+import { useUser } from "../../userContext.jsx";
+import Loader from "../Loader/Loader.jsx";
 
 import "./App.css";
 
@@ -21,8 +25,28 @@ const MostPopularFilmsPage = lazy(() => import("../../pages/MostPopularFilmsPage
 const BestRatingFilmsPage = lazy(() => import("../../pages/BestRatingFilmsPage/BestRatingFilmsPage"));
 
 export default function App() {
+  const { authContext } = useUser();
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function refresh() {
+      try {
+        setLoading(true);
+        const response = await refreshUser();
+        authContext(response);
+      } catch (error) {
+        console.error(error.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    refresh();
+  }, []);
+
   return (
     <Layout>
+      {loading && <Loader loading={loading} />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
