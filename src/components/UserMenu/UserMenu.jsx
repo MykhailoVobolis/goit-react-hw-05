@@ -29,7 +29,7 @@ export default function UserMenu() {
               {
                 name: "offset",
                 options: {
-                  offset: [51, 0],
+                  offset: [31, 0],
                 },
               },
             ],

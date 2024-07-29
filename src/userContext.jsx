@@ -30,6 +30,7 @@ export const UserProvider = ({ children }) => {
       const response = await registerUser(value);
       setUser(response.data);
       setIsLoggedIn(true);
+      localStorage.setItem("accessToken", response.accessToken);
       // Додавання хедерів з токіном до всіх наступних будь яких типів запитів (common)
       setAuthHeader(response.accessToken);
     } catch (error) {
@@ -45,10 +46,11 @@ export const UserProvider = ({ children }) => {
       const response = await loginUser(value);
       setUser(response.user);
       setIsLoggedIn(true);
+      localStorage.setItem("accessToken", response.accessToken);
       // Додавання хедерів з токіном до всіх наступних будь яких типів запитів (common)
       setAuthHeader(response.accessToken);
     } catch (error) {
-      console.log("error!!!!");
+      console.log(error.message);
       setError(true);
     } finally {
       setLoading(false);
@@ -61,6 +63,7 @@ export const UserProvider = ({ children }) => {
       setIsLoggedIn(false);
       setUser(null);
       const response = await logoutUser();
+      localStorage.removeItem("accessToken");
       // Видалення хедеру при виходу користувача з App
       clearAuthHeader();
     } catch (error) {

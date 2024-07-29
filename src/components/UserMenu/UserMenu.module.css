@@ -6,8 +6,9 @@
 .logoutBtn {
   display: flex;
   align-items: center;
+  justify-content: end;
   gap: 8px;
-  width: 100px;
+  width: 80px;
   font-weight: 600;
   font-size: 16px;
   padding: 0;

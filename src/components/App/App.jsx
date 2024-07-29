@@ -6,6 +6,7 @@ import { lazy, useEffect, useState } from "react";
 import { refreshUser } from "../../cinema-server-api.js";
 import { useUser } from "../../userContext.jsx";
 import Loader from "../Loader/Loader.jsx";
+import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 
 import "./App.css";
 
@@ -26,7 +27,6 @@ const BestRatingFilmsPage = lazy(() => import("../../pages/BestRatingFilmsPage/B
 
 export default function App() {
   const { authContext } = useUser();
-
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -36,12 +36,18 @@ export default function App() {
         const response = await refreshUser();
         authContext(response);
       } catch (error) {
-        console.error(error.message);
+        console.error("Refresh error:", error.message);
       } finally {
         setLoading(false);
       }
     }
-    refresh();
+
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      refresh();
+    } else {
+      setLoading(false);
+    }
   }, []);
 
   return (

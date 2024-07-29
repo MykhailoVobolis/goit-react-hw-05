@@ -26,6 +26,7 @@ export default function ConfirmGoogleAuth() {
 
         if (!isCancelled) {
           authContext(response);
+          localStorage.setItem("accessToken", response.accessToken);
         }
       } catch (error) {
         if (!isCancelled) {
