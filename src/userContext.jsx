@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from "react";
 import { loginUser, logoutUser, registerUser } from "./cinema-server-api.js";
 
 import Loader from "./components/Loader/Loader.jsx";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage.jsx";
+import toast, { Toaster } from "react-hot-toast";
 
 const userContext = createContext();
 
@@ -34,7 +34,12 @@ export const UserProvider = ({ children }) => {
       // Додавання хедерів з токіном до всіх наступних будь яких типів запитів (common)
       setAuthHeader(response.accessToken);
     } catch (error) {
-      setError(true);
+      toast("Користувач з такою адресою електронної пошти вже зареєстрований.", {
+        style: {
+          color: "#ffffff",
+          backgroundColor: "#FF8C00",
+        },
+      });
     } finally {
       setLoading(false);
     }
@@ -50,8 +55,12 @@ export const UserProvider = ({ children }) => {
       // Додавання хедерів з токіном до всіх наступних будь яких типів запитів (common)
       setAuthHeader(response.accessToken);
     } catch (error) {
-      console.log(error.message);
-      setError(true);
+      toast("Користувача не знайдено. Будь ласка, перевірте введені дані.", {
+        style: {
+          color: "#ffffff",
+          backgroundColor: "#FF8C00",
+        },
+      });
     } finally {
       setLoading(false);
     }
@@ -83,7 +92,7 @@ export const UserProvider = ({ children }) => {
     <userContext.Provider value={{ isLoggedIn, user, loading, error, logIn, logOut, register, authContext }}>
       {children}
       {loading && <Loader loading={loading} />}
-      {error && <ErrorMessage error={error} />}
+      <Toaster position="top-right" containerStyle={{ zIndex: 99999999 }} />
     </userContext.Provider>
   );
 };

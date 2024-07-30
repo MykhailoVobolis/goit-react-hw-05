@@ -51,6 +51,7 @@ export default function UserMenu() {
             bgcolor: "#3b3b3b",
             width: 38,
             height: 38,
+            cursor: "pointer",
           }}>
           {user.name[0].toUpperCase()}
         </Avatar>

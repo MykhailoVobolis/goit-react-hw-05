@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../../userContext.jsx";
 import { confirmGoogleOAuth } from "../../cinema-server-api.js";
 import Loader from "../../components/Loader/Loader.jsx";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function ConfirmGoogleAuth() {
   const { authContext } = useUser();
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
 
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -27,10 +27,20 @@ export default function ConfirmGoogleAuth() {
         if (!isCancelled) {
           authContext(response);
           localStorage.setItem("accessToken", response.accessToken);
+          navigate("/"); // Перенаправляємо користувача на головну сторінку
         }
       } catch (error) {
         if (!isCancelled) {
-          setError(true);
+          navigate("/login"); // Перенаправляємо користувача на сторінку входу
+          toast(
+            "Користувач з такою адресою електронної пошти вже зареєстрований. Будь ласка, увійдіть до Cinema Hall.",
+            {
+              style: {
+                color: "#ffffff",
+                backgroundColor: "#FF8C00",
+              },
+            }
+          );
         }
       } finally {
         if (!isCancelled) {
@@ -50,7 +60,7 @@ export default function ConfirmGoogleAuth() {
   return (
     <div>
       {loading && <Loader loading={loading} />}
-      {error && <ErrorMessage error={error} />}
+      <Toaster position="top-right" containerStyle={{ zIndex: 99999999 }} />
     </div>
   );
 }

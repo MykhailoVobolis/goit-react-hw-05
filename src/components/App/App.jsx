@@ -6,7 +6,7 @@ import { lazy, useEffect, useState } from "react";
 import { refreshUser } from "../../cinema-server-api.js";
 import { useUser } from "../../userContext.jsx";
 import Loader from "../Loader/Loader.jsx";
-import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
+import RestrictedRoute from "../RestrictedRoute.jsx";
 
 import "./App.css";
 
@@ -28,48 +28,54 @@ const BestRatingFilmsPage = lazy(() => import("../../pages/BestRatingFilmsPage/B
 export default function App() {
   const { authContext } = useUser();
   const [loading, setLoading] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   useEffect(() => {
     async function refresh() {
       try {
-        setLoading(true);
         const response = await refreshUser();
         authContext(response);
       } catch (error) {
         console.error("Refresh error:", error.message);
       } finally {
         setLoading(false);
+        setIsRefreshing(false);
       }
     }
 
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
+      setIsRefreshing(true);
+      setLoading(true);
       refresh();
-    } else {
-      setLoading(false);
     }
   }, []);
 
   return (
-    <Layout>
-      {loading && <Loader loading={loading} />}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/confirm-google-auth" element={<ConfirmGoogleAuth />} />
-        <Route path="/search" element={<SearchMoviesPage />} />
-        <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/collection/best_films_week" element={<BestFilmsWeekPage />} />
-        <Route path="/collection/now_playing_films" element={<NowPlayingMoviesPage />} />
-        <Route path="/collection/most_popular_films" element={<MostPopularFilmsPage />} />
-        <Route path="/collection/best_rating_films" element={<BestRatingFilmsPage />} />
-        <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
-          <Route path="cast" element={<MovieCast />} />
-          <Route path="reviews" element={<MovieReviews />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Layout>
+    <>
+      {isRefreshing ? (
+        <Loader loading={loading} />
+      ) : (
+        <Layout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/register" element={<RestrictedRoute component={<RegisterPage />} />} />
+            <Route path="/login" element={<RestrictedRoute component={<LoginPage />} />} />
+            <Route path="/confirm-google-auth" element={<ConfirmGoogleAuth />} />
+            <Route path="/search" element={<SearchMoviesPage />} />
+            <Route path="/movies" element={<MoviesPage />} />
+            <Route path="/collection/best_films_week" element={<BestFilmsWeekPage />} />
+            <Route path="/collection/now_playing_films" element={<NowPlayingMoviesPage />} />
+            <Route path="/collection/most_popular_films" element={<MostPopularFilmsPage />} />
+            <Route path="/collection/best_rating_films" element={<BestRatingFilmsPage />} />
+            <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+              <Route path="cast" element={<MovieCast />} />
+              <Route path="reviews" element={<MovieReviews />} />
+            </Route>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Layout>
+      )}
+    </>
   );
 }
