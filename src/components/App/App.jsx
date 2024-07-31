@@ -7,6 +7,7 @@ import { refreshUser } from "../../cinema-server-api.js";
 import { useUser } from "../../userContext.jsx";
 import Loader from "../Loader/Loader.jsx";
 import RestrictedRoute from "../RestrictedRoute.jsx";
+import PrivateRoute from "../PrivateRoute.jsx";
 
 import "./App.css";
 
@@ -24,6 +25,7 @@ const BestFilmsWeekPage = lazy(() => import("../../pages/BestFilmsWeekPage/BestF
 const NowPlayingMoviesPage = lazy(() => import("../../pages/NowPlayingMoviesPage/NowPlayingMoviesPage"));
 const MostPopularFilmsPage = lazy(() => import("../../pages/MostPopularFilmsPage/MostPopularFilmsPage"));
 const BestRatingFilmsPage = lazy(() => import("../../pages/BestRatingFilmsPage/BestRatingFilmsPage"));
+const FavoriteMoviesPage = lazy(() => import("../../pages/FavoriteMoviesPage/FavoriteMoviesPage.jsx"));
 
 export default function App() {
   const { authContext } = useUser();
@@ -59,8 +61,9 @@ export default function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/register" element={<RestrictedRoute component={<RegisterPage />} />} />
-            <Route path="/login" element={<RestrictedRoute component={<LoginPage />} />} />
+            <Route path="/register" element={<RestrictedRoute component={<RegisterPage />} redirectTo="/" />} />
+            <Route path="/login" element={<RestrictedRoute component={<LoginPage />} redirectTo="/" />} />
+            <Route path="/watching" element={<PrivateRoute component={<FavoriteMoviesPage />} redirectTo="/login" />} />
             <Route path="/confirm-google-auth" element={<ConfirmGoogleAuth />} />
             <Route path="/search" element={<SearchMoviesPage />} />
             <Route path="/movies" element={<MoviesPage />} />
