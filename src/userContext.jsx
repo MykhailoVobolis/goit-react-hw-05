@@ -36,8 +36,8 @@ export const UserProvider = ({ children }) => {
     } catch (error) {
       toast("Користувач з такою адресою електронної пошти вже зареєстрований.", {
         style: {
-          color: "#ffffff",
-          backgroundColor: "#FF8C00",
+          color: "#431f05",
+          backgroundColor: "#fec90c",
         },
       });
     } finally {
@@ -57,8 +57,8 @@ export const UserProvider = ({ children }) => {
     } catch (error) {
       toast("Користувача не знайдено. Будь ласка, перевірте введені дані.", {
         style: {
-          color: "#ffffff",
-          backgroundColor: "#FF8C00",
+          color: "#431f05",
+          backgroundColor: "#fec90c",
         },
       });
     } finally {

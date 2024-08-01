@@ -1,0 +1,19 @@
+.bookmarkIcon {
+  width: 24px;
+  height: 24px;
+  fill: #431f05;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.delBookmarkBtn {
+  border-radius: 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  margin-right: 16px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fec90c;
+}

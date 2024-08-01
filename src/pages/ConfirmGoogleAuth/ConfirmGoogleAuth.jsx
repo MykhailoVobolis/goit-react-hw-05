@@ -36,8 +36,8 @@ export default function ConfirmGoogleAuth() {
             "Користувач з такою адресою електронної пошти вже зареєстрований. Будь ласка, увійдіть до Cinema Hall.",
             {
               style: {
-                color: "#ffffff",
-                backgroundColor: "#FF8C00",
+                color: "#431f05",
+                backgroundColor: "#fec90c",
               },
             }
           );

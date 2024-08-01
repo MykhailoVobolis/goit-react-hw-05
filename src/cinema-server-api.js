@@ -55,3 +55,31 @@ export async function confirmGoogleOAuth(code) {
   );
   return response.data.data;
 }
+
+export async function addMovie(movie) {
+  const response = await axios.post("https://cinema-hall-app.onrender.com/movies", movie, {
+    withCredentials: true, // Важливо для відправки куків
+  });
+  return response.data.data;
+}
+
+export async function delMovie(id) {
+  const response = await axios.delete(`https://cinema-hall-app.onrender.com/movies/${id}`, {
+    withCredentials: true, // Важливо для відправки куків
+  });
+  return response.data.data;
+}
+
+export async function getFavoriteMovies() {
+  const response = await axios.get("https://cinema-hall-app.onrender.com/movies", {
+    withCredentials: true, // Важливо для відправки куків
+  });
+  return response.data.data.data;
+}
+
+export async function getMovieById(id) {
+  const response = await axios.get(`https://cinema-hall-app.onrender.com/movies/${id}`, {
+    withCredentials: true, // Важливо для відправки куків
+  });
+  return response.data.data;
+}

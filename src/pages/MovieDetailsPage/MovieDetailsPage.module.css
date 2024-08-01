@@ -29,6 +29,13 @@
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookmarkBtn.isFavorite {
+  border: none;
+  background-color: #fec90c;
 }
 
 .movie {
