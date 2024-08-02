@@ -42,6 +42,7 @@ export default function FavoriteMoviesPage() {
               <PiListDashes className={css.subIcon} />
               <p className={css.title}>Тільки найкращі!</p>
               <p className={css.text}>Зберігайте улюблені фільми у серденьку і тут</p>
+              {/* <p className={css.text}>Створюй колекцію улюблених фільмів, натискаючи закладку</p> */}
             </div>
           )}
         </div>
@@ -50,3 +51,5 @@ export default function FavoriteMoviesPage() {
     </>
   );
 }
+
+// Створюй колекцію улюблених фільмів, натискаючи закладку
