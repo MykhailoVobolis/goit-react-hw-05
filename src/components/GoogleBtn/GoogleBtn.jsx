@@ -27,7 +27,8 @@ export default function GoogleBtn({ type }) {
       {type === "Up" ? (
         <button className={css.googleBtn} onClick={handleGoogleLogin}>
           <FcGoogle className={css.googleIcon} />
-          Реєстрація за допомогою Google
+          {/* Реєстрація за допомогою Google */}
+          Увійти за допомогою Google
         </button>
       ) : (
         <button className={css.googleBtn} onClick={handleGoogleLogin}>
