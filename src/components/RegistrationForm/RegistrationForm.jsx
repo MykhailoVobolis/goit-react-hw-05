@@ -1,9 +1,12 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-import css from "./RegistrationForm.module.css";
 import { useUser } from "../../userContext.jsx";
 import GoogleBtn from "../GoogleBtn/GoogleBtn.jsx";
+import { FiEye, FiEyeOff } from "react-icons/fi";
+import { useState } from "react";
+
+import css from "./RegistrationForm.module.css";
 
 // Валідація полів форми
 const regex = {
@@ -29,6 +32,8 @@ const FeedbackSchema = Yup.object().shape({
 });
 
 export default function RegistrationForm() {
+  const [isPassOpen, setIsPassOpen] = useState(false);
+
   // Початкове значення полів форми
   const initialValues = {
     name: "",
@@ -76,12 +81,19 @@ export default function RegistrationForm() {
             <Field
               className={css.registerInput}
               label="Password"
-              type="password"
+              type={isPassOpen ? "text" : "password"}
               name="password"
               autoComplete="current-password"
               required
               placeholder="Пароль"
             />
+            <button type="button" className={css.seePassBtn} onClick={() => setIsPassOpen((prev) => !prev)}>
+              {isPassOpen ? (
+                <FiEye className={css.iconSeePassBtn} size={20} />
+              ) : (
+                <FiEyeOff className={css.iconSeePassBtn} size={20} />
+              )}
+            </button>
             <ErrorMessage className={css.error} name="password" component="span" />
             <button className={css.registerBtn} type="submit">
               Реєстрація

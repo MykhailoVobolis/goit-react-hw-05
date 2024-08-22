@@ -24,7 +24,7 @@ export default function SearchBar({ onSearch }) {
       <Form className={css.searchForm}>
         <Field className={css.searchInput} autoComplete="off" autoFocus type="text" name="search" placeholder="Пошук" />
         <button className={css.searchBtn} type="submit">
-          <IoIosSearch className={css.searchIcon} />
+          <IoIosSearch className={css.searchIcon} size={24} />
         </button>
       </Form>
     </Formik>

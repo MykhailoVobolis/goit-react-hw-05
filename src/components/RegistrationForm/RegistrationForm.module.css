@@ -15,6 +15,7 @@
   gap: 28px;
   min-width: 250px;
   max-width: 440px;
+  position: relative;
 }
 
 .mainBox {
@@ -57,6 +58,23 @@
   outline: transparent;
   outline-offset: 4px;
   transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.seePassBtn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  position: absolute;
+  right: 8px;
+  top: 210px;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.iconSeePassBtn {
+  stroke: #6d6d6d;
 }
 
 .registerBtn {

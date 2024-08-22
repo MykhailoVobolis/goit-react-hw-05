@@ -46,6 +46,7 @@ export default function App() {
     }
 
     const accessToken = localStorage.getItem("accessToken");
+
     if (accessToken) {
       setIsRefreshing(true);
       setLoading(true);
