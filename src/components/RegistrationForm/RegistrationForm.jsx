@@ -2,9 +2,10 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 import { useUser } from "../../userContext.jsx";
-import GoogleBtn from "../GoogleBtn/GoogleBtn.jsx";
-import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useState } from "react";
+import GoogleBtn from "../GoogleBtn/GoogleBtn.jsx";
+import FormButton from "../FormButton/FormButton.jsx";
+import PassOpenBtn from "../PassOpenBtn/PassOpenBtn.jsx";
 
 import css from "./RegistrationForm.module.css";
 
@@ -48,6 +49,10 @@ export default function RegistrationForm() {
     actions.resetForm();
   };
 
+  function handleClick() {
+    setIsPassOpen((prev) => !prev);
+  }
+
   return (
     <div className={css.container}>
       <div className={css.mainBox}>
@@ -89,18 +94,10 @@ export default function RegistrationForm() {
                   required
                   placeholder="Пароль"
                 />
-                <button type="button" className={css.seePassBtn} onClick={() => setIsPassOpen((prev) => !prev)}>
-                  {isPassOpen ? (
-                    <FiEye className={css.iconSeePassBtn} size={20} />
-                  ) : (
-                    <FiEyeOff className={css.iconSeePassBtn} size={20} />
-                  )}
-                </button>
+                <PassOpenBtn click={handleClick} isOpen={isPassOpen} />
               </div>
               <ErrorMessage className={css.error} name="password" component="span" />
-              <button className={css.registerBtn} type="submit">
-                Створити акаунт
-              </button>
+              <FormButton>Створити акаунт</FormButton>
             </Form>
           )}
         </Formik>

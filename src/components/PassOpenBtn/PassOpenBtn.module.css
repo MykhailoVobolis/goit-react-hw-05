@@ -1,0 +1,16 @@
+.seePassBtn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  position: absolute;
+  right: 8px;
+  top: 6px;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.iconSeePassBtn {
+  stroke: #6d6d6d;
+}
