@@ -4,7 +4,7 @@ import Slider from "../../components/Slider/Slider";
 import SliderMoviesMain from "../../components/SliderMoviesMain/SliderMoviesMain";
 import InfoBestMovies from "../../components/InfoBestMovies/InfoBestMovies";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { getPopularMovies, getMostRatingMovies, getNowPlaying, getUpcomingMovies } from "../../tmdb-api";
 import { Link } from "react-router-dom";
 import { GrNext } from "react-icons/gr";
@@ -71,7 +71,7 @@ export default function MoviesPage() {
     fetchMovies();
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     async function fetchMovies() {
       try {
         setLoading(true);
