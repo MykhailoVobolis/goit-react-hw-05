@@ -2,8 +2,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-weight: 700;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: start;
   padding: 0;
   border: none;
   background-color: transparent;
@@ -15,11 +16,16 @@
 }
 
 .googleIcon {
-  font-size: 40px;
+  font-size: 34px;
 }
 
 @media (min-width: 768px) {
   .googleBtn {
+    font-weight: 700;
     font-size: 18px;
+  }
+
+  .googleIcon {
+    font-size: 40px;
   }
 }

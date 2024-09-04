@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
+import { Link } from "react-router-dom";
 import { useUser } from "../../userContext.jsx";
 import { useState } from "react";
 import GoogleBtn from "../GoogleBtn/GoogleBtn.jsx";
@@ -61,46 +62,56 @@ export default function RegistrationForm() {
           <p className={css.text}>Введіть своє ім'я та електронну адресу</p>
           <GoogleBtn type="Up" />
         </div>
-        <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={FeedbackSchema}>
-          {({ errors, touched }) => (
-            <Form className={css.form} autoComplete="off">
-              <Field
-                className={`${errors.name && touched.name ? css.inputError : css.registerInput}`}
-                label="Username"
-                type="text"
-                name="name"
-                autoComplete="off"
-                required
-                placeholder="Повне ім'я"
-              />
-              <ErrorMessage className={css.error} name="name" component="span" />
-              <Field
-                className={`${errors.email && touched.email ? css.inputError : css.registerInput}`}
-                label="Email"
-                type="email"
-                name="email"
-                autoComplete="off"
-                required
-                placeholder="Адреса електронної пошти"
-              />
-              <ErrorMessage className={css.error} name="email" component="span" />
-              <div className={css.passInputContainer}>
+        <div>
+          <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={FeedbackSchema}>
+            {({ errors, touched }) => (
+              <Form className={css.form} autoComplete="off">
                 <Field
-                  className={`${errors.password && touched.password ? css.inputError : css.registerInput}`}
-                  label="Password"
-                  type={isPassOpen ? "text" : "password"}
-                  name="password"
-                  autoComplete="current-password"
+                  className={`${errors.name && touched.name ? css.inputError : css.registerInput}`}
+                  label="Username"
+                  type="text"
+                  name="name"
+                  autoComplete="off"
                   required
-                  placeholder="Пароль"
+                  placeholder="Повне ім'я"
                 />
-                <PassOpenBtn click={handleClick} isOpen={isPassOpen} />
-              </div>
-              <ErrorMessage className={css.error} name="password" component="span" />
-              <FormButton>Створити акаунт</FormButton>
-            </Form>
-          )}
-        </Formik>
+                <ErrorMessage className={css.error} name="name" component="span" />
+                <Field
+                  className={`${errors.email && touched.email ? css.inputError : css.registerInput}`}
+                  label="Email"
+                  type="email"
+                  name="email"
+                  autoComplete="off"
+                  required
+                  placeholder="Адреса електронної пошти"
+                />
+                <ErrorMessage className={css.error} name="email" component="span" />
+                <div className={css.passInputContainer}>
+                  <Field
+                    className={`${errors.password && touched.password ? css.inputError : css.registerInput}`}
+                    label="Password"
+                    type={isPassOpen ? "text" : "password"}
+                    name="password"
+                    autoComplete="current-password"
+                    required
+                    placeholder="Пароль"
+                  />
+                  <PassOpenBtn click={handleClick} isOpen={isPassOpen} />
+                </div>
+                <ErrorMessage className={css.error} name="password" component="span" />
+                <FormButton>Створити акаунт</FormButton>
+              </Form>
+            )}
+          </Formik>
+          <p className={css.redirectionText}>
+            Вже зареєстровані на Cinama Hall?{" "}
+            <span>
+              <Link className={css.redirectionLink} to="/login">
+                Увійти
+              </Link>
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   );

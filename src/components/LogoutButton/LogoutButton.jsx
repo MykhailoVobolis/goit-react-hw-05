@@ -1,8 +1,10 @@
 import { MdLogout } from "react-icons/md";
+import { useMedia } from "react-use";
+
 import css from "./LogoutButton.module.css";
 
 export default function LogoutButton({ logOut, onClose }) {
-  console.log(logOut);
+  const isTablet = useMedia("(min-width: 768px)");
 
   return (
     <button
@@ -11,7 +13,7 @@ export default function LogoutButton({ logOut, onClose }) {
         logOut();
         onClose();
       }}>
-      <MdLogout size={24} />
+      {isTablet && <MdLogout size={24} />}
       Вихід
     </button>
   );

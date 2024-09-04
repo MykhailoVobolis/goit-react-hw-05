@@ -2,9 +2,9 @@ import { useUser } from "../../userContext.jsx";
 import { useMedia } from "react-use";
 
 import UserAvatar from "../UserAvatar/UserAvatar.jsx";
+import LogoutButton from "../LogoutButton/LogoutButton.jsx";
 
 import css from "./UserMenu.module.css";
-import LogoutButton from "../LogoutButton/LogoutButton.jsx";
 
 export default function UserMenu({ onClose }) {
   const { user, logOut } = useUser();
