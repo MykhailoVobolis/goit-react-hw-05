@@ -1,20 +1,31 @@
 .authContainer {
   display: flex;
+  flex-direction: column;
   gap: 10px;
   align-items: center;
 }
 
 .linkNav {
-  font-size: 16px;
-  line-height: 14px;
-  display: inline-block;
-  padding-right: 10px;
-}
-
-.marker {
-  border-right: 1px solid #fff;
+  font-size: 18px;
 }
 
 .active {
   color: #fec90c;
+}
+
+@media screen and (min-width: 768px) {
+  .authContainer {
+    flex-direction: row;
+  }
+
+  .linkNav {
+    font-size: 16px;
+    line-height: 14px;
+    display: inline-block;
+    padding-right: 10px;
+  }
+
+  .marker {
+    border-right: 1px solid #fff;
+  }
 }

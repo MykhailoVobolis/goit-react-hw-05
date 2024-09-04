@@ -1,0 +1,18 @@
+.active {
+  color: #fec90c;
+}
+
+.navListContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .navListContainer {
+    flex-direction: column;
+    flex-direction: row;
+    gap: 30px;
+  }
+}

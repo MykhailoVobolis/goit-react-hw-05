@@ -11,13 +11,13 @@ const getNavLinkClassLogin = ({ isActive }) => {
   return clsx(css.link, css.linkNav, isActive && css.active);
 };
 
-export default function AuthNav() {
+export default function AuthNav({ onClose }) {
   return (
     <div className={css.authContainer}>
-      <NavLink className={getNavLinkClass} to="/register">
+      <NavLink className={getNavLinkClass} to="/register" onClick={() => onClose()}>
         Реєстрація
       </NavLink>
-      <NavLink className={getNavLinkClassLogin} to="/login">
+      <NavLink className={getNavLinkClassLogin} to="/login" onClick={() => onClose()}>
         Вхід
       </NavLink>
     </div>
