@@ -1,7 +1,7 @@
 .authContainer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
 }
 
@@ -16,6 +16,7 @@
 @media screen and (min-width: 768px) {
   .authContainer {
     flex-direction: row;
+    gap: 10px;
   }
 
   .linkNav {
