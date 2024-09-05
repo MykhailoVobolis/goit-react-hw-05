@@ -26,7 +26,7 @@ export default function ConfirmGoogleAuth() {
 
         if (!isCancelled) {
           authContext(response);
-          localStorage.setItem("accessToken", response.accessToken);
+          localStorage.setItem("wasLoggedIn", true);
           navigate("/"); // Перенаправляємо користувача на головну сторінку
         }
       } catch (error) {

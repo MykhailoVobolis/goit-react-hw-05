@@ -3,14 +3,10 @@ import { useUser } from "../userContext.jsx";
 import Loader from "./Loader/Loader.jsx";
 
 export default function PrivateRoute({ component, redirectTo }) {
-  const { isLoggedIn, authProcess = false } = useUser();
+  const { isLoggedIn, authProcess } = useUser();
 
-  const accessToken = localStorage.getItem("accessToken");
-
-  if (accessToken) {
-    if (authProcess) {
-      return <Loader loading={authProcess} />;
-    }
+  if (authProcess) {
+    return <Loader loading={true} />;
   }
 
   return isLoggedIn ? component : <Navigate to={redirectTo} />;

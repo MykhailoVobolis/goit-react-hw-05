@@ -45,9 +45,9 @@ export default function App() {
       }
     }
 
-    const accessToken = localStorage.getItem("accessToken");
+    const wasLoggedIn = localStorage.getItem("wasLoggedIn");
 
-    if (accessToken) {
+    if (wasLoggedIn) {
       setIsRefreshing(true);
       setLoading(true);
       refresh();
