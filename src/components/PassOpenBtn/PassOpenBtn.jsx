@@ -6,9 +6,9 @@ export default function PassOpenBtn({ click, isOpen }) {
   return (
     <button type="button" className={css.seePassBtn} onClick={click}>
       {isOpen ? (
-        <FiEye className={css.iconSeePassBtn} size={20} />
+        <FiEye className={css.iconSeePassBtn} size={18} />
       ) : (
-        <FiEyeOff className={css.iconSeePassBtn} size={20} />
+        <FiEyeOff className={css.iconSeePassBtn} size={18} />
       )}
     </button>
   );
