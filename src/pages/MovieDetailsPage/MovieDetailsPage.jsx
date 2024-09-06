@@ -216,8 +216,10 @@ export default function MovieDetailsPage() {
                     <li className={css.statValue}>{format(movies.release_date, "dd MMMM yyyy", { locale: uk })}</li>
                   )}
                   <li>
-                    <span className={css.rating}>TMDB</span>
-                    <span className={css.ratingValue}>{rating}</span>
+                    <div className={css.ratingContainer}>
+                      <span className={css.rating}>TMDB</span>
+                      <span className={css.ratingValue}>{rating}</span>
+                    </div>
                   </li>
                   <li className={css.statValue}>
                     <AiFillLike className={css.icon} />
