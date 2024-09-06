@@ -17,7 +17,7 @@ const getNavLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
 };
 
-export default function Navigation({ openModal, isLoggedIn, onClose }) {
+export default function Navigation({ openModal, isLoggedIn, onClose, modalIsOpen }) {
   const { user } = useUser();
 
   const isMobile = useMedia("(max-width: 767px)");
@@ -38,7 +38,7 @@ export default function Navigation({ openModal, isLoggedIn, onClose }) {
       </nav>
       <div className={css.userContainer}>
         {isMobile && isLoggedIn && <UserAvatar user={user} />}
-        {isMobile && <BurgerButton openModal={openModal} />}
+        {isMobile && <BurgerButton openModal={openModal} modalIsOpen={modalIsOpen} />}
       </div>
     </div>
   );

@@ -28,8 +28,8 @@ export default function AppBar() {
   return (
     <header className={css.header}>
       <div className={css.container}>
-        <Navigation openModal={openModal} isLoggedIn={isLoggedIn} onClose={closeModal} />
-        {isTablet && (isLoggedIn ? <UserMenu /> : <AuthNav />)}
+        <Navigation openModal={openModal} isLoggedIn={isLoggedIn} onClose={closeModal} modalIsOpen={modalIsOpen} />
+        {isTablet && (isLoggedIn ? <UserMenu onClose={closeModal} /> : <AuthNav onClose={closeModal} />)}
         {modalIsOpen && <MenuModal isOpen={modalIsOpen} onClose={closeModal} />}
       </div>
     </header>
