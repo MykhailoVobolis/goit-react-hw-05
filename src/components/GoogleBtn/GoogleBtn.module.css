@@ -1,0 +1,31 @@
+.googleBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: start;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: #f7f6f1;
+  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.googleBtn:hover {
+  color: #fec90c;
+}
+
+.googleIcon {
+  font-size: 34px;
+}
+
+@media (min-width: 768px) {
+  .googleBtn {
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .googleIcon {
+    font-size: 40px;
+  }
+}

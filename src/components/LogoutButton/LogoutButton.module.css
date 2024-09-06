@@ -1,0 +1,25 @@
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 18px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: #f7f6f1;
+  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logoutBtn:hover {
+  color: #fec90c;
+}
+
+@media screen and (min-width: 768px) {
+  .logoutBtn {
+    gap: 8px;
+    justify-content: end;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}

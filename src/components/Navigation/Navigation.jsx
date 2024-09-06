@@ -4,6 +4,12 @@ import { NavLink, Link } from "react-router-dom";
 import { RiMovie2Line } from "react-icons/ri";
 
 import { IoIosSearch } from "react-icons/io";
+import { useUser } from "../../userContext.jsx";
+import { useMedia } from "react-use";
+
+import BurgerButton from "../BurgerButton/BurgerButton.jsx";
+import NavigationList from "../NavigationList/NavigationList.jsx";
+import UserAvatar from "../UserAvatar/UserAvatar.jsx";
 
 import css from "./Navigation.module.css";
 
@@ -11,27 +17,29 @@ const getNavLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
 };
 
-export default function Navigation() {
+export default function Navigation({ openModal, isLoggedIn, onClose, modalIsOpen }) {
+  const { user } = useUser();
+
+  const isMobile = useMedia("(max-width: 767px)");
+  const isTablet = useMedia("(min-width: 768px)");
+
   return (
-    <header className={css.pageHeader}>
-      <div className={css.container}>
-        <nav className={css.nav}>
-          <div className={css.navItemsContainer}>
-            <Link to="/">
-              <RiMovie2Line className={css.logo} />
-            </Link>
-            <NavLink to="/" className={getNavLinkClass}>
-              Додому
-            </NavLink>
-            <NavLink to="/movies" className={getNavLinkClass}>
-              Фільми
-            </NavLink>
-          </div>
-          <Link to="/search">
-            <IoIosSearch className={css.searchIcon} />
+    <div className={css.container}>
+      <nav className={css.nav}>
+        <div className={css.navItemsContainer}>
+          <Link to="/">
+            <RiMovie2Line className={css.logo} />
           </Link>
-        </nav>
+          {isTablet && <NavigationList isLoggedIn={isLoggedIn} onClose={onClose} />}
+        </div>
+        <NavLink to="/search" className={getNavLinkClass}>
+          <IoIosSearch className={css.searchIcon} />
+        </NavLink>
+      </nav>
+      <div className={css.userContainer}>
+        {isMobile && isLoggedIn && <UserAvatar user={user} />}
+        {isMobile && <BurgerButton openModal={openModal} modalIsOpen={modalIsOpen} />}
       </div>
-    </header>
+    </div>
   );
 }

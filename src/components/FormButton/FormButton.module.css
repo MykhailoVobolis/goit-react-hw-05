@@ -1,0 +1,29 @@
+.formBtn {
+  background-color: #fec90c;
+  color: #431f05;
+  border: none;
+  border-radius: 100px;
+  min-width: 100%;
+  padding: 15px;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 6px auto 0px auto;
+}
+
+.formBtn:hover {
+  color: #431f05;
+  background-color: #eeb104;
+}
+
+@media screen and (min-width: 1280px) {
+  .formBtn {
+    margin-right: 0px;
+  }
+}

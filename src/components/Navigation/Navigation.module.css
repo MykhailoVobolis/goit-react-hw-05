@@ -1,16 +1,8 @@
-.pageHeader {
-  background-color: #000000;
-  position: sticky;
-  top: 0px;
-  z-index: 9999999;
-}
-
 .container {
-  min-width: 320px;
-  max-width: 375px;
-  padding: 10px 15px;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .navItemsContainer {
@@ -23,6 +15,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-grow: 1;
+  margin-right: 15px;
 }
 
 .searchIcon {
@@ -37,7 +31,6 @@
 
 .active {
   color: #fec90c;
-  position: relative;
 }
 
 .logo {
@@ -47,19 +40,23 @@
   vertical-align: top;
 }
 
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
+.userContainer {
+  display: flex;
+  gap: 15px;
+}
 
+@media screen and (min-width: 768px) {
   .navItemsContainer {
     gap: 50px;
+  }
+
+  .nav {
+    margin-right: 22px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .container {
-    max-width: 1260px;
-    padding: 14px 7px;
+  .nav {
+    width: 1060px;
   }
 }

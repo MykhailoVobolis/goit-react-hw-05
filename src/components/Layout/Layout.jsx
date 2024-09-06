@@ -1,14 +1,14 @@
 import Footer from "../Footer/Footer";
-import Navigation from "../Navigation/Navigation";
 
 import { Suspense } from "react";
 
 import css from "./Layout.module.css";
+import AppBar from "../AppBar/AppBar.jsx";
 
 export default function Layout({ children }) {
   return (
     <div className={css.pageContainer}>
-      <Navigation />
+      <AppBar />
       <main className={css.mainContainer}>
         <Suspense fallback={<div></div>}>{children}</Suspense>
       </main>

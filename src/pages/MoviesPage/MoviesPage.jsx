@@ -4,7 +4,7 @@ import Slider from "../../components/Slider/Slider";
 import SliderMoviesMain from "../../components/SliderMoviesMain/SliderMoviesMain";
 import InfoBestMovies from "../../components/InfoBestMovies/InfoBestMovies";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { getPopularMovies, getMostRatingMovies, getNowPlaying, getUpcomingMovies } from "../../tmdb-api";
 import { Link } from "react-router-dom";
 import { GrNext } from "react-icons/gr";
@@ -71,7 +71,7 @@ export default function MoviesPage() {
     fetchMovies();
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     async function fetchMovies() {
       try {
         setLoading(true);
@@ -90,65 +90,66 @@ export default function MoviesPage() {
 
   return (
     <>
-      <section className={css.movies}>
-        {error && <ErrorMessage error={error} />}
-        {loading && <Loader loading={loading} />}
-        {upcomingMovies.length > 0 && <SliderMoviesMain items={upcomingMovies} />}
-        <div className={css.nowPlayMoviesContainer}>
-          {moviesNowPlaying.length > 0 && (
-            <div className={css.container}>
-              <div className={css.titleContainer}>
-                <Link className={css.moviesTitle} to={`/collection/now_playing_films`}>
-                  Зараз у кінотеатрах
-                </Link>
-                <Link className={css.moreLink} to={`/collection/now_playing_films`}>
-                  Показати більше
-                </Link>
-                <Link className={css.moreLinkMob} to={`/collection/now_playing_films`}>
-                  <GrNext className={css.moreIcon} />
-                </Link>
+      {error && <ErrorMessage error={error} />}
+      {loading && <Loader loading={loading} />}
+      {upcomingMovies.length > 0 && (
+        <section className={css.movies}>
+          <SliderMoviesMain items={upcomingMovies} />
+          <div className={css.nowPlayMoviesContainer}>
+            {moviesNowPlaying.length > 0 && (
+              <div className={css.container}>
+                <div className={css.titleContainer}>
+                  <Link className={css.moviesTitle} to={`/collection/now_playing_films`}>
+                    Зараз у кінотеатрах
+                  </Link>
+                  <Link className={css.moreLink} to={`/collection/now_playing_films`}>
+                    Показати більше
+                  </Link>
+                  <Link className={css.moreLinkMob} to={`/collection/now_playing_films`}>
+                    <GrNext className={css.moreIcon} />
+                  </Link>
+                </div>
+                <Slider items={moviesNowPlaying} />
               </div>
-              <Slider items={moviesNowPlaying} />
-            </div>
-          )}
-        </div>
-        {upcomingMovies.length > 0 && <InfoBestMovies />}
-        <div className={css.moviesContainer}>
-          {popularMovies.length > 0 && (
-            <div className={css.container}>
-              <div className={css.titleContainer}>
-                <Link className={css.moviesTitle} to={`/collection/most_popular_films`}>
-                  Найбільш популярні
-                </Link>
-                <Link className={css.moreLink} to={`/collection/most_popular_films`}>
-                  Показати більше
-                </Link>
-                <Link className={css.moreLinkMob} to={`/collection/most_popular_films`}>
-                  <GrNext className={css.moreIcon} />
-                </Link>
+            )}
+          </div>
+          <InfoBestMovies />
+          <div className={css.moviesContainer}>
+            {popularMovies.length > 0 && (
+              <div className={css.container}>
+                <div className={css.titleContainer}>
+                  <Link className={css.moviesTitle} to={`/collection/most_popular_films`}>
+                    Найбільш популярні
+                  </Link>
+                  <Link className={css.moreLink} to={`/collection/most_popular_films`}>
+                    Показати більше
+                  </Link>
+                  <Link className={css.moreLinkMob} to={`/collection/most_popular_films`}>
+                    <GrNext className={css.moreIcon} />
+                  </Link>
+                </div>
+                <Slider items={popularMovies} />
               </div>
-              <Slider items={popularMovies} />
-            </div>
-          )}
-          {mostRatingMovies.length > 0 && (
-            <div>
-              <div className={css.titleContainer}>
-                <Link className={css.moviesTitle} to={`/collection/best_rating_films`}>
-                  Найкраще за рейтингом TMDB
-                </Link>
-                <Link className={css.moreLink} to={`/collection/best_rating_films`}>
-                  Показати більше
-                </Link>
-                <Link className={css.moreLinkMob} to={`/collection/best_rating_films`}>
-                  <GrNext className={css.moreIcon} />
-                </Link>
+            )}
+            {mostRatingMovies.length > 0 && (
+              <div>
+                <div className={css.titleContainer}>
+                  <Link className={css.moviesTitle} to={`/collection/best_rating_films`}>
+                    Найкраще за рейтингом TMDB
+                  </Link>
+                  <Link className={css.moreLink} to={`/collection/best_rating_films`}>
+                    Показати більше
+                  </Link>
+                  <Link className={css.moreLinkMob} to={`/collection/best_rating_films`}>
+                    <GrNext className={css.moreIcon} />
+                  </Link>
+                </div>
+                <Slider items={mostRatingMovies} />
               </div>
-              <Slider items={mostRatingMovies} />
-            </div>
-          )}
-        </div>
-        {error && <ErrorMessage error={error} />}
-      </section>
+            )}
+          </div>
+        </section>
+      )}
     </>
   );
 }

@@ -1,12 +1,16 @@
 import clsx from "clsx";
 import { format } from "date-fns";
 import { uk } from "date-fns/locale";
+import toast, { Toaster } from "react-hot-toast";
 
 import MovieModal from "../../components/MovieModal/MovieModal";
 import PlayBtn from "../../components/PlayBtn/PlayBtn";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
 import SimilarFilms from "../../components/SimilarFilms/SimilarFilms";
+import DelIsFavoriteMovieBtn from "../../components/DelIsFavoriteMovieBtn/DelIsFavoriteMovieBtn.jsx";
+import AddIsFavoriteMovieBtn from "../../components/AddIsFavoriteMovieBtn/AddIsFavoriteMovieBtn.jsx";
+import { useUser } from "../../userContext.jsx";
 
 import { useParams, useLocation, Outlet, NavLink, Link } from "react-router-dom";
 import { useState, useEffect, useRef, Suspense } from "react";
@@ -14,6 +18,7 @@ import { AiFillLike } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { IoCaretBackOutline } from "react-icons/io5";
 import { getDetailsMovie, getMovieVideo } from "../../tmdb-api";
+import { addMovie, delMovie, getMovieById } from "../../cinema-server-api.js";
 import { FaPlay } from "react-icons/fa6";
 import { useMedia } from "react-use";
 import defaultBg from "../../img/header.png";
@@ -30,6 +35,8 @@ const defaultImg =
 const defaultUrl = "https://www.youtube.com/watch?v=KVZA8xsnC28";
 
 export default function MovieDetailsPage() {
+  const { isLoggedIn } = useUser();
+
   const { movieId } = useParams();
 
   const [movies, setMovies] = useState([]);
@@ -39,6 +46,7 @@ export default function MovieDetailsPage() {
   const [error, setError] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [trailerUrl, setTrailerUrl] = useState("");
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const isWide = useMedia("(min-width: 1280px)");
   const isTablet = useMedia("(min-width: 768px)");
@@ -53,6 +61,60 @@ export default function MovieDetailsPage() {
       !location.state && (backLink.current = "/");
     }
   }, [movieId]);
+
+  function handleClikAddMovie() {
+    const favoriteMovies = {
+      id: movieId,
+      poster_path: movies.poster_path,
+      title: movies.title,
+    };
+    async function addFavoriteMovie() {
+      try {
+        setIsFavorite(true);
+        toast("Фільм доданий в обране.", {
+          style: {
+            color: "#431f05",
+            backgroundColor: "#fec90c",
+          },
+        });
+        const data = await addMovie(favoriteMovies);
+      } catch (error) {
+        setError(true);
+      }
+    }
+    addFavoriteMovie();
+  }
+
+  function handleClikDelMovie() {
+    async function delFavoriteMovie() {
+      try {
+        setIsFavorite(false);
+        toast("Фільм видалений з обраного.", {
+          style: {
+            color: "#431f05",
+            backgroundColor: "#fec90c",
+          },
+        });
+        const data = await delMovie(movieId);
+      } catch (error) {
+        setError(true);
+      }
+    }
+    delFavoriteMovie();
+  }
+
+  // Виклик фильму за id з MongoDB для всановлення флага що фильм вже є у обраному
+  useEffect(() => {
+    async function handleClickMovieById() {
+      try {
+        const data = await getMovieById(movieId);
+        setIsFavorite(true);
+      } catch (error) {
+        setIsFavorite(false);
+      }
+    }
+    handleClickMovieById();
+  }, []);
 
   useEffect(() => {
     async function handleClickMovie() {
@@ -130,7 +192,15 @@ export default function MovieDetailsPage() {
             />
           )}
           <div>
-            <h2 className={css.title}>{movies.title}</h2>
+            <h2 className={css.title}>
+              {isLoggedIn &&
+                (isFavorite ? (
+                  <DelIsFavoriteMovieBtn handleClick={handleClikDelMovie} />
+                ) : (
+                  <AddIsFavoriteMovieBtn handleClick={handleClikAddMovie} />
+                ))}
+              {movies.title}
+            </h2>
             {!isWide && <PlayBtn movieId={movieId} openModal={openModal} />}
             <div className={css.abautFilmContainer}>
               <ul className={css.statMovie}>
@@ -146,8 +216,10 @@ export default function MovieDetailsPage() {
                     <li className={css.statValue}>{format(movies.release_date, "dd MMMM yyyy", { locale: uk })}</li>
                   )}
                   <li>
-                    <span className={css.rating}>TMDB</span>
-                    <span className={css.ratingValue}>{rating}</span>
+                    <div className={css.ratingContainer}>
+                      <span className={css.rating}>TMDB</span>
+                      <span className={css.ratingValue}>{rating}</span>
+                    </div>
                   </li>
                   <li className={css.statValue}>
                     <AiFillLike className={css.icon} />
@@ -201,6 +273,7 @@ export default function MovieDetailsPage() {
       </section>
       <SimilarFilms movieId={movieId} />
       {error && <ErrorMessage error={error} />}
+      <Toaster position="top-right" containerStyle={{ zIndex: 99999999 }} />
     </div>
   );
 }

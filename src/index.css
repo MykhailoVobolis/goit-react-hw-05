@@ -40,7 +40,7 @@ p {
 
 a {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
   color: currentColor;
   text-decoration: none;
   color: #f7f6f1;
@@ -117,6 +117,12 @@ img {
   .swiper .swiper-pagination-bullet {
     width: 8px;
     height: 8px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  a {
+    font-weight: 600;
   }
 }
 
