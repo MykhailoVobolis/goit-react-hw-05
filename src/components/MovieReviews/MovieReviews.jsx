@@ -22,8 +22,8 @@ export default function MovieReviews() {
         if (!data.results.length) {
           toast("На жаль, ще немає відгуків до цього фільму. Будь ласка, спробуйте пізніше.", {
             style: {
-              color: "#ffffff",
-              backgroundColor: "#FF8C00",
+              color: "#431f05",
+              backgroundColor: "#fec90c",
             },
           });
           return;
@@ -39,14 +39,6 @@ export default function MovieReviews() {
     }
     handleClickReviews();
   }, [movieId]);
-
-  // Плавний скрол колекції відгуків до верха сторінки. За потреби!!!
-  // useEffect(() => {
-  //   window.scrollTo({
-  //     top: "1280",
-  //     behavior: "smooth",
-  //   });
-  // }, [reviews]);
 
   return (
     <>

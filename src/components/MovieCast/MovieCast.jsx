@@ -22,8 +22,8 @@ export default function MovieCast() {
         if (!data.cast.length) {
           toast("На жаль, ще немає даних про акторів цього фільму. Будь ласка, спробуйте пізніше.", {
             style: {
-              color: "#ffffff",
-              backgroundColor: "#FF8C00",
+              color: "#431f05",
+              backgroundColor: "#fec90c",
             },
           });
           return;
@@ -43,14 +43,6 @@ export default function MovieCast() {
     }
     handleClickActors();
   }, [movieId]);
-
-  // Плавний скрол колекції акторів до верха сторінки. За потреби!!!
-  // useEffect(() => {
-  //   window.scrollTo({
-  //     top: "1280",
-  //     behavior: "smooth",
-  //   });
-  // }, [actors]);
 
   return (
     <>
