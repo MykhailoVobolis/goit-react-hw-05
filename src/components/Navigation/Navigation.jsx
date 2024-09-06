@@ -17,7 +17,7 @@ const getNavLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
 };
 
-export default function Navigation({ openModal, isLoggedIn }) {
+export default function Navigation({ openModal, isLoggedIn, onClose }) {
   const { user } = useUser();
 
   const isMobile = useMedia("(max-width: 767px)");
@@ -30,7 +30,7 @@ export default function Navigation({ openModal, isLoggedIn }) {
           <Link to="/">
             <RiMovie2Line className={css.logo} />
           </Link>
-          {isTablet && <NavigationList isLoggedIn={isLoggedIn} />}
+          {isTablet && <NavigationList isLoggedIn={isLoggedIn} onClose={onClose} />}
         </div>
         <NavLink to="/search" className={getNavLinkClass}>
           <IoIosSearch className={css.searchIcon} />

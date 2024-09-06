@@ -13,6 +13,7 @@ export default function NavigationList({ isLoggedIn, onClose }) {
       <NavLink to="/" className={getNavLinkClass} onClick={() => onClose()}>
         Додому
       </NavLink>
+
       <NavLink to="/movies" className={getNavLinkClass} onClick={() => onClose()}>
         Фільми
       </NavLink>
