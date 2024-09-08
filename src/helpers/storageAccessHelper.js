@@ -1,4 +1,4 @@
-export async function requestStorageAccess() {
+export async function storageAccessHelper() {
   if (document.requestStorageAccess) {
     try {
       await document.requestStorageAccess();

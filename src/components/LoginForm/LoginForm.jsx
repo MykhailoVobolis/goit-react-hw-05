@@ -4,6 +4,9 @@ import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import { useUser } from "../../userContext.jsx";
 import { useState } from "react";
+
+import { storageAccessHelper } from "../../helpers/storageAccessHelper.js";
+
 import GoogleBtn from "../GoogleBtn/GoogleBtn.jsx";
 import FormButton from "../FormButton/FormButton.jsx";
 import PassOpenBtn from "../PassOpenBtn/PassOpenBtn.jsx";
@@ -40,7 +43,10 @@ export default function LoginForm() {
 
   const { logIn } = useUser();
 
-  const handleSubmit = (value, actions) => {
+  const handleSubmit = async (value, actions) => {
+    // Виклик requestStorageAccess перед сабмітом форми (дозвіл на запис cookie у Saafri)
+    await storageAccessHelper();
+
     logIn(value);
     actions.resetForm();
   };

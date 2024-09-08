@@ -1,14 +1,14 @@
 import { FcGoogle } from "react-icons/fc";
 
 import { getGoogleUrl } from "../../cinema-server-api.js";
-import { requestStorageAccess } from "../../helpers/storageAccessHelper.js";
+import { storageAccessHelper } from "../../helpers/storageAccessHelper.js";
 
 import css from "./GoogleBtn.module.css";
 
 export default function GoogleBtn({ type }) {
   const handleGoogleLogin = async () => {
     // Запит доступу до збереженого сховища (для Safari)
-    await requestStorageAccess();
+    await storageAccessHelper();
 
     try {
       const response = await getGoogleUrl();
