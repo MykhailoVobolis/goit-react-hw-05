@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../../userContext.jsx";
+
 import { confirmGoogleOAuth } from "../../cinema-server-api.js";
+
 import Loader from "../../components/Loader/Loader.jsx";
 import toast, { Toaster } from "react-hot-toast";
 

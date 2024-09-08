@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { lazy, useEffect, useState } from "react";
 
 import { refreshUser } from "../../cinema-server-api.js";
+import { requestStorageAccess } from "../../helpers/storageAccessHelper.js";
 import { useUser } from "../../userContext.jsx";
 import Loader from "../Loader/Loader.jsx";
 import RestrictedRoute from "../RestrictedRoute.jsx";
@@ -34,6 +35,9 @@ export default function App() {
 
   useEffect(() => {
     async function refresh() {
+      // Запит доступу до збереженого сховища (для Safari)
+      await requestStorageAccess();
+
       try {
         const response = await refreshUser();
         authContext(response);

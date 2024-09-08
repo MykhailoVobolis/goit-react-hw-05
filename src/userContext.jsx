@@ -2,6 +2,7 @@ import axios from "axios";
 import { createContext, useContext, useState } from "react";
 
 import { loginUser, logoutUser, registerUser } from "./cinema-server-api.js";
+import { requestStorageAccess } from "./helpers/storageAccessHelper.js";
 
 import Loader from "./components/Loader/Loader.jsx";
 import toast, { Toaster } from "react-hot-toast";
@@ -27,6 +28,9 @@ export const UserProvider = ({ children }) => {
   };
 
   const register = async (value) => {
+    // Запит доступу до збереженого сховища (для Safari)
+    await requestStorageAccess();
+
     try {
       setLoading(true);
       const response = await registerUser(value);
@@ -49,6 +53,9 @@ export const UserProvider = ({ children }) => {
   };
 
   const logIn = async (value) => {
+    // Запит доступу до збереженого сховища (для Safari)
+    await requestStorageAccess();
+
     try {
       setLoading(true);
       const response = await loginUser(value);
