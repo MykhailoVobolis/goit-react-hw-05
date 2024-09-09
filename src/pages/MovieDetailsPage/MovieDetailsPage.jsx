@@ -231,9 +231,10 @@ export default function MovieDetailsPage() {
                   </li>
                 </ul>
                 <ul className={css.genreList}>
-                  {genres.map((genre) => (
+                  {genres.map((genre, index) => (
                     <li className={css.genreItem} key={genre.id}>
                       {genre.name}
+                      {index < genres.length - 1 && ","}
                     </li>
                   ))}
                 </ul>
