@@ -4,7 +4,7 @@ import css from "./CustomPlayer.module.css";
 
 export default function CustomPlayer({ isOpen, trailerUrl }) {
   return (
-    <div className={css.overflowHidden}>
+    <div className={css.playerWrapper}>
       <Plyr
         source={{
           type: "video",
@@ -17,6 +17,9 @@ export default function CustomPlayer({ isOpen, trailerUrl }) {
         }}
         options={{
           autoplay: isOpen, // Автоматичне відтворення
+          keyboard: {
+            global: true, // Вмикає глобальне керування клавіатурою
+          },
         }}
         controls // Показувати контролери
       />
