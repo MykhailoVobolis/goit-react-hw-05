@@ -1,6 +1,7 @@
 import Modal from "react-modal";
 
-import Player from "../Player/Player";
+// import Player from "../Player/Player";
+import CustomPlayer from "../CustomPlayer/CustomPlayer.jsx";
 
 import css from "./MovieModal.module.css";
 
@@ -22,7 +23,8 @@ export default function MovieModal({ isOpen, onClose, trailerUrl }) {
       }}
       closeTimeoutMS={500}
       onRequestClose={onClose}>
-      <Player isOpen={isOpen} trailerUrl={trailerUrl} />
+      {/* <Player isOpen={isOpen} trailerUrl={trailerUrl} /> */}
+      <CustomPlayer isOpen={isOpen} trailerUrl={trailerUrl} />
     </Modal>
   );
 }
