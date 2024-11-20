@@ -47,7 +47,6 @@ export default function MovieDetailsPage() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [trailerUrl, setTrailerUrl] = useState("");
   const [isFavorite, setIsFavorite] = useState(false);
-  const [bgImage, setBgImage] = useState(null);
 
   const isWide = useMedia("(min-width: 1280px)");
   const isTablet = useMedia("(min-width: 768px)");
@@ -161,14 +160,6 @@ export default function MovieDetailsPage() {
     handleClickPlayBtn();
   }, [modalIsOpen]);
 
-  const handleBgImageLoad = () => {
-    setBgImage(`url(https://image.tmdb.org/t/p/original${movies.backdrop_path})`);
-  };
-
-  const handleErrorBgImageLoad = () => {
-    setBgImage(`url(${defaultBg})`);
-  };
-
   return (
     <div className={css.movieDetailsPage}>
       <section>
@@ -176,19 +167,15 @@ export default function MovieDetailsPage() {
         <div
           className={css.hero}
           style={
-            bgImage ? { backgroundImage: bgImage } : {} // Пустий стиль, поки фон не завантажений
+            movies.backdrop_path
+              ? {
+                  backgroundImage: `url(https://image.tmdb.org/t/p/original${movies.backdrop_path})`,
+                }
+              : {
+                  backgroundImage: `url(${defaultBg})`,
+                }
           }>
           <span className={css.gradientOverlay}></span>
-
-          {/* Попереднє завантаження зображення фону для забезпечення плавного досвіду для користувача. */}
-          <img
-            src={`https://image.tmdb.org/t/p/original${movies.backdrop_path}`}
-            alt="Background"
-            style={{ display: "none" }} // Не відображаємо його в інтерфейсі. Тільки для завантаження!
-            onLoad={handleBgImageLoad} // Якщо успішно завантаженно
-            onError={handleErrorBgImageLoad} // Якщо завантаження не вдається
-          />
-
           {isWide && <PlayBtn movieId={movieId} openModal={openModal} />}
         </div>
         {modalIsOpen && <MovieModal isOpen={modalIsOpen} onClose={closeModal} trailerUrl={trailerUrl} />}
