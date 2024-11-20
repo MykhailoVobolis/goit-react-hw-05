@@ -1,6 +1,6 @@
 .playBtn {
   position: relative;
-  z-index: 99999;
+  z-index: 1000;
   font-family: inherit;
   border: none;
   height: 48px;
