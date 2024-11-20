@@ -4,7 +4,7 @@ import MovieList from "../../components/MovieList/MovieList";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import PaginateBar from "../../components/PaginateBar/PaginateBar";
+import MoviesPagination from "../../components/MoviesPagination/MoviesPagination.jsx";
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -18,8 +18,6 @@ export default function SearchMoviesPage() {
   const [error, setError] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const [paginate, setPaginate] = useState(false);
-  const [prevDisabled, setPrevDisabled] = useState(false);
-  const [nextDisabled, setNextDisabled] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const inputValue = searchParams.get("name");
   const page = Number(searchParams.get("page")) || 1;
@@ -30,21 +28,9 @@ export default function SearchMoviesPage() {
     setPaginate(false);
   };
 
-  const nextPage = () => {
-    if (page < totalPages) {
-      setPrevDisabled(false);
-      setLoading(true);
-      setSearchParams({ name: inputValue, page: page + 1 });
-      setPaginate(true);
-    }
-  };
-
-  const prevPage = () => {
-    if (page !== 1) {
-      setNextDisabled(false);
-      setLoading(true);
-      setSearchParams({ name: inputValue, page: page - 1 });
-    }
+  // Функція обробки зміни сторінки
+  const handlePageChange = (event, value) => {
+    setSearchParams({ name: inputValue, page: value });
   };
 
   useEffect(() => {
@@ -71,14 +57,6 @@ export default function SearchMoviesPage() {
         if (data.total_pages > 1) {
           setPaginate(true);
         }
-        // Перевірка, чи це остання завантажена сторінка?
-        if (page === data.total_pages) {
-          setNextDisabled(true);
-        }
-        // Перевірка, чи це перша завантажена сторінка?
-        if (page === 1) {
-          setPrevDisabled(true);
-        }
       } catch (error) {
         setError(true);
       } finally {
@@ -96,15 +74,7 @@ export default function SearchMoviesPage() {
           {loading && <Loader loading={loading} />}
           {error && <ErrorMessage error={error} />}
           {movies.length > 0 && <MovieList items={movies} />}
-          {paginate && (
-            <PaginateBar
-              prevPage={prevPage}
-              nextPage={nextPage}
-              page={page}
-              prevDisabled={prevDisabled}
-              nextDisabled={nextDisabled}
-            />
-          )}
+          {paginate && <MoviesPagination page={page} totalPages={totalPages} handlePageChange={handlePageChange} />}
         </div>
       </section>
       <Toaster position="top-right" containerStyle={{ zIndex: 99999999 }} />

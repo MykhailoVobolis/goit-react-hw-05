@@ -1,7 +1,7 @@
 import MovieList from "../../components/MovieList/MovieList";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
-import PaginateBar from "../../components/PaginateBar/PaginateBar";
+import MoviesPagination from "../../components/MoviesPagination/MoviesPagination.jsx";
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -15,26 +15,12 @@ export default function BestRatingFilmsPage() {
   const [error, setError] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const [paginate, setPaginate] = useState(false);
-  const [prevDisabled, setPrevDisabled] = useState(false);
-  const [nextDisabled, setNextDisabled] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
 
-  const nextPage = () => {
-    if (page < totalPages) {
-      setPrevDisabled(false);
-      setLoading(true);
-      setSearchParams({ page: page + 1 });
-      setPaginate(true);
-    }
-  };
-
-  const prevPage = () => {
-    if (page !== 1) {
-      setNextDisabled(false);
-      setLoading(true);
-      setSearchParams({ page: page - 1 });
-    }
+  // Функція обробки зміни сторінки
+  const handlePageChange = (event, value) => {
+    setSearchParams({ page: value });
   };
 
   useEffect(() => {
@@ -50,14 +36,6 @@ export default function BestRatingFilmsPage() {
         setTotalPages(data.total_pages);
         if (data.total_pages > 1) {
           setPaginate(true);
-        }
-        // Перевірка, чи це остання завантажена сторінка?
-        if (page === data.total_pages) {
-          setNextDisabled(true);
-        }
-        // Перевірка, чи це перша завантажена сторінка?
-        if (page === 1) {
-          setPrevDisabled(true);
         }
       } catch (error) {
         setError(true);
@@ -76,15 +54,7 @@ export default function BestRatingFilmsPage() {
           <div className={css.container}>
             <h2 className={css.bestMoviesTitle}>Найкраще за рейтингом TMDB</h2>
             <MovieList items={mostRatingMovies} />
-            {paginate && (
-              <PaginateBar
-                prevPage={prevPage}
-                nextPage={nextPage}
-                page={page}
-                prevDisabled={prevDisabled}
-                nextDisabled={nextDisabled}
-              />
-            )}
+            {paginate && <MoviesPagination page={page} totalPages={totalPages} handlePageChange={handlePageChange} />}
           </div>
         )}
       </section>
