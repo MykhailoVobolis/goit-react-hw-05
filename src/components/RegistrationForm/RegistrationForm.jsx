@@ -72,39 +72,45 @@ export default function RegistrationForm() {
           <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={FeedbackSchema}>
             {({ errors, touched }) => (
               <Form className={css.form} autoComplete="off">
-                <Field
-                  className={`${errors.name && touched.name ? css.inputError : css.registerInput}`}
-                  label="Username"
-                  type="text"
-                  name="name"
-                  autoComplete="off"
-                  required
-                  placeholder="Повне ім'я"
-                />
-                <ErrorMessage className={css.error} name="name" component="span" />
-                <Field
-                  className={`${errors.email && touched.email ? css.inputError : css.registerInput}`}
-                  label="Email"
-                  type="email"
-                  name="email"
-                  autoComplete="off"
-                  required
-                  placeholder="Адреса електронної пошти"
-                />
-                <ErrorMessage className={css.error} name="email" component="span" />
-                <div className={css.passInputContainer}>
+                <div className={css.inputGroup}>
                   <Field
-                    className={`${errors.password && touched.password ? css.inputError : css.registerInput}`}
-                    label="Password"
-                    type={isPassOpen ? "text" : "password"}
-                    name="password"
-                    autoComplete="current-password"
+                    className={`${errors.name && touched.name ? css.inputError : css.registerInput}`}
+                    label="Username"
+                    type="text"
+                    name="name"
+                    autoComplete="off"
                     required
-                    placeholder="Пароль"
+                    placeholder="Повне ім'я"
                   />
-                  <PassOpenBtn click={handleClick} isOpen={isPassOpen} />
+                  <ErrorMessage className={css.error} name="name" component="span" />
                 </div>
-                <ErrorMessage className={css.error} name="password" component="span" />
+                <div className={css.inputGroup}>
+                  <Field
+                    className={`${errors.email && touched.email ? css.inputError : css.registerInput}`}
+                    label="Email"
+                    type="email"
+                    name="email"
+                    autoComplete="off"
+                    required
+                    placeholder="Адреса електронної пошти"
+                  />
+                  <ErrorMessage className={css.error} name="email" component="span" />
+                </div>
+                <div className={css.inputGroup}>
+                  <div className={css.passInputContainer}>
+                    <Field
+                      className={`${errors.password && touched.password ? css.inputError : css.registerInput}`}
+                      label="Password"
+                      type={isPassOpen ? "text" : "password"}
+                      name="password"
+                      autoComplete="current-password"
+                      required
+                      placeholder="Пароль"
+                    />
+                    <PassOpenBtn click={handleClick} isOpen={isPassOpen} />
+                  </div>
+                  <ErrorMessage className={css.error} name="password" component="span" />
+                </div>
                 <FormButton>Створити акаунт</FormButton>
               </Form>
             )}

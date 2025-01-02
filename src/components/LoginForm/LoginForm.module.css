@@ -71,6 +71,10 @@
   position: relative;
 }
 
+.inputGroup {
+  position: relative;
+}
+
 .inputError {
   box-sizing: border-box;
   width: 100%;
@@ -93,6 +97,9 @@
   color: #6d6d6d;
   font-size: 14px;
   margin-top: -28px;
+  position: absolute;
+  left: 0px;
+  top: 80px;
 }
 
 .redirectionText {

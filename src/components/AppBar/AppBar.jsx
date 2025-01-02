@@ -4,7 +4,7 @@ import AuthNav from "../AuthNav/AuthNav.jsx";
 
 import { useUser } from "../../userContext.jsx";
 import { useMedia } from "react-use";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import MenuModal from "../MenuModal/MenuModal.jsx";
 
@@ -16,6 +16,10 @@ export default function AppBar() {
   const isTablet = useMedia("(min-width: 768px)");
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); // Стан видимості хедера
+  const [lastScrollPosition, setLastScrollPosition] = useState(0); // Остання позиція прокрутки
+
+  const headerRef = useRef(null);
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -25,8 +29,33 @@ export default function AppBar() {
     setModalIsOpen(false);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPosition = window.scrollY;
+
+      // Висота хедера
+      const headerHeight = headerRef.current?.getBoundingClientRect().height || 0;
+
+      if (currentScrollPosition > headerHeight && currentScrollPosition > lastScrollPosition) {
+        // Скролл вниз — хедер ховається
+        setIsVisible(false);
+      } else if (currentScrollPosition < lastScrollPosition) {
+        // Скролл вверх — хедер з'являється
+        setIsVisible(true);
+      }
+
+      setLastScrollPosition(currentScrollPosition);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollPosition]);
+
   return (
-    <header className={css.header}>
+    <header ref={headerRef} className={`${css.header} ${!isVisible ? css.hidden : ""}`}>
       <div className={css.container}>
         <Navigation openModal={openModal} isLoggedIn={isLoggedIn} onClose={closeModal} modalIsOpen={modalIsOpen} />
         {isTablet && (isLoggedIn ? <UserMenu onClose={closeModal} /> : <AuthNav onClose={closeModal} />)}

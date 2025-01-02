@@ -19,6 +19,7 @@
   background-color: rgba(26, 26, 26, 0.13);
   padding: 8px;
   border-radius: 8px;
+  pointer-events: none;
 }
 
 .titleMovies {
