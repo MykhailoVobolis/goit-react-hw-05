@@ -113,8 +113,10 @@ export default function MovieDetailsPage() {
         setIsFavorite(false);
       }
     }
-    handleClickMovieById();
-  }, []);
+    if (isLoggedIn) {
+      handleClickMovieById();
+    }
+  }, [isLoggedIn]);
 
   useEffect(() => {
     async function handleClickMovie() {
