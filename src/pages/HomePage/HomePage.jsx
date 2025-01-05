@@ -58,7 +58,7 @@ export default function HomePage() {
               </li>
               <li className={css.deviceItem}>
                 <IoLaptopOutline className={css.deviceIcon} />
-                <p className={css.deviceName}>комп'ютер</p>
+                <p className={css.deviceName}>комп`ютер</p>
               </li>
               <li className={css.deviceItem}>
                 <IoPhonePortraitOutline className={css.deviceIcon} />
