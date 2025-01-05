@@ -54,7 +54,7 @@
 .titleContainer {
   opacity: 0;
   transform: translateX(-100%);
-  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+  transition: opacity 700ms ease-in-out, transform 700ms ease-in-out;
 }
 
 .titleContainer.visible {
