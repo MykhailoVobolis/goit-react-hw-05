@@ -10,8 +10,9 @@ import Loader from "../../components/Loader/Loader";
 import SimilarFilms from "../../components/SimilarFilms/SimilarFilms";
 import DelIsFavoriteMovieBtn from "../../components/DelIsFavoriteMovieBtn/DelIsFavoriteMovieBtn.jsx";
 import AddIsFavoriteMovieBtn from "../../components/AddIsFavoriteMovieBtn/AddIsFavoriteMovieBtn.jsx";
-import { useUser } from "../../userContext.jsx";
+import defaultBg from "../../img/header.png";
 
+import { useUser } from "../../userContext.jsx";
 import { useParams, useLocation, Outlet, NavLink, Link } from "react-router-dom";
 import { useState, useEffect, useRef, Suspense } from "react";
 import { AiFillLike } from "react-icons/ai";
@@ -21,7 +22,6 @@ import { getDetailsMovie, getMovieVideo } from "../../tmdb-api";
 import { addMovie, delMovie, getMovieById } from "../../cinema-server-api.js";
 import { FaPlay } from "react-icons/fa6";
 import { useMedia } from "react-use";
-import defaultBg from "../../img/header.png";
 
 import css from "./MovieDetailsPage.module.css";
 
@@ -47,6 +47,7 @@ export default function MovieDetailsPage() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [trailerUrl, setTrailerUrl] = useState("");
   const [isFavorite, setIsFavorite] = useState(false);
+  const [backgroundImage, setBackgroundImage] = useState(null);
 
   const isWide = useMedia("(min-width: 1280px)");
   const isTablet = useMedia("(min-width: 768px)");
@@ -77,7 +78,7 @@ export default function MovieDetailsPage() {
             backgroundColor: "#fec90c",
           },
         });
-        const data = await addMovie(favoriteMovies);
+        await addMovie(favoriteMovies);
       } catch (error) {
         setError(true);
       }
@@ -95,7 +96,7 @@ export default function MovieDetailsPage() {
             backgroundColor: "#fec90c",
           },
         });
-        const data = await delMovie(movieId);
+        await delMovie(movieId);
       } catch (error) {
         setError(true);
       }
@@ -108,7 +109,11 @@ export default function MovieDetailsPage() {
     async function handleClickMovieById() {
       try {
         const data = await getMovieById(movieId);
-        setIsFavorite(true);
+        if (data) {
+          setIsFavorite(true);
+        } else {
+          setIsFavorite(false);
+        }
       } catch (error) {
         setIsFavorite(false);
       }
@@ -116,16 +121,31 @@ export default function MovieDetailsPage() {
     if (isLoggedIn) {
       handleClickMovieById();
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, movieId]);
 
   useEffect(() => {
     async function handleClickMovie() {
+      setLoading(true);
       try {
-        setLoading(true);
         const data = await getDetailsMovie(movieId);
         setMovies(data);
         setGenres(data.genres);
         setRating(Math.round(data.vote_average * 10) / 10);
+
+        if (data.backdrop_path) {
+          const img = new Image();
+          img.src = `https://image.tmdb.org/t/p/original${data.backdrop_path}`;
+
+          img.onload = () => {
+            setBackgroundImage(`url(${img.src})`);
+          };
+
+          img.onerror = () => {
+            setBackgroundImage(`url(${defaultBg})`);
+          };
+        } else {
+          setBackgroundImage(`url(${defaultBg})`);
+        }
       } catch (error) {
         setError(true);
       } finally {
@@ -162,23 +182,18 @@ export default function MovieDetailsPage() {
     handleClickPlayBtn();
   }, [modalIsOpen]);
 
-  return (
+  return loading ? (
+    <Loader loading={loading} />
+  ) : (
     <div className={css.movieDetailsPage}>
       <section>
-        {loading && <Loader loading={loading} />}
         <div
           className={css.hero}
-          style={
-            movies.backdrop_path
-              ? {
-                  backgroundImage: `url(https://image.tmdb.org/t/p/original${movies.backdrop_path})`,
-                }
-              : {
-                  backgroundImage: `url(${defaultBg})`,
-                }
-          }>
+          style={{
+            backgroundImage: backgroundImage,
+          }}>
           <span className={css.gradientOverlay}></span>
-          {isWide && <PlayBtn movieId={movieId} openModal={openModal} />}
+          {isWide && backgroundImage && <PlayBtn movieId={movieId} openModal={openModal} />}
         </div>
         {modalIsOpen && <MovieModal isOpen={modalIsOpen} onClose={closeModal} trailerUrl={trailerUrl} />}
       </section>
