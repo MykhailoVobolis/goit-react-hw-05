@@ -4,7 +4,7 @@ import Slider from "../../components/Slider/Slider";
 import SliderMoviesMain from "../../components/SliderMoviesMain/SliderMoviesMain";
 import InfoBestMovies from "../../components/InfoBestMovies/InfoBestMovies";
 
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { getPopularMovies, getMostRatingMovies, getNowPlaying, getUpcomingMovies } from "../../tmdb-api";
 import { Link } from "react-router-dom";
 import { GrNext } from "react-icons/gr";
@@ -24,10 +24,16 @@ export default function MoviesPage() {
     async function fetchMovies() {
       try {
         setLoading(true);
-        const data = await getPopularMovies(page);
-        setPopularMovies((prevPopularMovies) => {
-          return popularMovies.length > 0 ? [...prevPopularMovies, ...data.results] : data.results;
-        });
+        const [popular, rating, nowPlaying, upcoming] = await Promise.all([
+          getPopularMovies(page),
+          getMostRatingMovies(page),
+          getNowPlaying(page),
+          getUpcomingMovies(page),
+        ]);
+        setPopularMovies(popular.results);
+        setMostRatingMovies(rating.results);
+        setMoviesNowPlaying(nowPlaying.results);
+        setUpcomingMovies(upcoming.results);
       } catch (error) {
         setError(true);
       } finally {
@@ -35,66 +41,16 @@ export default function MoviesPage() {
       }
     }
     fetchMovies();
-  }, []);
-
-  useEffect(() => {
-    async function fetchMovies() {
-      try {
-        setLoading(true);
-        const data = await getMostRatingMovies(page);
-        setMostRatingMovies((prevMostRatingMovies) => {
-          return mostRatingMovies.length > 0 ? [...prevMostRatingMovies, ...data.results] : data.results;
-        });
-      } catch (error) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchMovies();
-  }, []);
-
-  useEffect(() => {
-    async function fetchMovies() {
-      try {
-        setLoading(true);
-        const data = await getNowPlaying(page);
-        setMoviesNowPlaying((prevMoviesNowPlaying) => {
-          return moviesNowPlaying.length > 0 ? [...prevMoviesNowPlaying, ...data.results] : data.results;
-        });
-      } catch (error) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchMovies();
-  }, []);
-
-  useLayoutEffect(() => {
-    async function fetchMovies() {
-      try {
-        setLoading(true);
-        const data = await getUpcomingMovies(page);
-        setUpcomingMovies((prevUpcomingMovies) => {
-          return upcomingMovies.length > 0 ? [...prevUpcomingMovies, ...data.results] : data.results;
-        });
-      } catch (error) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchMovies();
-  }, []);
+  }, [page]);
 
   return (
     <>
       {error && <ErrorMessage error={error} />}
-      {loading && <Loader loading={loading} />}
-      {upcomingMovies.length > 0 && (
+      {loading ? (
+        <Loader loading={loading} />
+      ) : (
         <section className={css.movies}>
-          <SliderMoviesMain items={upcomingMovies} />
+          {upcomingMovies.length > 0 && <SliderMoviesMain items={upcomingMovies} />}
           <div className={css.nowPlayMoviesContainer}>
             {moviesNowPlaying.length > 0 && (
               <div className={css.container}>
