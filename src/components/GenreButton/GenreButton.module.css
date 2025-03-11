@@ -1,0 +1,35 @@
+.genrePanelContainer {
+  position: relative;
+}
+
+.choiceGenreBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--plyr-video-background);
+  color: #f7f6f1;
+  border: none;
+  border-radius: 10px;
+  height: 96px;
+  width: 175px;
+  cursor: pointer;
+  transition: border var(--animation);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.choiceGenreBtn:hover {
+  border: solid 2px var(--plyr-color-main);
+}
+
+.iconBtn {
+  width: 16px;
+  height: 16px;
+  stroke: #fafafa99;
+  transition: var(--animation);
+}
+
+.iconBtn.isOpen {
+  transform: rotate(180deg);
+}

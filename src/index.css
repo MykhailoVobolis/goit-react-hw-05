@@ -20,6 +20,8 @@
   --plyr-control-hover: #eeb104; /* Колір кнопок при наведенні */
   --plyr-video-background: #000000; /* Фон плеєра */
   --plyr-range-fill-background: #fec90c; /* Прогрес-бар */
+
+  --animation: 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 ::-webkit-scrollbar {
