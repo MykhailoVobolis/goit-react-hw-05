@@ -84,12 +84,12 @@ export async function getGenresMovies() {
   return response.data;
 }
 
-export async function getMoviesByGenre(id, page) {
+export async function getMoviesByGenre(genreId, page) {
   const response = await axios.get(`/discover/movie`, {
     ...options,
     params: {
       ...options.params,
-      with_genres: id,
+      with_genres: genreId,
       page,
     },
   });

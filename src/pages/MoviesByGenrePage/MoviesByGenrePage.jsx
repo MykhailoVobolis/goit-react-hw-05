@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { getMoviesByGenre } from "../../tmdb-api.js";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
 import Loader from "../../components/Loader/Loader.jsx";
@@ -10,7 +10,6 @@ import css from "./MoviesByGenrePage.module.css";
 
 export default function MoviesByGenrePage() {
   const [moviesByGenre, setMoviesByGenre] = useState([]);
-  const [genreMovies, setGenreMovies] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
@@ -18,27 +17,20 @@ export default function MoviesByGenrePage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
 
-  const location = useLocation();
-
-  useEffect(() => {
-    const genre = location.state?.genre;
-    if (genre) {
-      setGenreMovies(genre);
-    }
-  }, [location.state]);
-
-  const id = genreMovies?.id;
+  const genreId = searchParams.get("genreId");
+  const genreName = decodeURIComponent(searchParams.get("genreName"));
 
   // Функція обробки зміни сторінки
   const handlePageChange = (event, value) => {
-    setSearchParams({ page: value });
+    // Додавання значення page до попередніх значень SearchParams
+    setSearchParams((prev) => ({ ...Object.fromEntries(prev), page: value }));
   };
 
   useEffect(() => {
     async function fetchMovies() {
       try {
         setLoading(true);
-        const data = await getMoviesByGenre(id, page);
+        const data = await getMoviesByGenre(genreId, page);
         setMoviesByGenre(data.results);
         setTotalPages(data.total_pages);
         if (data.total_pages > 1) {
@@ -51,7 +43,7 @@ export default function MoviesByGenrePage() {
       }
     }
     fetchMovies();
-  }, [id, page]);
+  }, [genreId, page]);
 
   return (
     <>
@@ -59,7 +51,7 @@ export default function MoviesByGenrePage() {
         {loading && <Loader loading={loading} />}
         {moviesByGenre.length > 0 && (
           <div className={css.container}>
-            <h2 className={css.moviesByGenreTitle}>{genreMovies?.name}</h2>
+            <h2 className={css.moviesByGenreTitle}>{genreName}</h2>
             <MovieList items={moviesByGenre} />
             {paginate && <MoviesPagination page={page} totalPages={totalPages} handlePageChange={handlePageChange} />}
           </div>

@@ -7,7 +7,9 @@ export default function GenresList({ genres }) {
     <ul className={css.genresList}>
       {genres.map((item) => (
         <li key={item.id}>
-          <Link to={`/collection/movies_by_genre`} state={{ genre: item }}>
+          <Link
+            to={`/collection/movies_by_genre?genreId=${item.id}&genreName=${encodeURIComponent(item.name)}`}
+            state={{ name: item.name }}>
             <p className={css.genreItem}>{item.name}</p>
           </Link>
         </li>
