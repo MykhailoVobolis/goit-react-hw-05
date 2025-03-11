@@ -26,6 +26,7 @@ const NowPlayingMoviesPage = lazy(() => import("../../pages/NowPlayingMoviesPage
 const MostPopularFilmsPage = lazy(() => import("../../pages/MostPopularFilmsPage/MostPopularFilmsPage"));
 const BestRatingFilmsPage = lazy(() => import("../../pages/BestRatingFilmsPage/BestRatingFilmsPage"));
 const FavoriteMoviesPage = lazy(() => import("../../pages/FavoriteMoviesPage/FavoriteMoviesPage.jsx"));
+const MoviesByGenrePage = lazy(() => import("../../pages/MoviesByGenrePage/MoviesByGenrePage.jsx"));
 
 export default function App() {
   const { authContext } = useUser();
@@ -72,6 +73,7 @@ export default function App() {
             <Route path="/collection/now_playing_films" element={<NowPlayingMoviesPage />} />
             <Route path="/collection/most_popular_films" element={<MostPopularFilmsPage />} />
             <Route path="/collection/best_rating_films" element={<BestRatingFilmsPage />} />
+            <Route path="/collection/movies_by_genre" element={<MoviesByGenrePage />} />
             <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
               <Route path="cast" element={<MovieCast />} />
               <Route path="reviews" element={<MovieReviews />} />

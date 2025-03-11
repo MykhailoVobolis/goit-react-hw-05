@@ -34,7 +34,6 @@ export default function SearchMoviesPage() {
   };
 
   useEffect(() => {
-    setMovies([]);
     async function fetchMovies() {
       if (!inputValue) return;
       try {
@@ -50,9 +49,7 @@ export default function SearchMoviesPage() {
           });
           return;
         }
-        setMovies((prevMovies) => {
-          return movies.length > 0 ? [...prevMovies, ...data.results] : data.results;
-        });
+        setMovies(data.results);
         setTotalPages(data.total_pages);
         if (data.total_pages > 1) {
           setPaginate(true);

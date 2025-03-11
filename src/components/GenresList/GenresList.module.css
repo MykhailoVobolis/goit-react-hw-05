@@ -1,0 +1,12 @@
+.genresList {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 50px;
+  row-gap: 14px;
+  width: 100%;
+}
+
+.genreItem {
+  font-size: 14px;
+  font-weight: 500;
+}
