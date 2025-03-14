@@ -31,4 +31,6 @@
 
 .genreIcon {
   fill: var(--plyr-color-main);
+  fill: #5d5d5d;
+  /* fill: #fafafa99; */
 }

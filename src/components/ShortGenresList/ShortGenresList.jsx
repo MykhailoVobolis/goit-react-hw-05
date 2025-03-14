@@ -23,7 +23,7 @@ export default function ShortGenresList({ genres }) {
               className={css.genreItemWrapper}
               to={`/collection/movies_by_genre?genreId=${item.id}&genreName=${encodeURIComponent(item.name)}`}
               state={{ name: item.name }}>
-              <IconComponent className={css.genreIcon} size={32} />
+              <IconComponent className={css.genreIcon} size={36} />
               <p className={css.genreItem}>{item.name}</p>
             </Link>
           </li>
