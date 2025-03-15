@@ -1,7 +1,9 @@
 .shortGenresList {
   display: flex;
-  gap: 39px;
+  flex-wrap: wrap;
+  gap: 15px;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .genreItemWrapper {
@@ -13,8 +15,8 @@
   background-color: var(--plyr-video-background);
   color: #f7f6f1;
   border-radius: 10px;
-  height: 96px;
-  width: 175px;
+  height: 90px;
+  width: 165px;
   cursor: pointer;
   transition: border var(--animation);
 }
@@ -32,5 +34,30 @@
 .genreIcon {
   fill: var(--plyr-color-main);
   fill: #5d5d5d;
-  /* fill: #fafafa99; */
+  width: 34px;
+  height: 34px;
+}
+
+@media screen and (min-width: 768px) {
+  .shortGenresList {
+    gap: 39px;
+    row-gap: 30px;
+    row-gap: 30px;
+  }
+
+  .genreItemWrapper {
+    height: 96px;
+    width: 175px;
+  }
+
+  .genreIcon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .shortGenresList {
+    justify-content: center;
+  }
 }

@@ -11,8 +11,8 @@
   color: #f7f6f1;
   border: none;
   border-radius: 10px;
-  height: 96px;
-  width: 175px;
+  height: 90px;
+  width: 165px;
   cursor: pointer;
   transition: border var(--animation);
   font-size: 16px;
@@ -32,4 +32,11 @@
 
 .iconBtn.isOpen {
   transform: rotate(180deg);
+}
+
+@media screen and (min-width: 768px) {
+  .choiceGenreBtn {
+    height: 96px;
+    width: 175px;
+  }
 }
