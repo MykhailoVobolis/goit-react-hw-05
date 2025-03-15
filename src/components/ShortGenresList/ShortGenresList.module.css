@@ -40,23 +40,17 @@
 
 @media screen and (min-width: 768px) {
   .shortGenresList {
-    gap: 39px;
+    gap: 30px;
     row-gap: 30px;
   }
 
   .genreItemWrapper {
     height: 96px;
-    width: 175px;
+    width: 182px;
   }
 
   .genreIcon {
     width: 36px;
     height: 36px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .shortGenresList {
-    justify-content: center;
   }
 }
