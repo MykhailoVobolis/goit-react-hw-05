@@ -2,6 +2,9 @@ import wb from "../../img/wb.png";
 import paramount from "../../img/paramount.png";
 import dreamWorks from "../../img/dw.png";
 import twentyCentury from "../../img/twentyCentury.png";
+import SvgIcon from "../../SvgIcon.jsx";
+
+import { Link } from "react-router-dom";
 
 import css from "./InfoBestMovies.module.css";
 
@@ -13,16 +16,24 @@ export default function InfoBestMovies() {
         <p className={css.ibmText}>Найкращі культові фільми та мультфільми в HD-якості з українським дубляжем</p>
         <ul className={css.logoList}>
           <li>
-            <img className={css.wbIcon} src={wb} alt="worner browsers" width={83} height={80} />
+            <Link>
+              <SvgIcon className={`${css.wbIcon} ${css.companyIcon}`} name="icon-warner" />
+            </Link>
           </li>
           <li>
-            <img className={css.paramountIcon} src={paramount} alt="paramount" width={89} height={80} />
+            <Link>
+              <SvgIcon className={`${css.paramountIcon} ${css.companyIcon}`} name="icon-paramount" />
+            </Link>
           </li>
           <li>
-            <img className={css.dreamWorksIcon} src={dreamWorks} alt="dream works" width={107} height={80} />
+            <Link>
+              <SvgIcon className={`${css.dreamWorksIcon} ${css.companyIcon}`} name="icon-dreamworks" />
+            </Link>
           </li>
           <li>
-            <img className={css.twentyCenturyIcon} src={twentyCentury} alt="twenty century" width={102} height={80} />
+            <Link>
+              <SvgIcon className={`${css.universalIcon} ${css.companyIcon}`} name="icon-universal" />
+            </Link>
           </li>
         </ul>
       </div>
