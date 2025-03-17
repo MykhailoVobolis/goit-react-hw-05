@@ -51,7 +51,7 @@ export default function MoviesByCompanyPage() {
         {loading && <Loader loading={loading} />}
         {moviesByCompany.length > 0 && (
           <div className={css.container}>
-            <h2 className={css.moviesByCompanyTitle}>{companyName}</h2>
+            <h2 className={css.moviesByCompanyTitle}>Вражаючі фільми від {companyName}</h2>
             <MovieList items={moviesByCompany} />
             {paginate && <MoviesPagination page={page} totalPages={totalPages} handlePageChange={handlePageChange} />}
           </div>
