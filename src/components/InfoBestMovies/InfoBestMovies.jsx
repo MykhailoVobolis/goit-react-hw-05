@@ -1,7 +1,3 @@
-import wb from "../../img/wb.png";
-import paramount from "../../img/paramount.png";
-import dreamWorks from "../../img/dw.png";
-import twentyCentury from "../../img/twentyCentury.png";
 import SvgIcon from "../../SvgIcon.jsx";
 
 import { Link } from "react-router-dom";
