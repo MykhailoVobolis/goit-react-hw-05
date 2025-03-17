@@ -23,6 +23,7 @@
 
 .genreItemWrapper:hover {
   border: solid 2px var(--plyr-color-main);
+  box-shadow: 0 0 2.5px var(--plyr-color-main);
   color: #f7f6f1;
 }
 

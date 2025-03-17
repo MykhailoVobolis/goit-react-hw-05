@@ -95,3 +95,15 @@ export async function getMoviesByGenre(genreId, page) {
   });
   return response.data;
 }
+
+export async function getMoviesByCompany(companyId, page) {
+  const response = await axios.get(`/discover/movie`, {
+    ...options,
+    params: {
+      ...options.params,
+      with_companies: companyId,
+      page,
+    },
+  });
+  return response.data;
+}
