@@ -24,15 +24,12 @@ export default function NowPlayingMoviesPage() {
   };
 
   useEffect(() => {
-    setMoviesNowPlaying([]);
     async function fetchMovies() {
       try {
         setError(false);
         setLoading(true);
         const data = await getNowPlaying(page);
-        setMoviesNowPlaying((prevMoviesNowPlaying) => {
-          return moviesNowPlaying.length > 0 ? [...prevMoviesNowPlaying, ...data.results] : data.results;
-        });
+        setMoviesNowPlaying(data.results);
         setTotalPages(data.total_pages);
         if (data.total_pages > 1) {
           setPaginate(true);

@@ -64,6 +64,10 @@
 
   .titleMovies {
     font-size: 42px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 1150px;
   }
 
   .movieImage {

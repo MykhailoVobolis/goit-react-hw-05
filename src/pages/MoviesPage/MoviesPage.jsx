@@ -3,9 +3,16 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Slider from "../../components/Slider/Slider";
 import SliderMoviesMain from "../../components/SliderMoviesMain/SliderMoviesMain";
 import InfoBestMovies from "../../components/InfoBestMovies/InfoBestMovies";
+import GenresForMoviesBar from "../../components/GenresForMoviesBar/GenresForMoviesBar.jsx";
 
 import { useState, useEffect } from "react";
-import { getPopularMovies, getMostRatingMovies, getNowPlaying, getUpcomingMovies } from "../../tmdb-api";
+import {
+  getPopularMovies,
+  getMostRatingMovies,
+  getNowPlaying,
+  getUpcomingMovies,
+  getGenresMovies,
+} from "../../tmdb-api";
 import { Link } from "react-router-dom";
 import { GrNext } from "react-icons/gr";
 
@@ -16,6 +23,7 @@ export default function MoviesPage() {
   const [popularMovies, setPopularMovies] = useState([]);
   const [mostRatingMovies, setMostRatingMovies] = useState([]);
   const [upcomingMovies, setUpcomingMovies] = useState([]);
+  const [genresMovies, setGenresMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -24,16 +32,18 @@ export default function MoviesPage() {
     async function fetchMovies() {
       try {
         setLoading(true);
-        const [popular, rating, nowPlaying, upcoming] = await Promise.all([
+        const [popular, rating, nowPlaying, upcoming, genresAll] = await Promise.all([
           getPopularMovies(page),
           getMostRatingMovies(page),
           getNowPlaying(page),
           getUpcomingMovies(page),
+          getGenresMovies(),
         ]);
         setPopularMovies(popular.results);
         setMostRatingMovies(rating.results);
         setMoviesNowPlaying(nowPlaying.results);
         setUpcomingMovies(upcoming.results);
+        setGenresMovies(genresAll.genres);
       } catch (error) {
         setError(true);
       } finally {
@@ -50,7 +60,11 @@ export default function MoviesPage() {
         <Loader loading={loading} />
       ) : (
         <section className={css.movies}>
+          <div className={css.pageTitleContainer}>
+            <h2 className={css.pageTitle}>Фільми</h2>
+          </div>
           {upcomingMovies.length > 0 && <SliderMoviesMain items={upcomingMovies} />}
+          <GenresForMoviesBar genres={genresMovies} />
           <div className={css.nowPlayMoviesContainer}>
             {moviesNowPlaying.length > 0 && (
               <div className={css.container}>

@@ -22,7 +22,7 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 1.2;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
   text-align: center;
 }
 
@@ -40,27 +40,38 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 55px;
-  max-width: 220px;
+  row-gap: 50px;
+  max-width: 260px;
 }
 
 .wbIcon {
-  width: 62px;
+  width: 60px;
   height: 60px;
 }
 
 .paramountIcon {
-  width: 67px;
+  margin-left: 10px;
+  width: 87px;
   height: 60px;
 }
 
 .dreamWorksIcon {
-  width: 80px;
+  width: 92px;
   height: 60px;
 }
 
-.twentyCenturyIcon {
-  width: 77px;
+.universalIcon {
+  width: 106px;
   height: 60px;
+}
+
+.companyIcon {
+  fill: #f7f6f1;
+  transition: fill var(--animation);
+}
+
+.companyIcon:hover {
+  fill: #fec90c;
 }
 
 @media screen and (min-width: 768px) {
@@ -83,22 +94,23 @@
   }
 
   .wbIcon {
-    width: 73px;
+    width: 70px;
     height: 70px;
   }
 
   .paramountIcon {
-    width: 78px;
+    margin-left: 0px;
+    width: 102px;
     height: 70px;
   }
 
   .dreamWorksIcon {
-    width: 94px;
+    width: 107px;
     height: 70px;
   }
 
-  .twentyCenturyIcon {
-    width: 89px;
+  .universalIcon {
+    width: 124px;
     height: 70px;
   }
 }
@@ -124,22 +136,22 @@
   }
 
   .wbIcon {
-    width: 83px;
+    width: 80px;
     height: 80px;
   }
 
   .paramountIcon {
-    width: 89px;
+    width: 117px;
     height: 80px;
   }
 
   .dreamWorksIcon {
-    width: 107px;
+    width: 123px;
     height: 80px;
   }
 
-  .twentyCenturyIcon {
-    width: 102px;
+  .universalIcon {
+    width: 141px;
     height: 80px;
   }
 }

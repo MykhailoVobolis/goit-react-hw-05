@@ -58,10 +58,10 @@ export default function MovieDetailsPage() {
   const backLink = useRef(location.state);
   // На випадок, коли користувач перейшов по збереженому раніше посиланню фільму в новій вкладці браузера
   useEffect(() => {
-    {
-      !location.state && (backLink.current = "/");
+    if (!location.state) {
+      backLink.current = "/";
     }
-  }, [movieId]);
+  }, [location.state]);
 
   function handleClikAddMovie() {
     const favoriteMovies = {
@@ -180,7 +180,7 @@ export default function MovieDetailsPage() {
       }
     }
     handleClickPlayBtn();
-  }, [modalIsOpen]);
+  }, [modalIsOpen, movieId]);
 
   return loading ? (
     <Loader loading={loading} />

@@ -3,6 +3,28 @@
   padding-bottom: 40px;
 }
 
+.pageTitleContainer {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 15px 0px 15px;
+  min-width: 320px;
+  max-width: 100%;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 320px;
+  max-width: 100%;
+}
+
+.pageTitle {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
 .nowPlayMoviesContainer {
   min-width: 320px;
   max-width: 100%;
@@ -16,7 +38,7 @@
   min-width: 320px;
   max-width: 100%;
   padding-left: 15px;
-  padding-top: 50px;
+  padding-top: 60px;
   display: flex;
   flex-direction: column;
   gap: 60px;
@@ -30,13 +52,11 @@
 
 .titleContainer {
   margin-bottom: 30px;
-  max-width: 360px;
+  max-width: 1246px;
   padding-right: 15px;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .moreLink {
@@ -57,8 +77,16 @@
 }
 
 @media screen and (min-width: 768px) {
-  .titleContainer {
-    max-width: 768px;
+  .pageTitleContainer {
+    max-width: 1246px;
+  }
+
+  .pageTitle {
+    font-size: 26px;
+  }
+
+  .moviesContainer {
+    padding-top: 60px;
   }
 
   .moviesTitle {
@@ -72,15 +100,27 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .container,
+  .pageTitleContainer {
+    max-width: 1246px;
+    padding: 0px;
+  }
+
+  .pageTitle {
+    font-size: 28px;
+  }
+
   .nowPlayMoviesContainer {
     max-width: 1260px;
-    padding-left: 0 7px;
+    padding-left: 7px;
+    padding-right: 7px;
   }
 
   .moviesContainer {
     max-width: 1260px;
     padding-left: 7px;
     padding-right: 7px;
+    padding-top: 70px;
     margin-left: auto;
     margin-right: auto;
   }

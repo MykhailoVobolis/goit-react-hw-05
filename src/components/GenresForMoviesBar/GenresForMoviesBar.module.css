@@ -1,0 +1,38 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 15px 0px 15px;
+  min-width: 320px;
+  max-width: 100%;
+  padding-bottom: 50px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 1246px;
+    padding-top: 20px;
+  }
+
+  .title {
+    font-size: 26px;
+    text-align: start;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1246px;
+    padding: 20px 0px 60px 0px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}

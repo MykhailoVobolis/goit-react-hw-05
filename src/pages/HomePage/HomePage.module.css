@@ -149,13 +149,11 @@
 
 .titleContainer {
   margin-bottom: 30px;
-  max-width: 360px;
+  max-width: 1246px;
   padding-right: 15px;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .moreLink {
@@ -208,10 +206,6 @@
   .deviceIcon {
     width: 44px;
     height: 44px;
-  }
-
-  .titleContainer {
-    max-width: 768px;
   }
 
   .trendMoviesTitle {

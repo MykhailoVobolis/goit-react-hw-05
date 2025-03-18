@@ -24,15 +24,12 @@ export default function BestRatingFilmsPage() {
   };
 
   useEffect(() => {
-    setMostRatingMovies([]);
     async function fetchMovies() {
       try {
         setError(false);
         setLoading(true);
         const data = await getMostRatingMovies(page);
-        setMostRatingMovies((prevMostRatingMovies) => {
-          return mostRatingMovies.length > 0 ? [...prevMostRatingMovies, ...data.results] : data.results;
-        });
+        setMostRatingMovies(data.results);
         setTotalPages(data.total_pages);
         if (data.total_pages > 1) {
           setPaginate(true);

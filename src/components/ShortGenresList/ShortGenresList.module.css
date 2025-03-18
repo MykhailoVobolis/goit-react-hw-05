@@ -1,0 +1,57 @@
+.shortGenresList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.genreItemWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--plyr-video-background);
+  color: #f7f6f1;
+  border-radius: 10px;
+  height: 90px;
+  width: 165px;
+  cursor: pointer;
+  transition: border var(--animation);
+}
+
+.genreItemWrapper:hover {
+  border: solid 2px var(--plyr-color-main);
+  box-shadow: 0 0 2.5px var(--plyr-color-main);
+  color: #f7f6f1;
+}
+
+.genreItem {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.genreIcon {
+  fill: var(--plyr-color-main);
+  fill: #5d5d5d;
+  width: 34px;
+  height: 34px;
+}
+
+@media screen and (min-width: 768px) {
+  .shortGenresList {
+    gap: 30px;
+    row-gap: 30px;
+  }
+
+  .genreItemWrapper {
+    height: 96px;
+    width: 182px;
+  }
+
+  .genreIcon {
+    width: 36px;
+    height: 36px;
+  }
+}

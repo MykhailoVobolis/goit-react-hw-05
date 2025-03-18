@@ -78,3 +78,32 @@ export async function getUpcomingMovies(page) {
   const response = await axios.get(`movie/upcoming?page=${page}`, options);
   return response.data;
 }
+
+export async function getGenresMovies() {
+  const response = await axios.get("/genre/movie/list?language=en", options);
+  return response.data;
+}
+
+export async function getMoviesByGenre(genreId, page) {
+  const response = await axios.get(`/discover/movie`, {
+    ...options,
+    params: {
+      ...options.params,
+      with_genres: genreId,
+      page,
+    },
+  });
+  return response.data;
+}
+
+export async function getMoviesByCompany(companyId, page) {
+  const response = await axios.get(`/discover/movie`, {
+    ...options,
+    params: {
+      ...options.params,
+      with_companies: companyId,
+      page,
+    },
+  });
+  return response.data;
+}

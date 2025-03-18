@@ -24,15 +24,12 @@ export default function MostPopularFilmsPage() {
   };
 
   useEffect(() => {
-    setPopularMovies([]);
     async function fetchMovies() {
       try {
         setError(false);
         setLoading(true);
         const data = await getPopularMovies(page);
-        setPopularMovies((prevPopularMovies) => {
-          return popularMovies.length > 0 ? [...prevPopularMovies, ...data.results] : data.results;
-        });
+        setPopularMovies(data.results);
         setTotalPages(data.total_pages);
         if (data.total_pages > 1) {
           setPaginate(true);

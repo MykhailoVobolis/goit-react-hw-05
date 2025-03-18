@@ -1,0 +1,29 @@
+.container {
+  border-radius: 10px;
+  width: 320px;
+  background: var(--plyr-video-background);
+  position: absolute;
+  top: 105px;
+  left: -2px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+
+.container:before {
+  border: 15px solid transparent;
+  border-bottom: 10px solid var(--plyr-video-background);
+  bottom: 100%;
+  content: "";
+  left: 65px;
+  position: absolute;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 490px;
+    top: 120px;
+  }
+}
