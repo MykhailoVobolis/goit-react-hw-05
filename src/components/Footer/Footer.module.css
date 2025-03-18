@@ -22,7 +22,7 @@
 
 @media screen and (min-width: 768px) {
   .footerContainer {
-    max-width: 768px;
+    max-width: 1246px;
     padding: 19px 15px;
     justify-content: start;
   }

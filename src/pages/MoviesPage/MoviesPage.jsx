@@ -60,6 +60,9 @@ export default function MoviesPage() {
         <Loader loading={loading} />
       ) : (
         <section className={css.movies}>
+          <div className={css.pageTitleContainer}>
+            <h2 className={css.pageTitle}>Фільми</h2>
+          </div>
           {upcomingMovies.length > 0 && <SliderMoviesMain items={upcomingMovies} />}
           <GenresForMoviesBar genres={genresMovies} />
           <div className={css.nowPlayMoviesContainer}>
