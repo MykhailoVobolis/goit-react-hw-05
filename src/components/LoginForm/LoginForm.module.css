@@ -154,6 +154,7 @@
 
   .mainBox {
     max-width: 1016px;
+    margin-top: 90px;
     flex-direction: row;
     justify-content: space-between;
   }
