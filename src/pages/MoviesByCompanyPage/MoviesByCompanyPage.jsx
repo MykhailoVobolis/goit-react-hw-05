@@ -20,6 +20,13 @@ export default function MoviesByCompanyPage() {
   const companyId = searchParams.get("companyId");
   const companyName = decodeURIComponent(searchParams.get("companyName"));
 
+  const companyTitles = {
+    "Universal Pictures": "Велика колекція від",
+    "Paramount Pictures": "Вражаючі фільми від",
+    "Warner Bros. Pictures": "Велике поповнення від",
+    "DreamWorks Pictures": "Зустрічай фільми від",
+  };
+
   // Функція обробки зміни сторінки
   const handlePageChange = (event, value) => {
     // Додавання значення page до попередніх значень SearchParams
@@ -51,7 +58,11 @@ export default function MoviesByCompanyPage() {
         {loading && <Loader loading={loading} />}
         {moviesByCompany.length > 0 && (
           <div className={css.container}>
-            <h2 className={css.moviesByCompanyTitle}>Вражаючі фільми від {companyName}</h2>
+            {companyTitles[companyName] && (
+              <h2 className={css.moviesByCompanyTitle}>
+                {companyTitles[companyName] || "Вражаючі фільми від"} {companyName}
+              </h2>
+            )}
             <MovieList items={moviesByCompany} />
             {paginate && <MoviesPagination page={page} totalPages={totalPages} handlePageChange={handlePageChange} />}
           </div>
