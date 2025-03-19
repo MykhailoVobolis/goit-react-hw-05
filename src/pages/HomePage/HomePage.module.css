@@ -12,7 +12,7 @@
       #000000f5 89%,
       #000000ff 100%
     ),
-    url("../../img/header-mob.png");
+    url("../../img/hero-bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -22,6 +22,25 @@
   margin-right: auto;
   padding-top: 50px;
   padding-bottom: 24px;
+}
+
+@media screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx), screen and (min-devide-pixel-ratio: 2) {
+  .hero {
+    background-image: linear-gradient(
+        180deg,
+        #00000000 0%,
+        #0000000a 16%,
+        #00000021 29%,
+        #00000042 41%,
+        #0000006b 51%,
+        #00000094 61%,
+        #000000bd 70%,
+        #000000de 79%,
+        #000000f5 89%,
+        #000000ff 100%
+      ),
+      url("../../img/hero-bg@2x.webp");
+  }
 }
 
 .heroContainer {
@@ -37,12 +56,13 @@
 }
 
 .mainTitle {
-  font-size: 37px;
+  font-size: 38px;
   font-weight: 700;
   line-height: 1.2;
   min-width: 290px;
   max-width: 300px;
   margin-bottom: 100px;
+  /* z-index: 100; */
 }
 
 .lineBreak {
@@ -61,7 +81,7 @@
   padding: 0 15px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 30px;
+  margin-top: 253px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -193,6 +213,7 @@
 
   .devicesContainer {
     max-width: 768px;
+    margin-top: 550px;
   }
 
   .deviceTitle {
@@ -220,20 +241,6 @@
 
 @media screen and (min-width: 1280px) {
   .hero {
-    background-image: linear-gradient(
-        180deg,
-        #00000000 0%,
-        #0000000a 16%,
-        #00000021 29%,
-        #00000042 41%,
-        #0000006b 51%,
-        #00000094 61%,
-        #000000bd 70%,
-        #000000de 79%,
-        #000000f5 89%,
-        #000000ff 100%
-      ),
-      url("../../img/header.png");
     min-width: 1158px;
     max-width: 1920px;
     padding-top: 30px;
@@ -271,6 +278,7 @@
     justify-content: space-between;
     padding-top: 24px;
     align-items: start;
+    margin-top: 306px;
   }
 
   .devicesContainer::before {

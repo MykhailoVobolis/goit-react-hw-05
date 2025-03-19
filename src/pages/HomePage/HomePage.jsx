@@ -2,13 +2,13 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
 import Slider from "../../components/Slider/Slider";
 import TvAdvertising from "../../components/TvAdvertising/TvAdvertising";
+import HeroVideo from "../../components/HeroVideo/HeroVideo.jsx";
 import { IoTvOutline, IoLaptopOutline, IoPhonePortraitOutline, IoTabletPortraitOutline } from "react-icons/io5";
 
 import { getWeekMovies } from "../../tmdb-api";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { GrNext } from "react-icons/gr";
-import popcornImg from "../../img/popcorn.png";
 
 import css from "./HomePage.module.css";
 
@@ -38,11 +38,11 @@ export default function HomePage() {
     <>
       <section>
         <div className={css.hero}>
+          {/* <HeroVideo /> */}
           <div className={css.heroContainer}>
             <h1 className={css.mainTitle}>
               Світові новинки кіно на <span className={css.lineBreak}>CINEMA HALL</span>
             </h1>
-            <img className={css.heroImage} src={popcornImg} alt="popcorn" width={612} height={400} />
           </div>
           <div className={css.devicesContainer}>
             <div className={css.deviceTitleContainer}>
