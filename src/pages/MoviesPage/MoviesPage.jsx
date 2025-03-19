@@ -70,7 +70,7 @@ export default function MoviesPage() {
               <div className={css.container}>
                 <div className={css.titleContainer}>
                   <Link className={css.moviesTitle} to={`/collection/now_playing_films`}>
-                    Зараз у кінотеатрах
+                    Зараз у кіно
                   </Link>
                   <Link className={css.moreLink} to={`/collection/now_playing_films`}>
                     Показати більше

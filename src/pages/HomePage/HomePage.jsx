@@ -80,7 +80,7 @@ export default function HomePage() {
           <div className={css.container}>
             <div className={css.titleContainer}>
               <Link className={css.trendMoviesTitle} to={`/collection/best_films_week`}>
-                Топ 20 цього тижня
+                Найкращі фільми тижня
               </Link>
               <Link className={css.moreLink} to={`/collection/best_films_week`}>
                 Показати більше

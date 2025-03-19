@@ -49,7 +49,7 @@ export default function NowPlayingMoviesPage() {
         {loading && <Loader loading={loading} />}
         {moviesNowPlaying.length > 0 && (
           <div className={css.container}>
-            <h2 className={css.nowPlayingMoviesTitle}>Зараз у кінотеатрах</h2>
+            <h2 className={css.nowPlayingMoviesTitle}>Зараз у кіно</h2>
             <MovieList items={moviesNowPlaying} />
             {paginate && <MoviesPagination page={page} totalPages={totalPages} handlePageChange={handlePageChange} />}
           </div>

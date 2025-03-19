@@ -100,6 +100,10 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .movies {
+    padding-top: 10px;
+  }
+
   .container,
   .pageTitleContainer {
     max-width: 1246px;

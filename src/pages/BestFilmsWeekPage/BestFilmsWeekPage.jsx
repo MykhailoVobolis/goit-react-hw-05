@@ -35,7 +35,7 @@ export default function BestFilmsWeekPage() {
         {loading && <Loader loading={loading} />}
         {moviesWeek.length > 0 && (
           <div className={css.container}>
-            <h2 className={css.trendMoviesTitle}>Топ 20 цього тижня</h2>
+            <h2 className={css.trendMoviesTitle}>Найкращі фільми тижня</h2>
             <MovieList items={moviesWeek} />
           </div>
         )}
