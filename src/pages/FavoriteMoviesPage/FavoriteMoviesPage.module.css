@@ -47,6 +47,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .favoriteMovies {
+    padding-top: 8px;
+  }
+
   .container {
     max-width: 768px;
   }

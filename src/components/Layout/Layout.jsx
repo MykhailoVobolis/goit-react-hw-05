@@ -8,13 +8,13 @@ import { useMedia } from "react-use";
 import css from "./Layout.module.css";
 
 export default function Layout({ children }) {
-  const isWide = useMedia("(min-width: 1280px)");
+  const isTablet = useMedia("(min-width: 768px)");
 
   return (
     <div className={css.pageContainer}>
       <AppBar />
       <main className={css.mainContainer}>
-        {isWide && <BreadcrumbsNav />}
+        {isTablet && <BreadcrumbsNav />}
         <Suspense fallback={<div></div>}>{children}</Suspense>
       </main>
       <Footer />

@@ -30,6 +30,7 @@ export default function BreadcrumbsNav() {
   // Умови, за яких хлібні крихти не мають відображатися
   if (
     location.pathname === "/" || // На головній сторінці
+    location.pathname === "/confirm-google-auth" || // Сторінка підтвердження Google
     /^\/movies\/\d+$/.test(location.pathname) || // Сторінка деталей фільму
     (pathnames[0] === "movies" && (pathnames[2] === "cast" || pathnames[2] === "reviews")) // Сторінки cast або reviews
   ) {
