@@ -74,6 +74,17 @@
   height: auto;
 }
 
+.regButtonContainer {
+  width: 100%;
+  max-width: 327px;
+  height: 48px;
+  margin-bottom: 30px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 .devicesContainer {
   position: relative;
   max-width: 375px;
@@ -213,6 +224,10 @@
     margin-top: 140px;
   }
 
+  .regButtonContainer {
+    margin-bottom: 50px;
+  }
+
   .devicesContainer {
     max-width: 768px;
   }
@@ -269,6 +284,10 @@
   .heroImage {
     width: 612px;
     height: 400px;
+  }
+
+  .regButtonContainer {
+    margin-bottom: 219px;
   }
 
   .devicesContainer {
