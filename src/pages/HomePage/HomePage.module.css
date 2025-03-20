@@ -61,8 +61,7 @@
   line-height: 1.2;
   min-width: 290px;
   max-width: 300px;
-  margin-bottom: 353px;
-  /* z-index: 100; */
+  margin-bottom: 275px;
 }
 
 .lineBreak {
@@ -81,7 +80,6 @@
   padding: 0 15px;
   margin-left: auto;
   margin-right: auto;
-  /* margin-top: 253px; */
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -206,7 +204,7 @@
     font-size: 56px;
     max-width: 636px;
     text-align: center;
-    margin-bottom: 500px;
+    margin-bottom: 402px;
   }
 
   .heroImage {
@@ -246,7 +244,6 @@
   .hero {
     min-width: 1158px;
     max-width: 1920px;
-    /* padding-top: 30px; */
     padding-top: 140px;
     padding-bottom: 24px;
   }
@@ -255,14 +252,13 @@
     max-width: 1260px;
     padding-left: 7px;
     padding-right: 7px;
-    flex-direction: row;
     align-items: start;
   }
 
   .mainTitle {
     font-size: 64px;
     max-width: 636px;
-    margin-bottom: 307px;
+    margin-bottom: 40px;
     text-align: start;
   }
 
