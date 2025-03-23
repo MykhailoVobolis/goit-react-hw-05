@@ -41,6 +41,7 @@ export default function App() {
         authContext(response);
       } catch (error) {
         console.error("Refresh error:", error.message);
+        localStorage.removeItem("wasLoggedIn"); // Очищуємо  local storage, якщо рефреш провалився
       } finally {
         setLoading(false);
         setIsRefreshing(false);

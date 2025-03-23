@@ -11,7 +11,7 @@ export default function NavigationList({ isLoggedIn, onClose }) {
   return (
     <div className={css.navListContainer}>
       <NavLink to="/" className={getNavLinkClass} onClick={() => onClose()}>
-        Додому
+        Головна
       </NavLink>
 
       <NavLink to="/movies" className={getNavLinkClass} onClick={() => onClose()}>

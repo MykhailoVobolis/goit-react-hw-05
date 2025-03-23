@@ -69,13 +69,12 @@
 
 .linkGoBack {
   background-color: #fec90c;
-  color: #431f05;
+  color: #000000;
   border-radius: 100px;
   padding: 12px 15px;
   max-width: 192px;
   font-size: 16px;
   font-weight: bold;
-  text-transform: uppercase;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,8 +85,8 @@
 }
 
 .linkGoBack:hover {
-  color: #431f05;
-  background-color: #eeb104;
+  background-color: #ffdf44;
+  color: #000000;
 }
 
 .iconBack {
@@ -115,7 +114,7 @@
 
 .rating {
   composes: statValue;
-  color: #431f05;
+  color: #000000;
   background-color: #fec90c;
   border-radius: 4px;
   display: inline-block;

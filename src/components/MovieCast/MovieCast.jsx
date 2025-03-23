@@ -22,8 +22,8 @@ export default function MovieCast() {
         if (!data.cast.length) {
           toast("На жаль, ще немає даних про акторів цього фільму. Будь ласка, спробуйте пізніше.", {
             style: {
-              color: "#431f05",
-              backgroundColor: "#fec90c",
+              color: "#000000",
+              backgroundColor: "#fff088",
             },
           });
           return;

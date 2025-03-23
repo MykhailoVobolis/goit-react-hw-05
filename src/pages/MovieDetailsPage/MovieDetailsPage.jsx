@@ -74,8 +74,8 @@ export default function MovieDetailsPage() {
         setIsFavorite(true);
         toast("Фільм доданий в обране.", {
           style: {
-            color: "#431f05",
-            backgroundColor: "#fec90c",
+            color: "#000000",
+            backgroundColor: "#fff088",
           },
         });
         await addMovie(favoriteMovies);
@@ -92,8 +92,8 @@ export default function MovieDetailsPage() {
         setIsFavorite(false);
         toast("Фільм видалений з обраного.", {
           style: {
-            color: "#431f05",
-            backgroundColor: "#fec90c",
+            color: "#000000",
+            backgroundColor: "#fff088",
           },
         });
         await delMovie(movieId);
@@ -260,7 +260,7 @@ export default function MovieDetailsPage() {
             <h2 className={css.descriptionMovie}>Опис</h2>
             <p className={css.textMovie}>{movies.overview}</p>
             <Link className={css.linkGoBack} to={backLink.current}>
-              <IoCaretBackOutline className={css.iconBack} /> повернутися
+              <IoCaretBackOutline className={css.iconBack} /> Повернутися
             </Link>
           </div>
         </div>

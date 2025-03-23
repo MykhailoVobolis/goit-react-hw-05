@@ -11,8 +11,7 @@
   box-shadow: none;
   border-radius: 100px;
   background-color: #fec90c;
-  color: #431f05;
-  text-transform: uppercase;
+  color: #000000;
   transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
   display: block;
   margin-left: auto;
@@ -21,7 +20,8 @@
 }
 
 .playBtn:hover {
-  background-color: #eeb104;
+  background-color: #ffdf44;
+  color: #000000;
 }
 
 .iconPlay {

@@ -22,8 +22,8 @@ export default function MovieReviews() {
         if (!data.results.length) {
           toast("На жаль, ще немає відгуків до цього фільму. Будь ласка, спробуйте пізніше.", {
             style: {
-              color: "#431f05",
-              backgroundColor: "#fec90c",
+              color: "#000000",
+              backgroundColor: "#fff088",
             },
           });
           return;

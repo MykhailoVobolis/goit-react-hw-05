@@ -43,8 +43,8 @@ export default function SearchMoviesPage() {
         if (!data.results.length) {
           toast("На жаль, немає фільмів, які відповідають вашому пошуковому запиту. Будь ласка, спробуйте ще раз!", {
             style: {
-              color: "#431f05",
-              backgroundColor: "#fec90c",
+              color: "#000000",
+              backgroundColor: "#fff088",
             },
           });
           return;

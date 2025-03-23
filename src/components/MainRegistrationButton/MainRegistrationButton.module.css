@@ -7,8 +7,7 @@
   box-shadow: none;
   border-radius: 100px;
   background-color: #fec90c;
-  color: #431f05;
-  text-transform: uppercase;
+  color: #000000;
   transition: background-color var(--animation), color var(--animation);
   display: flex;
   align-items: center;
@@ -17,8 +16,8 @@
 }
 
 .registerLink:hover {
-  background-color: #eeb104;
-  color: #431f05;
+  background-color: #ffdf44;
+  color: #000000;
 }
 
 @media screen and (min-width: 768px) {
