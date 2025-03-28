@@ -1,5 +1,5 @@
 import { GoBookmark } from "react-icons/go";
-import { Fab, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 
 import css from "./AddIsFavoriteMovieBtn.module.css";
 

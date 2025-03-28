@@ -83,3 +83,10 @@ export async function getMovieById(id) {
   });
   return response.data.data;
 }
+
+export async function serverPing() {
+  const response = await axios.get(`${BASE_URL}/ping`, {
+    withCredentials: true, // Важливо для відправки куків
+  });
+  return response.data;
+}

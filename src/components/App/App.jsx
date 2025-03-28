@@ -3,7 +3,7 @@ import Layout from "../Layout/Layout";
 import { Routes, Route } from "react-router-dom";
 import { lazy, useEffect, useState } from "react";
 
-import { refreshUser } from "../../cinema-server-api.js";
+import { refreshUser, serverPing } from "../../cinema-server-api.js";
 import { useUser } from "../../userContext.jsx";
 import Loader from "../Loader/Loader.jsx";
 import RestrictedRoute from "../RestrictedRoute.jsx";
@@ -33,6 +33,16 @@ export default function App() {
   const { authContext } = useUser();
   const [loading, setLoading] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
+
+  useEffect(() => {
+    // Пінгуємо сервер при завантаженні додатка
+    serverPing();
+    // Пінг срверу кожні 14 хвилин
+    const intervalId = setInterval(() => {
+      serverPing();
+    }, 840000);
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(() => {
     async function refresh() {
