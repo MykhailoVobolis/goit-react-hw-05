@@ -43,6 +43,18 @@ export default function NowPlayingMoviesPage() {
     fetchMovies();
   }, [page]);
 
+  // Запит з пагінацією
+  // const { data, isLoading, isError, fetchNextPage, hasNextPage } = useInfiniteQuery({
+  //   queryKey: ["nowPlayingMovies"],
+  //   queryFn: ({ pageParam = 1 }) => getNowPlaying(pageParam), // Передаємо page в API
+  //   getNextPageParam: (lastPage) => {
+  //     return lastPage.page < lastPage.total_pages ? lastPage.page + 1 : undefined;
+  //   },
+  // });
+
+  // // Об'єднуємо всі сторінки в один масив
+  // const moviesNowPlaying = data?.pages.flatMap((page) => page.results) || [];
+
   return (
     <>
       <section className={css.nowPlayingMovies}>

@@ -7,34 +7,45 @@ import MainRegistrationButton from "../../components/MainRegistrationButton/Main
 import { useUser } from "../../userContext.jsx";
 import { IoTvOutline, IoLaptopOutline, IoPhonePortraitOutline, IoTabletPortraitOutline } from "react-icons/io5";
 import { getWeekMovies } from "../../tmdb-api";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { GrNext } from "react-icons/gr";
 
 import css from "./HomePage.module.css";
+import { useQuery } from "@tanstack/react-query";
 
 export default function HomePage() {
   const { isLoggedIn } = useUser();
-  const [moviesWeek, setMoviesWeek] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  // const [moviesWeek, setMoviesWeek] = useState([]);
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(false);
 
-  useEffect(() => {
-    async function fetchMovies() {
-      try {
-        setLoading(true);
-        const data = await getWeekMovies();
-        setMoviesWeek((prevMoviesWeek) => {
-          return moviesWeek.length > 0 ? [...prevMoviesWeek, ...data] : data;
-        });
-      } catch (error) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchMovies();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchMovies() {
+  //     try {
+  //       setLoading(true);
+  //       const data = await getWeekMovies();
+  //       setMoviesWeek((prevMoviesWeek) => {
+  //         return moviesWeek.length > 0 ? [...prevMoviesWeek, ...data] : data;
+  //       });
+  //     } catch (error) {
+  //       setError(true);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+  //   fetchMovies();
+  // }, []);
+
+  // Використання React Query для отримання фільмів тижня
+  const {
+    data: moviesWeek = [],
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["weekMovies"],
+    queryFn: getWeekMovies,
+  });
 
   return (
     <>
@@ -79,7 +90,8 @@ export default function HomePage() {
       <div className={css.sectionBorder}></div>
       <TvAdvertising movies={moviesWeek} />
       <section className={css.trendMovies}>
-        {loading && <Loader loading={loading} />}
+        {/* {loading && <Loader loading={loading} />} */}
+        {isLoading && <Loader loading={isLoading} />}
         {moviesWeek.length > 0 && (
           <div className={css.container}>
             <div className={css.titleContainer}>
@@ -97,7 +109,8 @@ export default function HomePage() {
           </div>
         )}
       </section>
-      {error && <ErrorMessage error={error} />}
+      {/* {error && <ErrorMessage error={error} />} */}
+      {isError && <ErrorMessage error={isError} />}
     </>
   );
 }
