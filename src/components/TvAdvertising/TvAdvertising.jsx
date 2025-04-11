@@ -10,10 +10,10 @@ import css from "./TvAdvertising.module.css";
 
 export default function TvAdvertising() {
   const [moviesNowPlaying, setMoviesNowPlaying] = useState([]);
-  const [page, setPage] = useState(1);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const page = 1;
 
   const sectionRef = useRef(null);
 
