@@ -5,7 +5,7 @@ import SliderMoviesMain from "../../components/SliderMoviesMain/SliderMoviesMain
 import InfoBestMovies from "../../components/InfoBestMovies/InfoBestMovies";
 import GenresForMoviesBar from "../../components/GenresForMoviesBar/GenresForMoviesBar.jsx";
 
-import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import {
   getPopularMovies,
   getMostRatingMovies,
@@ -18,46 +18,39 @@ import { GrNext } from "react-icons/gr";
 
 import css from "./MoviesPage.module.css";
 
-export default function MoviesPage() {
-  const [moviesNowPlaying, setMoviesNowPlaying] = useState([]);
-  const [popularMovies, setPopularMovies] = useState([]);
-  const [mostRatingMovies, setMostRatingMovies] = useState([]);
-  const [upcomingMovies, setUpcomingMovies] = useState([]);
-  const [genresMovies, setGenresMovies] = useState([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+const fetchAllMoviesData = async (page) => {
+  const [popular, rating, nowPlaying, upcoming, genres] = await Promise.all([
+    getPopularMovies(page),
+    getMostRatingMovies(page),
+    getNowPlaying(page),
+    getUpcomingMovies(page),
+    getGenresMovies(),
+  ]);
 
-  useEffect(() => {
-    async function fetchMovies() {
-      try {
-        setLoading(true);
-        const [popular, rating, nowPlaying, upcoming, genresAll] = await Promise.all([
-          getPopularMovies(page),
-          getMostRatingMovies(page),
-          getNowPlaying(page),
-          getUpcomingMovies(page),
-          getGenresMovies(),
-        ]);
-        setPopularMovies(popular.results);
-        setMostRatingMovies(rating.results);
-        setMoviesNowPlaying(nowPlaying.results);
-        setUpcomingMovies(upcoming.results);
-        setGenresMovies(genresAll.genres);
-      } catch (error) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchMovies();
-  }, [page]);
+  return { popular, rating, nowPlaying, upcoming, genres };
+};
+
+export default function MoviesPage() {
+  const page = 1;
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["moviesData", page],
+    queryFn: () => fetchAllMoviesData(page),
+  });
+
+  const { popular, rating, nowPlaying, upcoming, genres } = data || {};
+
+  const popularMovies = popular?.results || [];
+  const mostRatingMovies = rating?.results || [];
+  const moviesNowPlaying = nowPlaying?.results || [];
+  const upcomingMovies = upcoming?.results || [];
+  const genresMovies = genres?.genres || [];
 
   return (
     <>
-      {error && <ErrorMessage error={error} />}
-      {loading ? (
-        <Loader loading={loading} />
+      {isError && <ErrorMessage error={isError} />}
+      {isLoading ? (
+        <Loader loading={isLoading} />
       ) : (
         <section className={css.movies}>
           <div className={css.pageTitleContainer}>

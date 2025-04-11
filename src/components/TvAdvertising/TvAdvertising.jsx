@@ -10,35 +10,15 @@ import { useQuery } from "@tanstack/react-query";
 import css from "./TvAdvertising.module.css";
 
 export default function TvAdvertising() {
-  // const [moviesNowPlaying, setMoviesNowPlaying] = useState([]);
-  // const [page, setPage] = useState(1);
-  // const [error, setError] = useState(false);
-  // const [loading, setLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   const sectionRef = useRef(null);
 
-  // useEffect(() => {
-  //   async function fetchMovies() {
-  //     try {
-  //       setLoading(true);
-  //       const data = await getNowPlaying(page);
-  //       setMoviesNowPlaying((prevNowPlaying) => {
-  //         return moviesNowPlaying.length > 0 ? [...prevNowPlaying, ...data.results] : data.results;
-  //       });
-  //     } catch (error) {
-  //       setError(true);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  //   fetchMovies();
-  // }, []);
+  const page = 1;
 
-  // Запит тільки для першої сторінки
   const { data, isLoading, isError } = useQuery({
     queryKey: ["nowPlayingMovies"],
-    queryFn: () => getNowPlaying(1), // Викликаємо лише для першої сторінки
+    queryFn: () => getNowPlaying(page),
   });
 
   const moviesNowPlaying = data?.results || [];
@@ -69,7 +49,6 @@ export default function TvAdvertising() {
 
   return (
     <section className={css.tvAdvertising} ref={sectionRef}>
-      {/* {loading && <Loader loading={loading} />} */}
       {isLoading && <Loader loading={isLoading} />}
       <div className={css.container}>
         <div className={`${css.titleContainer} ${isVisible ? css.visible : ""}`}>
@@ -80,7 +59,6 @@ export default function TvAdvertising() {
           <SliderTv items={moviesNowPlaying} />
         </div>
       </div>
-      {/* {error && <ErrorMessage error={error} />} */}
       {isError && <ErrorMessage error={isError} />}
     </section>
   );
