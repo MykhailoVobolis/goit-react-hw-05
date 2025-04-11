@@ -41,7 +41,18 @@ export default function App() {
     const intervalId = setInterval(() => {
       serverPing();
     }, 840000);
-    return () => clearInterval(intervalId);
+
+    // Відновлюємо пінг, коли вкладка знову отримує фокус
+    const handleFocus = () => {
+      serverPing();
+    };
+    // Слухаємо подію фокусу
+    window.addEventListener("focus", handleFocus);
+
+    return () => {
+      clearInterval(intervalId);
+      window.removeEventListener("focus", handleFocus);
+    };
   }, []);
 
   useEffect(() => {
