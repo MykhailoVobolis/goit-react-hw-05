@@ -1,9 +1,11 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
-import Loader from "../../components/Loader/Loader.jsx";
-import MovieList from "../../components/MovieList/MovieList.jsx";
-import { getFavoriteMovies } from "../../cinema-server-api.js";
 import { PiListDashes } from "react-icons/pi";
+import { getFavoriteMovies, refreshUser } from "../../cinema-server-api.js";
+
+import Loader from "../../components/Loader/Loader.jsx";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
+import MovieList from "../../components/MovieList/MovieList.jsx";
 
 import css from "./FavoriteMoviesPage.module.css";
 
@@ -21,7 +23,30 @@ export default function FavoriteMoviesPage() {
           return moviesFavorite.length > 0 ? [...prevMoviesWeek, ...data] : data;
         });
       } catch (error) {
-        setError(true);
+        const isTokenExpired = error?.response?.data?.data?.message === "Access token expired";
+        const isUnauthorized = error?.status === 401;
+
+        if (isTokenExpired && isUnauthorized) {
+          try {
+            // Оновлюємо токен
+            const newTokens = await refreshUser();
+            // Оновлюємо заголовок Authorization
+            axios.defaults.headers.common["Authorization"] = `Bearer ${newTokens.accessToken}`;
+
+            // Повторний запит після рефрешу
+            const data = await getFavoriteMovies();
+
+            setMoviesFavorite((prevMoviesWeek) => {
+              return moviesFavorite.length > 0 ? [...prevMoviesWeek, ...data] : data;
+            });
+          } catch (refreshError) {
+            console.error("Refresh error:", refreshError.message);
+            localStorage.removeItem("wasLoggedIn");
+            setError(true);
+          }
+        } else {
+          setError(true);
+        }
       } finally {
         setLoading(false);
       }
@@ -50,5 +75,3 @@ export default function FavoriteMoviesPage() {
     </>
   );
 }
-
-// Створюй колекцію улюблених фільмів, натискаючи закладку

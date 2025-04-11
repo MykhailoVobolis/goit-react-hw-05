@@ -12,7 +12,7 @@
       #000000f5 89%,
       #000000ff 100%
     ),
-    url("../../img/hero-bg.webp");
+    url("/img/hero-bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -39,7 +39,7 @@
         #000000f5 89%,
         #000000ff 100%
       ),
-      url("../../img/hero-bg@2x.webp");
+      url("/img/hero-bg@2x.webp");
   }
 }
 
