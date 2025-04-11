@@ -5,34 +5,23 @@ import Loader from "../../components/Loader/Loader";
 
 import { getNowPlaying } from "../../tmdb-api";
 import { useState, useEffect, useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 import css from "./TvAdvertising.module.css";
 
 export default function TvAdvertising() {
-  const [moviesNowPlaying, setMoviesNowPlaying] = useState([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const page = 1;
 
   const sectionRef = useRef(null);
 
-  useEffect(() => {
-    async function fetchMovies() {
-      try {
-        setLoading(true);
-        const data = await getNowPlaying(page);
-        setMoviesNowPlaying((prevNowPlaying) => {
-          return moviesNowPlaying.length > 0 ? [...prevNowPlaying, ...data.results] : data.results;
-        });
-      } catch (error) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchMovies();
-  }, []);
+  const page = 1;
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["nowPlayingMovies"],
+    queryFn: () => getNowPlaying(page),
+  });
+
+  const moviesNowPlaying = data?.results || [];
 
   // Анімація заголовку секції
   useEffect(() => {
@@ -60,7 +49,7 @@ export default function TvAdvertising() {
 
   return (
     <section className={css.tvAdvertising} ref={sectionRef}>
-      {loading && <Loader loading={loading} />}
+      {isLoading && <Loader loading={isLoading} />}
       <div className={css.container}>
         <div className={`${css.titleContainer} ${isVisible ? css.visible : ""}`}>
           <h2 className={css.title}>Насолоджуйся українським дубляжем</h2>
@@ -70,7 +59,7 @@ export default function TvAdvertising() {
           <SliderTv items={moviesNowPlaying} />
         </div>
       </div>
-      {error && <ErrorMessage error={error} />}
+      {isError && <ErrorMessage error={isError} />}
     </section>
   );
 }
