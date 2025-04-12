@@ -28,7 +28,7 @@
 .modalContent {
   position: relative;
   height: 100%;
-  width: 185px;
+  width: 285px;
   outline: transparent;
   outline-offset: 4px;
   transform: translateX(100%);

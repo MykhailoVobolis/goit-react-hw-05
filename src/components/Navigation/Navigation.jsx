@@ -27,12 +27,12 @@ export default function Navigation({ openModal, isLoggedIn, onClose, modalIsOpen
     <div className={css.container}>
       <nav className={css.nav}>
         <div className={css.navItemsContainer}>
-          <Link to="/">
+          <Link to="/" aria-label="Go to home page">
             <RiMovie2Line className={css.logo} />
           </Link>
           {isTablet && <NavigationList isLoggedIn={isLoggedIn} onClose={onClose} />}
         </div>
-        <NavLink to="/search" className={getNavLinkClass}>
+        <NavLink to="/search" aria-label="Go to search movies page" className={getNavLinkClass}>
           <IoIosSearch className={css.searchIcon} />
         </NavLink>
       </nav>

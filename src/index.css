@@ -9,13 +9,16 @@
   font-size: 18px;
 
   color: #f7f6f1;
-  background-color: #141315;
+  background-color: var(--background-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  --background-color: #1e1f22;
+  --input-background: #2a2b2e;
+  --input-auth-form: #1a1a1a;
   --plyr-color-main: #fec90c; /* Основний колір (кнопки, активні елементи) */
   --plyr-control-hover: #eeb104; /* Колір кнопок при наведенні */
   --plyr-video-background: #000000; /* Фон плеєра */

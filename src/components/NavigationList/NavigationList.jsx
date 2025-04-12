@@ -10,15 +10,18 @@ const getNavLinkClass = ({ isActive }) => {
 export default function NavigationList({ isLoggedIn, onClose }) {
   return (
     <div className={css.navListContainer}>
-      <NavLink to="/" className={getNavLinkClass} onClick={() => onClose()}>
+      <NavLink to="/" aria-label="Go to home page" className={getNavLinkClass} onClick={() => onClose()}>
         Головна
       </NavLink>
-
-      <NavLink to="/movies" className={getNavLinkClass} onClick={() => onClose()}>
+      <NavLink to="/movies" aria-label="Go to movies page" className={getNavLinkClass} onClick={() => onClose()}>
         Фільми
       </NavLink>
       {isLoggedIn && (
-        <NavLink to="/watching" className={getNavLinkClass} onClick={() => onClose()}>
+        <NavLink
+          to="/watching"
+          aria-label="Go to favorite movies page"
+          className={getNavLinkClass}
+          onClick={() => onClose()}>
           Обране
         </NavLink>
       )}

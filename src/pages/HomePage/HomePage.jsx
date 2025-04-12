@@ -71,13 +71,13 @@ export default function HomePage() {
         {moviesWeek.length > 0 && (
           <div className={css.container}>
             <div className={css.titleContainer}>
-              <Link className={css.trendMoviesTitle} to={`/collection/best_films_week`}>
+              <Link className={css.trendMoviesTitle} to={`/collection/best_films_week`} aria-label="Show more movies">
                 Найкращі фільми тижня
               </Link>
-              <Link className={css.moreLink} to={`/collection/best_films_week`}>
+              <Link className={css.moreLink} to={`/collection/best_films_week`} aria-label="Show more movies">
                 Показати більше
               </Link>
-              <Link className={css.moreLinkMob} to={`/collection/best_films_week`}>
+              <Link className={css.moreLinkMob} to={`/collection/best_films_week`} aria-label="Show more movies">
                 <GrNext className={css.moreIcon} />
               </Link>
             </div>

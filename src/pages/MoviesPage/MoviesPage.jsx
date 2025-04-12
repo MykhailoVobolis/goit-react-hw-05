@@ -62,13 +62,13 @@ export default function MoviesPage() {
             {moviesNowPlaying.length > 0 && (
               <div className={css.container}>
                 <div className={css.titleContainer}>
-                  <Link className={css.moviesTitle} to={`/collection/now_playing_films`}>
+                  <Link className={css.moviesTitle} to={`/collection/now_playing_films`} aria-label="Show more movies">
                     Зараз у кіно
                   </Link>
-                  <Link className={css.moreLink} to={`/collection/now_playing_films`}>
+                  <Link className={css.moreLink} to={`/collection/now_playing_films`} aria-label="Show more movies">
                     Показати більше
                   </Link>
-                  <Link className={css.moreLinkMob} to={`/collection/now_playing_films`}>
+                  <Link className={css.moreLinkMob} to={`/collection/now_playing_films`} aria-label="Show more movies">
                     <GrNext className={css.moreIcon} />
                   </Link>
                 </div>
@@ -81,13 +81,13 @@ export default function MoviesPage() {
             {popularMovies.length > 0 && (
               <div className={css.container}>
                 <div className={css.titleContainer}>
-                  <Link className={css.moviesTitle} to={`/collection/most_popular_films`}>
+                  <Link className={css.moviesTitle} to={`/collection/most_popular_films`} aria-label="Show more movies">
                     Найбільш популярні
                   </Link>
-                  <Link className={css.moreLink} to={`/collection/most_popular_films`}>
+                  <Link className={css.moreLink} to={`/collection/most_popular_films`} aria-label="Show more movies">
                     Показати більше
                   </Link>
-                  <Link className={css.moreLinkMob} to={`/collection/most_popular_films`}>
+                  <Link className={css.moreLinkMob} to={`/collection/most_popular_films`} aria-label="Show more movies">
                     <GrNext className={css.moreIcon} />
                   </Link>
                 </div>
@@ -97,13 +97,13 @@ export default function MoviesPage() {
             {mostRatingMovies.length > 0 && (
               <div>
                 <div className={css.titleContainer}>
-                  <Link className={css.moviesTitle} to={`/collection/best_rating_films`}>
+                  <Link className={css.moviesTitle} to={`/collection/best_rating_films`} aria-label="Show more movies">
                     Найкраще за рейтингом TMDB
                   </Link>
-                  <Link className={css.moreLink} to={`/collection/best_rating_films`}>
+                  <Link className={css.moreLink} to={`/collection/best_rating_films`} aria-label="Show more movies">
                     Показати більше
                   </Link>
-                  <Link className={css.moreLinkMob} to={`/collection/best_rating_films`}>
+                  <Link className={css.moreLinkMob} to={`/collection/best_rating_films`} aria-label="Show more movies">
                     <GrNext className={css.moreIcon} />
                   </Link>
                 </div>
