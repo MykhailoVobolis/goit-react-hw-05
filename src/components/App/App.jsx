@@ -2,9 +2,9 @@ import Layout from "../Layout/Layout";
 
 import { Routes, Route } from "react-router-dom";
 import { lazy, useEffect, useState } from "react";
-
 import { refreshUser, serverPing } from "../../cinema-server-api.js";
 import { useUser } from "../../userContext.jsx";
+
 import Loader from "../Loader/Loader.jsx";
 import RestrictedRoute from "../RestrictedRoute.jsx";
 import PrivateRoute from "../PrivateRoute.jsx";
@@ -76,7 +76,7 @@ export default function App() {
       setLoading(true);
       refresh();
     }
-  }, []);
+  }, [authContext]);
 
   return (
     <>

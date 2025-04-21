@@ -1,10 +1,10 @@
-import axios from "axios";
-import { createContext, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 
 import { loginUser, logoutUser, registerUser } from "./cinema-server-api.js";
 
-import Loader from "./components/Loader/Loader.jsx";
 import toast, { Toaster } from "react-hot-toast";
+import instance from "./utils/axiosInterceptor.js";
+import Loader from "./components/Loader/Loader.jsx";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage.jsx";
 
 const userContext = createContext();
@@ -19,11 +19,11 @@ export const UserProvider = ({ children }) => {
   const [authProcess, setAuthProcess] = useState(true); // Стан процесу перевірки аутентифікації
 
   const setAuthHeader = (token) => {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   };
 
   const clearAuthHeader = () => {
-    axios.defaults.headers.common["Authorization"] = "";
+    instance.defaults.headers.common["Authorization"] = "";
   };
 
   const register = async (value) => {
@@ -56,7 +56,6 @@ export const UserProvider = ({ children }) => {
       setIsLoggedIn(true);
       setAuthProcess(false);
       localStorage.setItem("wasLoggedIn", true);
-      // Додавання хедерів з токіном до всіх наступних будь яких типів запитів (common)
       setAuthHeader(response.accessToken);
     } catch (error) {
       toast("Користувача не знайдено. Будь ласка, перевірте введені дані.", {
@@ -75,7 +74,7 @@ export const UserProvider = ({ children }) => {
       setLoading(true);
       setIsLoggedIn(false);
       setUser(null);
-      const response = await logoutUser();
+      await logoutUser();
       localStorage.removeItem("wasLoggedIn");
       // Видалення хедеру при виходу користувача з App
       clearAuthHeader();
@@ -87,12 +86,12 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const authContext = (data) => {
+  const authContext = useCallback((data) => {
     setUser(data.user);
     setIsLoggedIn(true);
     setAuthHeader(data.accessToken);
     setAuthProcess(false);
-  };
+  }, []);
 
   return (
     <userContext.Provider

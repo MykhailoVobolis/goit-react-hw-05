@@ -1,7 +1,6 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { PiListDashes } from "react-icons/pi";
-import { getFavoriteMovies, refreshUser } from "../../cinema-server-api.js";
+import { getFavoriteMovies } from "../../cinema-server-api.js";
 
 import Loader from "../../components/Loader/Loader.jsx";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
@@ -19,34 +18,9 @@ export default function FavoriteMoviesPage() {
       try {
         setLoading(true);
         const data = await getFavoriteMovies();
-        setMoviesFavorite((prevMoviesWeek) => {
-          return moviesFavorite.length > 0 ? [...prevMoviesWeek, ...data] : data;
-        });
+        setMoviesFavorite(data);
       } catch (error) {
-        const isTokenExpired = error?.response?.data?.data?.message === "Access token expired";
-        const isUnauthorized = error?.status === 401;
-
-        if (isTokenExpired && isUnauthorized) {
-          try {
-            // Оновлюємо токен
-            const newTokens = await refreshUser();
-            // Оновлюємо заголовок Authorization
-            axios.defaults.headers.common["Authorization"] = `Bearer ${newTokens.accessToken}`;
-
-            // Повторний запит після рефрешу
-            const data = await getFavoriteMovies();
-
-            setMoviesFavorite((prevMoviesWeek) => {
-              return moviesFavorite.length > 0 ? [...prevMoviesWeek, ...data] : data;
-            });
-          } catch (refreshError) {
-            console.error("Refresh error:", refreshError.message);
-            localStorage.removeItem("wasLoggedIn");
-            setError(true);
-          }
-        } else {
-          setError(true);
-        }
+        setError(true);
       } finally {
         setLoading(false);
       }

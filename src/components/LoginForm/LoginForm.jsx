@@ -61,7 +61,7 @@ export default function LoginForm() {
         <div>
           <h2 className={css.title}>Увійти</h2>
           <p className={css.text}>Перейдіть у Cinema Hall</p>
-          <GoogleBtn type="In" />
+          <GoogleBtn />
         </div>
         <div>
           <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={FeedbackSchema}>

@@ -5,7 +5,7 @@ import { storageAccessHelper } from "../../helpers/storageAccessHelper.js";
 
 import css from "./GoogleBtn.module.css";
 
-export default function GoogleBtn({ type }) {
+export default function GoogleBtn() {
   const handleGoogleLogin = async () => {
     // Запит доступу до збереженого сховища (для Safari)
     await storageAccessHelper();
@@ -20,19 +20,9 @@ export default function GoogleBtn({ type }) {
   };
 
   return (
-    <>
-      {type === "Up" ? (
-        <button className={css.googleBtn} onClick={handleGoogleLogin}>
-          <FcGoogle className={css.googleIcon} />
-          {/* Реєстрація за допомогою Google */}
-          Увійти за допомогою Google
-        </button>
-      ) : (
-        <button className={css.googleBtn} onClick={handleGoogleLogin}>
-          <FcGoogle className={css.googleIcon} />
-          Увійти за допомогою Google
-        </button>
-      )}
-    </>
+    <button className={css.googleBtn} onClick={handleGoogleLogin}>
+      <FcGoogle className={css.googleIcon} />
+      Увійти за допомогою Google
+    </button>
   );
 }

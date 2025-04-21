@@ -66,7 +66,7 @@ export default function RegistrationForm() {
         <div>
           <h2 className={css.title}>Створіть обліковий запис</h2>
           <p className={css.text}>Введіть своє ім'я та електронну адресу</p>
-          <GoogleBtn type="Up" />
+          <GoogleBtn />
         </div>
         <div>
           <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={FeedbackSchema}>
