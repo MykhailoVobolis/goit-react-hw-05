@@ -209,15 +209,15 @@ export default function MovieDetailsPage() {
             />
           )}
           <div>
-            <h2 className={css.title}>
+            <div className={css.titleContainer}>
               {isLoggedIn &&
                 (isFavorite ? (
                   <DelIsFavoriteMovieBtn handleClick={handleClikDelMovie} />
                 ) : (
                   <AddIsFavoriteMovieBtn handleClick={handleClikAddMovie} />
                 ))}
-              {movies.title}
-            </h2>
+              <h2 className={css.title}>{movies.title}</h2>
+            </div>
             {!isWide && <PlayBtn movieId={movieId} openModal={openModal} />}
             <div className={css.abautFilmContainer}>
               <ul className={css.statMovie}>

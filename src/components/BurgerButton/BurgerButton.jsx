@@ -1,4 +1,4 @@
-import { MdMenu } from "react-icons/md";
+import { IoMdMenu } from "react-icons/io";
 import css from "./BurgerButton.module.css";
 
 export default function BurgerButton({ openModal, modalIsOpen }) {
@@ -8,7 +8,7 @@ export default function BurgerButton({ openModal, modalIsOpen }) {
       onClick={openModal}
       aria-hidden={modalIsOpen ? "true" : "false"}
       aria-label="Mobile menu button">
-      <MdMenu size={27} className={css.burgerIcon} />
+      <IoMdMenu size={27} className={css.burgerIcon} />
     </button>
   );
 }

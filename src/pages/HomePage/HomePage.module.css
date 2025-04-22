@@ -171,8 +171,8 @@
 }
 
 .trendMoviesTitle {
-  font-weight: 600;
-  font-size: 22px;
+  font-weight: 500;
+  font-size: 20px;
   line-height: 1.2;
 }
 
@@ -190,8 +190,8 @@
 }
 
 .moreLinkMob {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -246,7 +246,12 @@
   }
 
   .trendMoviesTitle {
-    font-size: 26px;
+    font-size: 28px;
+  }
+
+  .moreLinkMob {
+    width: 28px;
+    height: 28px;
   }
 
   .moreIcon {
@@ -343,9 +348,5 @@
 
   .moreLinkMob {
     display: none;
-  }
-
-  .trendMoviesTitle {
-    font-size: 28px;
   }
 }

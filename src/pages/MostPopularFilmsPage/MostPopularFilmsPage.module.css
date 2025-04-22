@@ -12,8 +12,8 @@
 }
 
 .popularMoviesTitle {
-  font-weight: 600;
-  font-size: 22px;
+  font-weight: 500;
+  font-size: 20px;
   line-height: 1.2;
   margin-bottom: 30px;
 }
@@ -28,7 +28,7 @@
   }
 
   .popularMoviesTitle {
-    font-size: 26px;
+    font-size: 28px;
   }
 }
 
@@ -36,9 +36,5 @@
   .container {
     max-width: 1260px;
     padding: 0 7px;
-  }
-
-  .popularMoviesTitle {
-    font-size: 28px;
   }
 }

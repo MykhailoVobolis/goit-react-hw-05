@@ -17,10 +17,10 @@
 }
 
 .mainBox {
-  background-color: #000000;
+  background-color: var(--plyr-video-background);
   padding: 18px 18px 48px 18px;
-  margin-top: 100px;
   border-radius: 28px;
+  margin-top: 40px;
   margin-bottom: 40px;
   display: flex;
   flex-direction: column;
@@ -122,6 +122,7 @@
   .mainBox {
     max-width: 512px;
     padding: 36px 36px 48px 36px;
+    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
   }

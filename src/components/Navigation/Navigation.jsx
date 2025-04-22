@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { NavLink, Link } from "react-router-dom";
 import { RiMovie2Line } from "react-icons/ri";
 
-import { IoIosSearch } from "react-icons/io";
+import { IoSearchOutline } from "react-icons/io5";
 import { useUser } from "../../userContext.jsx";
 import { useMedia } from "react-use";
 
@@ -32,9 +32,11 @@ export default function Navigation({ openModal, isLoggedIn, onClose, modalIsOpen
           </Link>
           {isTablet && <NavigationList isLoggedIn={isLoggedIn} onClose={onClose} />}
         </div>
-        <NavLink to="/search" aria-label="Go to search movies page" className={getNavLinkClass}>
-          <IoIosSearch className={css.searchIcon} />
-        </NavLink>
+        {isTablet && (
+          <NavLink to="/search" aria-label="Go to search movies page" className={getNavLinkClass}>
+            <IoSearchOutline className={css.searchIcon} />
+          </NavLink>
+        )}
       </nav>
       <div className={css.userContainer}>
         {isMobile && isLoggedIn && <UserAvatar user={user} />}
