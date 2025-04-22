@@ -2,8 +2,15 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding-bottom: 65px;
 }
 
 .mainContainer {
   flex-grow: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .pageContainer {
+    padding-bottom: 0px;
+  }
 }

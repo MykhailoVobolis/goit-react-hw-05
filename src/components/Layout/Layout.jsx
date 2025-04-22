@@ -1,6 +1,7 @@
 import Footer from "../Footer/Footer";
 import AppBar from "../AppBar/AppBar.jsx";
 import BreadcrumbsNav from "../BreadcrumbsNav/BreadcrumbsNav.jsx";
+import NavBottomMenu from "../NavBottomMenu/NavBottomMenu.jsx";
 
 import { Suspense } from "react";
 import { useMedia } from "react-use";
@@ -8,6 +9,7 @@ import { useMedia } from "react-use";
 import css from "./Layout.module.css";
 
 export default function Layout({ children }) {
+  const isMobile = useMedia("(max-width: 767px)");
   const isTablet = useMedia("(min-width: 768px)");
 
   return (
@@ -18,6 +20,7 @@ export default function Layout({ children }) {
         <Suspense fallback={<div></div>}>{children}</Suspense>
       </main>
       <Footer />
+      {isMobile && <NavBottomMenu />}
     </div>
   );
 }

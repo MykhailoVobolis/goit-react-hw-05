@@ -1,7 +1,7 @@
 .ibmContainer {
   padding-top: 45px;
   padding-bottom: 45px;
-  background-color: #000000;
+  background-color: var(--plyr-video-background);
   min-width: 320px;
   max-width: 100%;
   margin-left: auto;
@@ -19,8 +19,8 @@
 }
 
 .ibmTitle {
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: 500;
+  font-size: 20px;
   line-height: 1.2;
   margin-bottom: 40px;
   text-align: center;

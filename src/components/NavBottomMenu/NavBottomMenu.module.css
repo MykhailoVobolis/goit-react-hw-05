@@ -1,0 +1,35 @@
+.container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: var(--plyr-video-background);
+  z-index: 9999;
+  min-width: 320px;
+  max-width: 1246px;
+  padding: 10px 15px;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: 1px solid var(--background-color);
+}
+
+.navBottom {
+  display: flex;
+  justify-content: space-around;
+}
+
+.active {
+  color: #fec90c;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.linkName {
+  font-size: 12px;
+}

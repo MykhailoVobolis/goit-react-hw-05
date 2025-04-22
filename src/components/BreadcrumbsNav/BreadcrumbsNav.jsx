@@ -50,7 +50,7 @@ export default function BreadcrumbsNav() {
           // Перевірка, чи є поточний елемент останнім в шляху (це буде активна сторінка).
           const isLast = index === pathnames.length - 1;
           return isLast ? (
-            <Typography key={to} sx={{ fontSize: "16px", fontWeight: "500", color: "#f7f6f1" }}>
+            <Typography key={to} sx={{ fontSize: "16px", fontWeight: "400", color: "#f7f6f1" }}>
               {breadcrumbNameMap[to] || value}
             </Typography>
           ) : (
