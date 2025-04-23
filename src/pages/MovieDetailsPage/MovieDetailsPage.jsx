@@ -17,7 +17,6 @@ import { useParams, useLocation, Outlet, NavLink, Link } from "react-router-dom"
 import { useState, useEffect, useRef, Suspense } from "react";
 import { AiFillLike } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
-import { IoCaretBackOutline } from "react-icons/io5";
 import { getDetailsMovie, getMovieVideo } from "../../tmdb-api";
 import { addMovie, delMovie, getMovieById } from "../../cinema-server-api.js";
 import { FaPlay } from "react-icons/fa6";
@@ -51,6 +50,7 @@ export default function MovieDetailsPage() {
 
   const isWide = useMedia("(min-width: 1280px)");
   const isTablet = useMedia("(min-width: 768px)");
+  const isDesktop = useMedia("(min-width: 1280px)");
 
   // Повернення на попередню сторінку
   const location = useLocation();
@@ -259,9 +259,11 @@ export default function MovieDetailsPage() {
             </div>
             <h2 className={css.descriptionMovie}>Опис</h2>
             <p className={css.textMovie}>{movies.overview}</p>
-            <Link className={css.linkGoBack} to={backLink.current}>
-              <IoCaretBackOutline className={css.iconBack} /> Повернутися
-            </Link>
+            {isDesktop && (
+              <Link className={css.linkGoBack} to={backLink.current}>
+                Повернутися
+              </Link>
+            )}
           </div>
         </div>
       </section>

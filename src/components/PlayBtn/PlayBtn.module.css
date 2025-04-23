@@ -10,9 +10,9 @@
   line-height: 30px;
   box-shadow: none;
   border-radius: 100px;
-  background-color: #fec90c;
+  background-color: var(--plyr-color-main);
   color: #000000;
-  transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--animation);
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -22,10 +22,4 @@
 .playBtn:hover {
   background-color: #ffdf44;
   color: #000000;
-}
-
-.iconPlay {
-  vertical-align: text-top;
-  margin-top: 1px;
-  margin-right: 5px;
 }
