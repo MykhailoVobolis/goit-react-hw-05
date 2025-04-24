@@ -1,6 +1,6 @@
 .searchContainer {
   position: relative;
-  margin-bottom: 65px;
+  margin-bottom: 50px;
 }
 
 .searchInput {
@@ -43,7 +43,7 @@
   right: 2px;
   position: absolute;
   z-index: 9999;
-  color: #f7f6f1;
+  color: #6d6d6d;
   transition: color var(--animation);
 }
 

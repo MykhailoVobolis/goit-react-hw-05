@@ -7,8 +7,6 @@ export default function Spinner({ loading }) {
     <div className={css.spinner}>
       <ColorRing
         visible={loading}
-        height="80"
-        width="80"
         ariaLabel="color-ring-wrapper"
         wrapperClass={css.colorRingLoading}
         colors={["#fec90c", "#fec90c", "#fec90c", "#fec90c", "#fec90c"]}
