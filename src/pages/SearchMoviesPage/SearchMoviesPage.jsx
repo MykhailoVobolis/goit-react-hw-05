@@ -22,7 +22,7 @@ export default function SearchMoviesPage() {
   const page = Number(searchParams.get("page")) || 1;
 
   const changeSearch = (value) => {
-    setSearchParams({ name: value, page });
+    setSearchParams({ name: value, page: 1 });
     setMovies([]);
     setPaginate(false);
   };
@@ -65,7 +65,7 @@ export default function SearchMoviesPage() {
           ) : (
             <>
               {error && <ErrorMessage error={error} />}
-              {movies.length > 0 ? <MovieList items={movies} /> : inputValue !== "" && <NoResults />}
+              {movies.length > 0 ? <MovieList items={movies} /> : inputValue && <NoResults />}
               {paginate && <MoviesPagination page={page} totalPages={totalPages} handlePageChange={handlePageChange} />}
             </>
           )}
