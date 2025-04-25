@@ -36,13 +36,6 @@ export default function SearchBar({ onSearch }) {
     onSearch("");
   };
 
-  useEffect(() => {
-    const saved = localStorage.getItem("searchValue")?.trim();
-    if (saved && saved.length >= 2) {
-      onSearch(saved);
-    }
-  }, []);
-
   return (
     <div className={css.searchContainer}>
       <IoSearchOutline className={css.searchIcon} size={24} />

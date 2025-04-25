@@ -27,6 +27,15 @@ export default function SearchMoviesPage() {
     setPaginate(false);
   };
 
+  useEffect(() => {
+    const saved = localStorage.getItem("searchValue")?.trim();
+    const currentPage = Number(searchParams.get("page")) || 1;
+
+    if (!searchParams.get("name") && saved && saved.length >= 2) {
+      changeSearch(saved, currentPage);
+    }
+  }, [searchParams]);
+
   // Функція обробки зміни сторінки
   const handlePageChange = (event, value) => {
     setSearchParams({ name: inputValue, page: value });
