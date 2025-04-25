@@ -14,8 +14,13 @@
 }
 
 @media screen and (min-width: 768px) {
+  .link {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
   .navListContainer {
-    flex-direction: column;
     flex-direction: row;
     gap: 30px;
   }

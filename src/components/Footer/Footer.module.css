@@ -14,10 +14,12 @@
 
 .descriptionFooter {
   font-size: 12px;
+  font-weight: 500;
   line-height: 1.4;
   color: #626262;
-  width: 200px;
+  width: 100%;
   text-align: center;
+  margin-bottom: 75px;
 }
 
 @media screen and (min-width: 768px) {
@@ -30,7 +32,7 @@
   .descriptionFooter {
     font-size: 14px;
     width: 100%;
-    text-align: start;
+    margin-bottom: 55px;
   }
 }
 
@@ -38,5 +40,10 @@
   .footerContainer {
     max-width: 1260px;
     padding: 22px 7px;
+  }
+
+  .descriptionFooter {
+    text-align: start;
+    margin-bottom: 0px;
   }
 }

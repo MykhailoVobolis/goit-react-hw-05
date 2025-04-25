@@ -8,6 +8,6 @@ export default function NoResults() {
   return isTablet ? (
     <p className={css.noResultsText}>На жаль, нічого не знайдено. Зміни запит або обирай щось із рекомендованого</p>
   ) : (
-    <p className={css.noResultsText}>Нічого не знайдено. Зміни запит</p>
+    <p className={css.noResultsText}>На жаль, нічого не знайдено. Зміни запит</p>
   );
 }

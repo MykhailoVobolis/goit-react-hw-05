@@ -9,8 +9,8 @@ import { useMedia } from "react-use";
 import css from "./Layout.module.css";
 
 export default function Layout({ children }) {
-  const isMobile = useMedia("(max-width: 767px)");
   const isTablet = useMedia("(min-width: 768px)");
+  const isDesktop = useMedia("(max-width: 1280px)");
 
   return (
     <div className={css.pageContainer}>
@@ -20,7 +20,7 @@ export default function Layout({ children }) {
         <Suspense fallback={<div></div>}>{children}</Suspense>
       </main>
       <Footer />
-      {isMobile && <NavBottomMenu />}
+      {isDesktop && <NavBottomMenu />}
     </div>
   );
 }

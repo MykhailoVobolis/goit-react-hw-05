@@ -20,8 +20,8 @@ const getNavLinkClass = ({ isActive }) => {
 export default function Navigation({ openModal, isLoggedIn, onClose, modalIsOpen }) {
   const { user } = useUser();
 
-  const isMobile = useMedia("(max-width: 767px)");
-  const isTablet = useMedia("(min-width: 768px)");
+  const isMobile = useMedia("(max-width: 1279px)");
+  const isDesktop = useMedia("(min-width: 1280px)");
 
   return (
     <div className={css.container}>
@@ -30,9 +30,9 @@ export default function Navigation({ openModal, isLoggedIn, onClose, modalIsOpen
           <Link to="/" aria-label="Go to home page">
             <RiMovie2Line className={css.logo} />
           </Link>
-          {isTablet && <NavigationList isLoggedIn={isLoggedIn} onClose={onClose} />}
+          {isDesktop && <NavigationList isLoggedIn={isLoggedIn} onClose={onClose} />}
         </div>
-        {isTablet && (
+        {isDesktop && (
           <NavLink to="/search" aria-label="Go to search movies page" className={getNavLinkClass}>
             <IoSearchOutline className={css.searchIcon} />
           </NavLink>
