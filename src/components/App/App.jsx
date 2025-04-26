@@ -1,6 +1,6 @@
 import Layout from "../Layout/Layout";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { lazy, useEffect, useState } from "react";
 import { refreshUser, serverPing } from "../../cinema-server-api.js";
 import { useUser } from "../../userContext.jsx";
@@ -99,6 +99,7 @@ export default function App() {
             <Route path="/collection/movies_by_genre" element={<MoviesByGenrePage />} />
             <Route path="/collection/movies_by_company" element={<MoviesByCompanyPage />} />
             <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+              <Route index element={<Navigate to="cast" replace />} />
               <Route path="cast" element={<MovieCast />} />
               <Route path="reviews" element={<MovieReviews />} />
             </Route>

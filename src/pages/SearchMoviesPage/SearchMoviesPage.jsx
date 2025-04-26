@@ -74,7 +74,16 @@ export default function SearchMoviesPage() {
           ) : (
             <>
               {error && <ErrorMessage error={error} />}
-              {movies.length > 0 ? <MovieList items={movies} /> : inputValue && <NoResults />}
+              {movies.length > 0 ? (
+                <MovieList items={movies} />
+              ) : (
+                inputValue && (
+                  <NoResults
+                    mainText={"На жаль, нічого не знайдено. Зміни запит або обирай щось із рекомендованого"}
+                    mobileText={"На жаль, нічого не знайдено. Зміни запит"}
+                  />
+                )
+              )}
               {paginate && <MoviesPagination page={page} totalPages={totalPages} handlePageChange={handlePageChange} />}
             </>
           )}

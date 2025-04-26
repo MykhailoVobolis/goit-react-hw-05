@@ -22,7 +22,7 @@
 
 @media screen and (min-width: 768px) {
   .titleContainer {
-    max-width: 768px;
+    max-width: 1024px;
   }
 
   .similarFilmsTitle {

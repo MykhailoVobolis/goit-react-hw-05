@@ -1,7 +1,7 @@
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Spinner from "../Spinner/Spinner";
 import SliderReviews from "../SliderReviews/SliderReviews";
-import toast, { Toaster } from "react-hot-toast";
+import NoResults from "../NoResults/NoResults.jsx";
 
 import { getMovieReviews } from "../../tmdb-api";
 import { useState, useEffect } from "react";
@@ -19,15 +19,6 @@ export default function MovieReviews() {
       try {
         setLoading(true);
         const data = await getMovieReviews(movieId);
-        if (!data.results.length) {
-          toast("На жаль, ще немає відгуків до цього фільму. Будь ласка, спробуйте пізніше.", {
-            style: {
-              color: "#000000",
-              backgroundColor: "#fff088",
-            },
-          });
-          return;
-        }
         setReviews((prevReview) => {
           return reviews.length > 0 ? [...prevReview, ...data.results] : data.results;
         });
@@ -43,9 +34,15 @@ export default function MovieReviews() {
   return (
     <>
       {loading && <Spinner loading={loading} />}
-      {reviews.length > 0 && <SliderReviews reviews={reviews} />}
+      {reviews.length > 0 ? (
+        <SliderReviews reviews={reviews} />
+      ) : (
+        <NoResults
+          mainText={"На жаль, ще немає відгуків до цього фільму. Спробуй пізніше"}
+          mobileText={"Ще немає відгуків до цього фільму"}
+        />
+      )}
       {error && <ErrorMessage error={error} />}
-      <Toaster position="top-right" containerStyle={{ zIndex: 99999999 }} />
     </>
   );
 }
