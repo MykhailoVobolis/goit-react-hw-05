@@ -1,0 +1,21 @@
+.genreItem {
+  font-weight: 500;
+  color: var(--plyr-color-main);
+}
+
+.genreItem:hover {
+  text-decoration: underline;
+}
+
+.genreList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+@media screen and (min-width: 768px) {
+  .genreList {
+    flex-direction: row;
+    gap: 10px;
+  }
+}

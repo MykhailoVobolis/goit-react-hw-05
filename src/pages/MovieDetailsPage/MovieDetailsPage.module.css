@@ -2,33 +2,68 @@
   padding-bottom: 40px;
 }
 
+.heroSection {
+  position: relative;
+}
+
+.linkGoBackMobile {
+  position: absolute;
+  top: 18px;
+  left: 15px;
+  z-index: 999;
+}
+
 .hero {
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  height: 227px;
+  height: 620px;
   min-width: 320px;
   max-width: 100%;
+  padding-top: 540px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .gradientOverlay {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 501px;
   right: 0;
   left: 0;
+  height: 120px;
   z-index: 3;
-  background-image: linear-gradient(1turn, var(--background-color) 4.08%, rgba(30, 31, 34, 0) 57.61%);
+
+  background-color: rgba(40, 40, 40, 0.5);
+  -webkit-backdrop-filter: saturate(180%) blur(60px);
+  backdrop-filter: saturate(180%) blur(60px);
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.2) 20%,
+    rgba(0, 0, 0, 0.4) 40%,
+    rgba(0, 0, 0, 0.6) 60%,
+    rgba(0, 0, 0, 0.8) 80%,
+    rgba(0, 0, 0, 1) 100%
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.2) 20%,
+    rgba(0, 0, 0, 0.4) 40%,
+    rgba(0, 0, 0, 0.6) 60%,
+    rgba(0, 0, 0, 0.8) 80%,
+    rgba(0, 0, 0, 1) 100%
+  );
 }
 
 .titleContainer {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   margin-bottom: 30px;
 }
 
@@ -69,7 +104,7 @@
 .icon {
   vertical-align: text-top;
   margin-right: 6px;
-  fill: #fec90c;
+  fill: #6d6d6d;
   width: 19px;
   height: 19px;
 }
@@ -101,8 +136,7 @@
 }
 
 .statValue,
-.ratingValue,
-.genreItem {
+.ratingValue {
   font-weight: 500;
 }
 
@@ -122,12 +156,6 @@
   padding-right: 5px;
   font-size: 12px;
   font-weight: 700;
-}
-
-.genreList {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
 }
 
 .descriptionMovie {
@@ -181,11 +209,12 @@
 
 @media screen and (min-width: 768px) {
   .hero {
-    height: 388px;
+    height: 432px;
+    padding-top: 352px;
   }
 
-  .titleContainer {
-    gap: 12px;
+  .gradientOverlay {
+    top: 313px;
   }
 
   .title {
@@ -200,11 +229,6 @@
   .icon {
     width: 21px;
     height: 21px;
-  }
-
-  .genreList {
-    flex-direction: row;
-    gap: 10px;
   }
 
   .descriptionMovie {
@@ -252,31 +276,14 @@
     height: 600px;
     min-width: 1158px;
     max-width: 1920px;
-    padding-top: 500px;
+    padding-top: 510px;
     text-align: center;
     margin-bottom: 0px;
   }
 
   .gradientOverlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 3;
-    background: linear-gradient(
-      180deg,
-      #00000000 0%,
-      #0000000a 16%,
-      #00000021 29%,
-      #00000042 41%,
-      #0000006b 51%,
-      #00000094 61%,
-      #000000bd 70%,
-      #000000de 79%,
-      #000000f5 89%,
-      #000000ff 100%
-    );
+    height: 150px;
+    top: 451px;
   }
 
   .title {

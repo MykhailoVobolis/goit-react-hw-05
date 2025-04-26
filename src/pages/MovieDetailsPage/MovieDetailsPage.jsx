@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { format } from "date-fns";
 import { uk } from "date-fns/locale";
-import toast, { Toaster } from "react-hot-toast";
 
 import MovieModal from "../../components/MovieModal/MovieModal";
 import PlayBtn from "../../components/PlayBtn/PlayBtn";
@@ -17,12 +16,14 @@ import { useParams, useLocation, Outlet, NavLink, Link } from "react-router-dom"
 import { useState, useEffect, useRef, Suspense } from "react";
 import { AiFillLike } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
+import { MdKeyboardBackspace } from "react-icons/md";
 import { getDetailsMovie, getMovieVideo } from "../../tmdb-api";
 import { addMovie, delMovie, getMovieById } from "../../cinema-server-api.js";
 import { FaPlay } from "react-icons/fa6";
 import { useMedia } from "react-use";
 
 import css from "./MovieDetailsPage.module.css";
+import GenresOfMovie from "../../components/GenresOfMovie/GenresOfMovie.jsx";
 
 const getNavLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
@@ -48,7 +49,6 @@ export default function MovieDetailsPage() {
   const [isFavorite, setIsFavorite] = useState(false);
   const [backgroundImage, setBackgroundImage] = useState(null);
 
-  const isWide = useMedia("(min-width: 1280px)");
   const isTablet = useMedia("(min-width: 768px)");
   const isDesktop = useMedia("(min-width: 1280px)");
 
@@ -72,12 +72,6 @@ export default function MovieDetailsPage() {
     async function addFavoriteMovie() {
       try {
         setIsFavorite(true);
-        toast("Фільм доданий в обране.", {
-          style: {
-            color: "#000000",
-            backgroundColor: "#fff088",
-          },
-        });
         await addMovie(favoriteMovies);
       } catch (error) {
         setError(true);
@@ -90,12 +84,6 @@ export default function MovieDetailsPage() {
     async function delFavoriteMovie() {
       try {
         setIsFavorite(false);
-        toast("Фільм видалений з обраного.", {
-          style: {
-            color: "#000000",
-            backgroundColor: "#fff088",
-          },
-        });
         await delMovie(movieId);
       } catch (error) {
         setError(true);
@@ -186,20 +174,25 @@ export default function MovieDetailsPage() {
     <Loader loading={loading} />
   ) : (
     <div className={css.movieDetailsPage}>
-      <section>
+      <section className={css.heroSection}>
+        {!isDesktop && (
+          <Link className={css.linkGoBackMobile} to={backLink.current}>
+            <MdKeyboardBackspace size={27} />
+          </Link>
+        )}
         <div
           className={css.hero}
           style={{
             backgroundImage: backgroundImage,
           }}>
           <span className={css.gradientOverlay}></span>
-          {isWide && backgroundImage && <PlayBtn movieId={movieId} openModal={openModal} />}
+          {backgroundImage && <PlayBtn movieId={movieId} openModal={openModal} />}
         </div>
         {modalIsOpen && <MovieModal isOpen={modalIsOpen} onClose={closeModal} trailerUrl={trailerUrl} />}
       </section>
       <section className={css.movie}>
         <div className={css.movieContainer}>
-          {isWide && (
+          {isDesktop && (
             <img
               className={css.poster}
               src={movies.poster_path ? `https://image.tmdb.org/t/p/w500${movies.poster_path}` : defaultImg}
@@ -216,9 +209,8 @@ export default function MovieDetailsPage() {
                 ) : (
                   <AddIsFavoriteMovieBtn handleClick={handleClikAddMovie} />
                 ))}
-              <h2 className={css.title}>{movies.title}</h2>
+              <h1 className={css.title}>{movies.title}</h1>
             </div>
-            {!isWide && <PlayBtn movieId={movieId} openModal={openModal} />}
             <div className={css.abautFilmContainer}>
               <ul className={css.statMovie}>
                 <li className={css.statItem}>Дата релізу:</li>
@@ -247,14 +239,7 @@ export default function MovieDetailsPage() {
                     {movies.runtime} хв.
                   </li>
                 </ul>
-                <ul className={css.genreList}>
-                  {genres.map((genre, index) => (
-                    <li className={css.genreItem} key={genre.id}>
-                      {genre.name}
-                      {index < genres.length - 1 && ","}
-                    </li>
-                  ))}
-                </ul>
+                {genres.length > 0 && <GenresOfMovie genres={genres} />}
               </div>
             </div>
             <h2 className={css.descriptionMovie}>Опис</h2>
@@ -293,7 +278,6 @@ export default function MovieDetailsPage() {
       </section>
       <SimilarFilms movieId={movieId} />
       {error && <ErrorMessage error={error} />}
-      <Toaster position="top-right" containerStyle={{ zIndex: 99999999 }} />
     </div>
   );
 }
