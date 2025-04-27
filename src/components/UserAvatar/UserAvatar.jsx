@@ -40,7 +40,7 @@ export default function UserAvatar({ user }) {
       <Avatar
         aria-label="user"
         sx={{
-          bgcolor: "#3b3b3b",
+          bgcolor: "#2d2d2f",
           width: 38,
           height: 38,
           cursor: "pointer",

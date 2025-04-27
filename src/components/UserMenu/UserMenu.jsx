@@ -9,11 +9,11 @@ import css from "./UserMenu.module.css";
 export default function UserMenu({ onClose }) {
   const { user, logOut } = useUser();
 
-  const isTablet = useMedia("(min-width: 768px)");
+  const isDesktop = useMedia("(min-width: 1280px)");
 
   return (
     <div className={css.authMenu}>
-      {isTablet && <UserAvatar user={user} />}
+      {isDesktop && <UserAvatar user={user} />}
       <LogoutButton logOut={logOut} onClose={onClose} />
     </div>
   );

@@ -2,32 +2,68 @@
   padding-bottom: 40px;
 }
 
+.heroSection {
+  position: relative;
+}
+
+.linkGoBackMobile {
+  position: absolute;
+  top: 18px;
+  left: 15px;
+  z-index: 999;
+}
+
 .hero {
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  height: 197px;
+  height: 620px;
   min-width: 320px;
   max-width: 100%;
+  padding-top: 540px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 20px;
 }
 
 .gradientOverlay {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 501px;
   right: 0;
   left: 0;
+  height: 120px;
   z-index: 3;
-  background-image: linear-gradient(1turn, var(--background-color) 4.08%, rgba(30, 31, 34, 0) 57.61%);
+
+  background-color: rgba(40, 40, 40, 0.5);
+  -webkit-backdrop-filter: saturate(180%) blur(60px);
+  backdrop-filter: saturate(180%) blur(60px);
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.2) 20%,
+    rgba(0, 0, 0, 0.4) 40%,
+    rgba(0, 0, 0, 0.6) 60%,
+    rgba(0, 0, 0, 0.8) 80%,
+    rgba(0, 0, 0, 1) 100%
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.2) 20%,
+    rgba(0, 0, 0, 0.4) 40%,
+    rgba(0, 0, 0, 0.6) 60%,
+    rgba(0, 0, 0, 0.8) 80%,
+    rgba(0, 0, 0, 1) 100%
+  );
 }
 
 .titleContainer {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   margin-bottom: 30px;
 }
 
@@ -48,7 +84,7 @@
 
 .movieContainer {
   min-width: 320px;
-  max-width: 375px;
+  max-width: 510px;
   padding: 0 15px;
   margin-left: auto;
   margin-right: auto;
@@ -68,7 +104,7 @@
 .icon {
   vertical-align: text-top;
   margin-right: 6px;
-  fill: #fec90c;
+  fill: #6d6d6d;
   width: 19px;
   height: 19px;
 }
@@ -95,18 +131,12 @@
   color: #000000;
 }
 
-.iconBack {
-  width: 20px;
-  height: 20px;
-}
-
 .statItem {
   color: #fafafa99;
 }
 
 .statValue,
-.ratingValue,
-.genreItem {
+.ratingValue {
   font-weight: 500;
 }
 
@@ -128,12 +158,6 @@
   font-weight: 700;
 }
 
-.genreList {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
 .descriptionMovie {
   margin-bottom: 12px;
   font-weight: 500;
@@ -142,7 +166,7 @@
 }
 
 .textMovie {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   line-height: 1.6;
   color: #fafafa99;
 }
@@ -150,7 +174,7 @@
 .abautFilmContainer {
   display: flex;
   min-width: 290px;
-  max-width: 345px;
+  max-width: 410px;
   justify-content: space-between;
   margin-bottom: 10px;
 }
@@ -162,11 +186,11 @@
 
 .addInfoContainer {
   min-width: 320px;
-  max-width: 375px;
+  max-width: 510px;
   padding: 0 15px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
   margin-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
@@ -178,18 +202,27 @@
   align-items: center;
 }
 
+.link {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #6d6d6d;
+}
+
 .active {
-  color: #fec90c;
-  position: relative;
+  font-weight: 500;
+  font-size: 20px;
+  color: #f7f6f1;
 }
 
 @media screen and (min-width: 768px) {
   .hero {
-    height: 388px;
+    height: 432px;
+    padding-top: 352px;
   }
 
-  .titleContainer {
-    gap: 12px;
+  .gradientOverlay {
+    top: 313px;
   }
 
   .title {
@@ -198,22 +231,12 @@
   }
 
   .movieContainer {
-    max-width: 768px;
+    max-width: 1024px;
   }
 
   .icon {
     width: 21px;
     height: 21px;
-  }
-
-  .iconBack {
-    width: 20px;
-    height: 20px;
-  }
-
-  .genreList {
-    flex-direction: row;
-    gap: 10px;
   }
 
   .descriptionMovie {
@@ -222,37 +245,32 @@
 
   .abautFilmContainer {
     max-width: 100%;
-    gap: 113px;
+    gap: 190px;
     justify-content: start;
     margin-bottom: 20px;
   }
 
   .addInfoContainer {
-    max-width: 768px;
+    max-width: 1024px;
     padding: 0 15px;
-    flex-direction: row;
     justify-content: space-between;
-  }
-
-  .addInformation {
-    font-weight: 500;
-    font-size: 28px;
-    line-height: 1.2;
-    color: #fafafa99;
-  }
-
-  .iconInfo {
-    margin-left: 4px;
-    vertical-align: middle;
-    width: 16px;
-    height: 16px;
-    fill: #fec90c;
   }
 
   .addInformationList {
     display: flex;
-    gap: 40px;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1246px;
     align-items: center;
+  }
+
+  .link {
+    font-weight: 600;
+  }
+
+  .active {
+    font-weight: 500;
+    font-size: 28px;
   }
 }
 
@@ -261,34 +279,22 @@
     height: 600px;
     min-width: 1158px;
     max-width: 1920px;
-    padding-top: 500px;
+    padding-top: 510px;
     text-align: center;
+    margin-bottom: 0px;
   }
 
   .gradientOverlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 3;
-    background: linear-gradient(
-      180deg,
-      #00000000 0%,
-      #0000000a 16%,
-      #00000021 29%,
-      #00000042 41%,
-      #0000006b 51%,
-      #00000094 61%,
-      #000000bd 70%,
-      #000000de 79%,
-      #000000f5 89%,
-      #000000ff 100%
-    );
+    height: 150px;
+    top: 451px;
   }
 
   .title {
     font-size: 40px;
+  }
+
+  .textMovie {
+    margin-bottom: 30px;
   }
 
   .movie {
@@ -312,18 +318,13 @@
   }
 
   .abautFilmContainer {
-    gap: 100px;
+    gap: 140px;
     margin-bottom: 30px;
   }
 
   .addInfoContainer {
     max-width: 1260px;
     padding: 0 7px;
-  }
-
-  .iconInfo {
-    width: 18px;
-    height: 18px;
   }
 
   .addInformationList {

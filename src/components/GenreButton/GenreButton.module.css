@@ -19,11 +19,6 @@
   font-weight: 500;
 }
 
-.choiceGenreBtn:hover {
-  border: solid 2px var(--plyr-color-main);
-  box-shadow: 0 0 2.5px var(--plyr-color-main);
-}
-
 .iconBtn {
   width: 16px;
   height: 16px;
@@ -39,5 +34,12 @@
   .choiceGenreBtn {
     height: 96px;
     width: 182px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .choiceGenreBtn:hover {
+    border: solid 2px var(--plyr-color-main);
+    box-shadow: 0 0 2.5px var(--plyr-color-main);
   }
 }

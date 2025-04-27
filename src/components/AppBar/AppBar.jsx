@@ -13,7 +13,7 @@ import css from "./AppBar.module.css";
 export default function AppBar() {
   const { isLoggedIn } = useUser();
 
-  const isTablet = useMedia("(min-width: 768px)");
+  const isDesktop = useMedia("(min-width: 1280px)");
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true); // Стан видимості хедера
@@ -58,7 +58,7 @@ export default function AppBar() {
     <header ref={headerRef} className={`${css.header} ${!isVisible ? css.hidden : ""}`}>
       <div className={css.container}>
         <Navigation openModal={openModal} isLoggedIn={isLoggedIn} onClose={closeModal} modalIsOpen={modalIsOpen} />
-        {isTablet && (isLoggedIn ? <UserMenu onClose={closeModal} /> : <AuthNav onClose={closeModal} />)}
+        {isDesktop && (isLoggedIn ? <UserMenu onClose={closeModal} /> : <AuthNav onClose={closeModal} />)}
         <MenuModal isOpen={modalIsOpen} onClose={closeModal} />
       </div>
     </header>

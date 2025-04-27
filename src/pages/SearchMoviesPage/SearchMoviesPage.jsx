@@ -1,10 +1,9 @@
-import toast, { Toaster } from "react-hot-toast";
-
 import MovieList from "../../components/MovieList/MovieList";
-import Loader from "../../components/Loader/Loader";
+import Spinner from "../../components/Spinner/Spinner.jsx";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import MoviesPagination from "../../components/MoviesPagination/MoviesPagination.jsx";
+import NoResults from "../../components/NoResults/NoResults.jsx";
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -28,6 +27,15 @@ export default function SearchMoviesPage() {
     setPaginate(false);
   };
 
+  useEffect(() => {
+    const saved = localStorage.getItem("searchValue")?.trim();
+    const currentPage = Number(searchParams.get("page")) || 1;
+
+    if (!searchParams.get("name") && saved && saved.length >= 2) {
+      changeSearch(saved, currentPage);
+    }
+  }, [searchParams]);
+
   // Функція обробки зміни сторінки
   const handlePageChange = (event, value) => {
     setSearchParams({ name: inputValue, page: value });
@@ -40,15 +48,6 @@ export default function SearchMoviesPage() {
         setError(false);
         setLoading(true);
         const data = await searchMovies(inputValue, page);
-        if (!data.results.length) {
-          toast("На жаль, немає фільмів, які відповідають вашому пошуковому запиту. Будь ласка, спробуйте ще раз!", {
-            style: {
-              color: "#000000",
-              backgroundColor: "#fff088",
-            },
-          });
-          return;
-        }
         setMovies(data.results);
         setTotalPages(data.total_pages);
         if (data.total_pages > 1) {
@@ -61,20 +60,35 @@ export default function SearchMoviesPage() {
       }
     }
     fetchMovies();
-  }, [searchParams, page]);
+  }, [inputValue, page]);
 
   return (
     <>
       <section className={css.movies}>
         <div className={css.container}>
           <SearchBar onSearch={changeSearch} />
-          {loading && <Loader loading={loading} />}
-          {error && <ErrorMessage error={error} />}
-          {movies.length > 0 && <MovieList items={movies} />}
-          {paginate && <MoviesPagination page={page} totalPages={totalPages} handlePageChange={handlePageChange} />}
+          {loading ? (
+            <div className={css.spinnerContainer}>
+              <Spinner loading={loading} />
+            </div>
+          ) : (
+            <>
+              {error && <ErrorMessage error={error} />}
+              {movies.length > 0 ? (
+                <MovieList items={movies} />
+              ) : (
+                inputValue && (
+                  <NoResults
+                    mainText={"На жаль, нічого не знайдено. Зміни запит або обирай щось із рекомендованого"}
+                    mobileText={"На жаль, нічого не знайдено. Зміни запит"}
+                  />
+                )
+              )}
+              {paginate && <MoviesPagination page={page} totalPages={totalPages} handlePageChange={handlePageChange} />}
+            </>
+          )}
         </div>
       </section>
-      <Toaster position="top-right" containerStyle={{ zIndex: 99999999 }} />
     </>
   );
 }

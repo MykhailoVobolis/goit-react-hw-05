@@ -4,7 +4,7 @@ import { useMedia } from "react-use";
 import css from "./LogoutButton.module.css";
 
 export default function LogoutButton({ logOut, onClose }) {
-  const isTablet = useMedia("(min-width: 768px)");
+  const isDesktop = useMedia("(min-width: 1280px)");
 
   return (
     <button
@@ -13,7 +13,7 @@ export default function LogoutButton({ logOut, onClose }) {
         logOut();
         onClose();
       }}>
-      {isTablet && <MdLogout size={24} />}
+      {isDesktop && <MdLogout size={24} />}
       Вихід
     </button>
   );
