@@ -22,10 +22,17 @@ export default function SearchMoviesPage() {
   const page = Number(searchParams.get("page")) || 1;
 
   const changeSearch = (value) => {
+    setLoading(true);
     setSearchParams({ name: value, page: 1 });
     setMovies([]);
     setPaginate(false);
   };
+
+  useEffect(() => {
+    if (!inputValue) {
+      setLoading(false);
+    }
+  }, [inputValue]);
 
   useEffect(() => {
     const saved = localStorage.getItem("searchValue")?.trim();
@@ -45,8 +52,8 @@ export default function SearchMoviesPage() {
     async function fetchMovies() {
       if (!inputValue) return;
       try {
-        setError(false);
         setLoading(true);
+        setError(false);
         const data = await searchMovies(inputValue, page);
         setMovies(data.results);
         setTotalPages(data.total_pages);
