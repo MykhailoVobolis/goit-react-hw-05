@@ -34,9 +34,8 @@ export default function MovieReviews() {
   return (
     <>
       {loading && <Spinner loading={loading} />}
-      {reviews.length > 0 ? (
-        <SliderReviews reviews={reviews} />
-      ) : (
+      {reviews.length > 0 && <SliderReviews reviews={reviews} />}
+      {!loading && reviews.length === 0 && !error && (
         <NoResults
           mainText={"На жаль, ще немає відгуків до цього фільму. Спробуй пізніше"}
           mobileText={"Ще немає відгуків до цього фільму"}

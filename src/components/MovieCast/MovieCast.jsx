@@ -39,9 +39,8 @@ export default function MovieCast() {
   return (
     <>
       {loading && <Spinner loading={loading} />}
-      {actors.length > 0 ? (
-        <SliderCast actors={actors} />
-      ) : (
+      {actors.length > 0 && <SliderCast actors={actors} />}
+      {!loading && actors.length === 0 && !error && (
         <NoResults
           mainText={"На жаль, ще немає даних про акторів цього фільму. Спробуй пізніше"}
           mobileText={"Ще немає даних про акторів цього фільму"}

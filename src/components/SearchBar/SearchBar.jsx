@@ -1,6 +1,6 @@
 import debounce from "lodash.debounce";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import { IoCloseCircleOutline } from "react-icons/io5";
 
