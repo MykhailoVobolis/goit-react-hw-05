@@ -36,7 +36,7 @@ export default function GenreButton({ genres }) {
         <p>Жанри</p>
         <IoChevronDown className={`${css.iconBtn} ${menuOpen ? css.isOpen : ""}`} />
       </button>
-      {menuOpen && <GenreBarPopover genres={genres} />}
+      <GenreBarPopover genres={genres} isOpen={menuOpen} />
     </div>
   );
 }

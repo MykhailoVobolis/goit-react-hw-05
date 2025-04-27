@@ -10,6 +10,25 @@
   flex-direction: column;
   gap: 8px;
   justify-content: center;
+  transform-origin: top;
+  transform: scaleY(0);
+  opacity: 0;
+  transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+}
+
+.container.open {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.content {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out 150ms;
+}
+
+.container.open .content {
+  opacity: 1;
+  transition-delay: 150ms;
 }
 
 .container:before {
@@ -19,6 +38,13 @@
   content: "";
   left: 65px;
   position: absolute;
+
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.container.open:before {
+  opacity: 1;
 }
 
 @media screen and (min-width: 768px) {
