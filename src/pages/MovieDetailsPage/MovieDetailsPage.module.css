@@ -204,8 +204,15 @@
 
 .link {
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.2;
+  color: #6d6d6d;
+}
+
+.active {
+  font-weight: 500;
+  font-size: 20px;
+  color: #f7f6f1;
 }
 
 @media screen and (min-width: 768px) {
@@ -258,6 +265,11 @@
   }
 
   .link {
+    font-weight: 600;
+  }
+
+  .active {
+    font-weight: 500;
     font-size: 28px;
   }
 }

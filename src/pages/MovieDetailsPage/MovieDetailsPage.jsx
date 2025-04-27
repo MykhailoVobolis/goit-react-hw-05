@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { format } from "date-fns";
 import { uk } from "date-fns/locale";
 
@@ -8,10 +9,11 @@ import Loader from "../../components/Loader/Loader";
 import SimilarFilms from "../../components/SimilarFilms/SimilarFilms";
 import DelIsFavoriteMovieBtn from "../../components/DelIsFavoriteMovieBtn/DelIsFavoriteMovieBtn.jsx";
 import AddIsFavoriteMovieBtn from "../../components/AddIsFavoriteMovieBtn/AddIsFavoriteMovieBtn.jsx";
+import GenresOfMovie from "../../components/GenresOfMovie/GenresOfMovie.jsx";
 import defaultBg from "../../img/header.png";
 
 import { useUser } from "../../userContext.jsx";
-import { useParams, useLocation, Outlet, Link } from "react-router-dom";
+import { useParams, useLocation, Outlet, Link, NavLink } from "react-router-dom";
 import { useState, useEffect, useRef, Suspense } from "react";
 import { AiFillLike } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
@@ -21,7 +23,10 @@ import { addMovie, delMovie, getMovieById } from "../../cinema-server-api.js";
 import { useMedia } from "react-use";
 
 import css from "./MovieDetailsPage.module.css";
-import GenresOfMovie from "../../components/GenresOfMovie/GenresOfMovie.jsx";
+
+const getNavLinkClass = ({ isActive }) => {
+  return clsx(css.link, isActive && css.active);
+};
 
 const defaultImg =
   "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg";
@@ -249,14 +254,14 @@ export default function MovieDetailsPage() {
         <div className={css.addInfoContainer}>
           <ul className={css.addInformationList}>
             <li>
-              <Link to="cast" className={css.link}>
+              <NavLink to="cast" className={getNavLinkClass}>
                 Акторський склад
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="reviews" className={css.link}>
+              <NavLink to="reviews" className={getNavLinkClass}>
                 Відгуки
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
