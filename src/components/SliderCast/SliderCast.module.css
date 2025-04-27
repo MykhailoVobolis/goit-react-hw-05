@@ -6,14 +6,9 @@
   margin-bottom: 30px;
 }
 
-.actorCard {
-  border-radius: 10px;
-}
-
 .actorImage {
   border-radius: 100%;
   overflow: hidden;
-  background-color: #969696;
   aspect-ratio: 1/1;
   object-fit: cover;
 }
