@@ -3,7 +3,11 @@
   padding-left: 15px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 30px;
+  margin-bottom: 42px;
+}
+
+.sliderContainer {
+  position: relative;
 }
 
 .actorImage {
@@ -11,13 +15,13 @@
   overflow: hidden;
   aspect-ratio: 1/1;
   object-fit: cover;
+  margin-bottom: 12px;
 }
 
 .nameContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 0;
   text-align: center;
 }
 
@@ -36,9 +40,10 @@
     max-width: 1260px;
     padding-left: 7px;
     padding-right: 7px;
+    margin-bottom: 46px;
   }
 
-  .nameContainer {
-    padding: 16px 0px;
+  .actorImage {
+    margin-bottom: 16px;
   }
 }

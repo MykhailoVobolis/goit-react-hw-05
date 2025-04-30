@@ -1,6 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useRef } from "react";
+
+import SwiperNavButton from "../SwiperNavButton/SwiperNavButton.jsx";
 
 import "swiper/swiper-bundle.css";
 import css from "./Slider.module.css";
@@ -14,8 +17,11 @@ export default function Slider({ items }) {
   // Фільтрація масиву фільмів тільки з наявним бекдропом
   const newArrayFilms = items.filter((i) => i.poster_path);
 
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
   return (
-    <>
+    <div className={css.sliderContainer}>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={15}
@@ -23,8 +29,15 @@ export default function Slider({ items }) {
         slidesPerGroup={2}
         speed={400}
         touchAngle={30}
-        preventClicks={true}
-        navigation={true}
+        watchOverflow={true}
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        onBeforeInit={(swiper) => {
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+        }}
         resistanceRatio={0.1}
         breakpoints={{
           768: { slidesPerView: 4.25, slidesPerGroup: 4 },
@@ -46,6 +59,8 @@ export default function Slider({ items }) {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+      <SwiperNavButton ref={prevRef} direction="prev" />
+      <SwiperNavButton ref={nextRef} direction="next" />
+    </div>
   );
 }

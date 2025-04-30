@@ -6,6 +6,10 @@
   margin-bottom: 30px;
 }
 
+.sliderContainer {
+  position: relative;
+}
+
 .authorReviewContainer {
   display: flex;
   align-items: center;

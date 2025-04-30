@@ -1,3 +1,7 @@
+.sliderContainer {
+  position: relative;
+}
+
 .movieItem {
   box-sizing: border-box;
   border: none;
