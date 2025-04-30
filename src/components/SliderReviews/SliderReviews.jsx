@@ -2,7 +2,7 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { format } from "date-fns";
 import { uk } from "date-fns/locale";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import SwiperNavButton from "../SwiperNavButton/SwiperNavButton.jsx";
 
@@ -15,6 +15,16 @@ const defaultImg =
 export default function SliderReviews({ reviews }) {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    if (swiperRef.current && prevRef.current && nextRef.current) {
+      swiperRef.current.params.navigation.prevEl = prevRef.current;
+      swiperRef.current.params.navigation.nextEl = nextRef.current;
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  }, []);
 
   return (
     <div className={css.reviewsList}>
@@ -27,13 +37,8 @@ export default function SliderReviews({ reviews }) {
           speed={400}
           touchAngle={30}
           watchOverflow={true}
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
-          }}
-          onBeforeInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
           }}
           breakpoints={{
             768: { slidesPerView: 2.13, slidesPerGroup: 2 },

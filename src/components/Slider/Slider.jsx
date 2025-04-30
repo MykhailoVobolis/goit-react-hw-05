@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 import SwiperNavButton from "../SwiperNavButton/SwiperNavButton.jsx";
 
@@ -19,6 +19,16 @@ export default function Slider({ items }) {
 
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    if (swiperRef.current && prevRef.current && nextRef.current) {
+      swiperRef.current.params.navigation.prevEl = prevRef.current;
+      swiperRef.current.params.navigation.nextEl = nextRef.current;
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  }, []);
 
   return (
     <div className={css.sliderContainer}>
@@ -30,13 +40,8 @@ export default function Slider({ items }) {
         speed={400}
         touchAngle={30}
         watchOverflow={true}
-        navigation={{
-          prevEl: prevRef.current,
-          nextEl: nextRef.current,
-        }}
-        onBeforeInit={(swiper) => {
-          swiper.params.navigation.prevEl = prevRef.current;
-          swiper.params.navigation.nextEl = nextRef.current;
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
         }}
         resistanceRatio={0.1}
         breakpoints={{
