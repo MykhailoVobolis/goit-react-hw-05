@@ -22,13 +22,13 @@ export default function SliderCast({ actors }) {
           speed={500}
           touchAngle={30}
           watchOverflow={true}
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
-          }}
-          onBeforeInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
+          onSwiper={(swiper) => {
+            if (prevRef.current && nextRef.current) {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
+            }
           }}
           breakpoints={{
             768: { slidesPerView: 4.25, slidesPerGroup: 4 },
