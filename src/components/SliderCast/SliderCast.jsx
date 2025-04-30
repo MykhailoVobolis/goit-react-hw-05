@@ -1,6 +1,6 @@
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 import SwiperNavButton from "../SwiperNavButton/SwiperNavButton.jsx";
 
@@ -10,6 +10,16 @@ import css from "./SliderCast.module.css";
 export default function SliderCast({ actors }) {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    if (swiperRef.current && prevRef.current && nextRef.current) {
+      swiperRef.current.params.navigation.prevEl = prevRef.current;
+      swiperRef.current.params.navigation.nextEl = nextRef.current;
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  }, []);
 
   return (
     <div className={css.actorsList}>
@@ -23,12 +33,7 @@ export default function SliderCast({ actors }) {
           touchAngle={30}
           watchOverflow={true}
           onSwiper={(swiper) => {
-            if (prevRef.current && nextRef.current) {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }
+            swiperRef.current = swiper;
           }}
           breakpoints={{
             768: { slidesPerView: 4.25, slidesPerGroup: 4 },
