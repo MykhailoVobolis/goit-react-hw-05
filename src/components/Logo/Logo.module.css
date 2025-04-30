@@ -1,0 +1,25 @@
+.mainLogo {
+  font-weight: 800;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.accent {
+  color: var(--plyr-color-main);
+}
+
+.mainLogo:hover {
+  color: #f7f6f1;
+}
+
+@media screen and (min-width: 768px) {
+  .mainLogo {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .mainLogo {
+    font-size: 24px;
+  }
+}

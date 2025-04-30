@@ -1,7 +1,6 @@
 import clsx from "clsx";
 
-import { NavLink, Link } from "react-router-dom";
-import { RiMovie2Line } from "react-icons/ri";
+import { NavLink } from "react-router-dom";
 
 import { IoSearchOutline } from "react-icons/io5";
 import { useUser } from "../../userContext.jsx";
@@ -10,6 +9,7 @@ import { useMedia } from "react-use";
 import BurgerButton from "../BurgerButton/BurgerButton.jsx";
 import NavigationList from "../NavigationList/NavigationList.jsx";
 import UserAvatar from "../UserAvatar/UserAvatar.jsx";
+import Logo from "../Logo/Logo.jsx";
 
 import css from "./Navigation.module.css";
 
@@ -26,10 +26,8 @@ export default function Navigation({ openModal, isLoggedIn, onClose, modalIsOpen
   return (
     <div className={css.container}>
       <nav className={css.nav}>
-        <div className={css.navItemsContainer}>
-          <Link to="/" aria-label="Go to home page">
-            <RiMovie2Line className={css.logo} />
-          </Link>
+        <div className={clsx(css.navItemsContainer, { [css.loggedIn]: isLoggedIn })}>
+          <Logo />
           {isDesktop && <NavigationList isLoggedIn={isLoggedIn} onClose={onClose} />}
         </div>
         {isDesktop && (

@@ -14,18 +14,24 @@
   display: flex;
   min-width: 320px;
   max-width: 1246px;
-  padding: 10px 15px;
+  height: 60px;
+  padding: 0px 15px;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
 }
 
+@media screen and (min-width: 768px) {
+  .container {
+    height: 64px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .container {
     max-width: 1260px;
-    padding: 14px 7px;
-    display: flex;
-    align-items: center;
+    height: 68px;
+    padding: 0px 7px;
     justify-content: space-between;
   }
 }

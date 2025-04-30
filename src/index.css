@@ -142,9 +142,9 @@ img {
   }
 }
 
-@media screen and (max-width: 1279px) {
+/* @media screen and (max-width: 1279px) {
   .swiper .swiper-button-prev,
   .swiper .swiper-button-next {
     display: none;
   }
-}
+} */
