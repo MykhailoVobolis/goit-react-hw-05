@@ -6,7 +6,7 @@ import { BsChevronCompactRight } from "react-icons/bs";
 
 import css from "./SwiperNavButton.module.css";
 
-const SwiperNavButtons = forwardRef(({ direction }, ref) => {
+const SwiperNavButton = forwardRef(({ direction }, ref) => {
   return (
     <button
       ref={ref}
@@ -19,6 +19,6 @@ const SwiperNavButtons = forwardRef(({ direction }, ref) => {
   );
 });
 
-SwiperNavButtons.displayName = "NavButtons";
+SwiperNavButton.displayName = "NavButtons";
 
-export default SwiperNavButtons;
+export default SwiperNavButton;
