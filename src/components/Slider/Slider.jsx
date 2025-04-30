@@ -29,7 +29,6 @@ export default function Slider({ items }) {
         slidesPerGroup={2}
         speed={400}
         touchAngle={30}
-        watchOverflow={true}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
