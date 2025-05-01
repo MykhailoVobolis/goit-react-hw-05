@@ -34,15 +34,12 @@ export default function ConfirmGoogleAuth() {
       } catch (error) {
         if (!isCancelled) {
           navigate("/login"); // Перенаправляємо користувача на сторінку входу
-          toast(
-            "Користувач з такою адресою електронної пошти вже зареєстрований. Будь ласка, увійдіть до Cinema Hall.",
-            {
-              style: {
-                color: "#000000",
-                backgroundColor: "#fff088",
-              },
-            }
-          );
+          toast("Користувач з такою адресою електронної пошти вже зареєстрований. Будь ласка, увійдіть до Movieplex.", {
+            style: {
+              color: "#000000",
+              backgroundColor: "#fff088",
+            },
+          });
         }
       } finally {
         if (!isCancelled) {

@@ -116,7 +116,7 @@ export default function RegistrationForm() {
             )}
           </Formik>
           <p className={css.redirectionText}>
-            Вже зареєстровані на Cinama Hall?{" "}
+            Вже зареєстровані на Movieplex?{" "}
             <span>
               <Link className={css.redirectionLink} to="/login">
                 Увійти

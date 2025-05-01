@@ -30,7 +30,7 @@ export default function HomePage() {
         <div className={css.hero}>
           <div className={css.heroContainer}>
             <h1 className={css.mainTitle}>
-              Світові новинки кіно на <span className={css.lineBreak}>CINEMA HALL</span>
+              Світові новинки кіно на <span className={css.lineBreak}>MOVIEPLEX</span>
             </h1>
             <div className={!isLoggedIn ? css.regButtonContainer : css.hidden}>
               <MainRegistrationButton />

@@ -60,7 +60,7 @@ export default function LoginForm() {
       <div className={css.mainBox}>
         <div>
           <h2 className={css.title}>Увійти</h2>
-          <p className={css.text}>Перейдіть у Cinema Hall</p>
+          <p className={css.text}>Перейдіть у Movieplex</p>
           <GoogleBtn />
         </div>
         <div>
@@ -99,7 +99,7 @@ export default function LoginForm() {
             )}
           </Formik>
           <p className={css.redirectionText}>
-            Уперше на Cinama Hall?{" "}
+            Уперше на Movieplex?{" "}
             <span>
               <Link className={css.redirectionLink} to="/register">
                 Зареєструватися

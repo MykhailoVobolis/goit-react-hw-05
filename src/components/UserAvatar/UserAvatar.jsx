@@ -31,7 +31,7 @@ export default function UserAvatar({ user }) {
       title={
         <Fragment>
           <Typography color="#f0f4f9" fontSize={"12px"} fontWeight={"700"}>
-            Обліковий запис Cinema Hall
+            Обліковий запис Movieplex
           </Typography>
           <b>{user.name}</b>
           <p>{user.email}</p>

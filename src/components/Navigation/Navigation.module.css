@@ -50,10 +50,10 @@
   }
 
   .navItemsContainer {
-    gap: 390px;
+    gap: 410px;
   }
 
   .loggedIn {
-    gap: 345px;
+    gap: 365px;
   }
 }
