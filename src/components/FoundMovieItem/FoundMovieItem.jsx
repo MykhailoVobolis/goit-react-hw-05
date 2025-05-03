@@ -16,7 +16,7 @@ export default function FoundMovieItem({ movie, toggleMenu }) {
 
   return (
     <li className={css.movieItem}>
-      <Link to={`/movies/${id}`} state={location} onClick={() => toggleMenu()}>
+      <Link className={css.link} to={`/movies/${id}`} state={location} onClick={() => toggleMenu()}>
         <div className={css.cardMovie}>
           <img
             className={css.movieImage}

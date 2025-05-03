@@ -1,7 +1,7 @@
 .wrapperSearchDropdown {
-  padding: 20px 20px 0 20px;
+  padding: 20px 16px 0 16px;
   border-radius: 10px;
-  background-color: var(--plyr-video-background);
+  background-color: var(--dropdown-background);
   width: 100%;
   position: absolute;
   top: 73px;
@@ -11,7 +11,7 @@
 
 .wrapperSearchDropdown:before {
   border: 15px solid transparent;
-  border-bottom: 10px solid var(--plyr-video-background);
+  border-bottom: 10px solid var(--dropdown-background);
   bottom: 100%;
   content: "";
   left: 65px;

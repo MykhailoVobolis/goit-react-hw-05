@@ -15,5 +15,5 @@
   width: -moz-max-content;
   width: max-content;
   width: 100%;
-  border-top: 1px solid var(--background-color);
+  border-top: 1px solid rgba(247, 246, 241, 0.13);
 }
