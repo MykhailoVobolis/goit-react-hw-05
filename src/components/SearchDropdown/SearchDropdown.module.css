@@ -1,0 +1,19 @@
+.wrapperSearchDropdown {
+  padding: 20px 20px 0 20px;
+  border-radius: 10px;
+  background-color: var(--plyr-video-background);
+  width: 100%;
+  position: absolute;
+  top: 73px;
+  left: 0;
+  z-index: 999;
+}
+
+.wrapperSearchDropdown:before {
+  border: 15px solid transparent;
+  border-bottom: 10px solid var(--plyr-video-background);
+  bottom: 100%;
+  content: "";
+  left: 65px;
+  position: absolute;
+}

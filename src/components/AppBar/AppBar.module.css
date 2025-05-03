@@ -11,6 +11,7 @@
 }
 
 .container {
+  position: relative;
   display: flex;
   min-width: 320px;
   max-width: 1246px;

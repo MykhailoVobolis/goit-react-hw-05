@@ -73,7 +73,7 @@ export default function SearchMoviesPage() {
     <>
       <section className={css.movies}>
         <div className={css.container}>
-          <SearchBar onSearch={changeSearch} />
+          <SearchBar onSearch={changeSearch} movies={movies} />
           {loading ? (
             <div className={css.spinnerContainer}>
               <Spinner loading={loading} />

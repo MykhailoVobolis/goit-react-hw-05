@@ -1,0 +1,19 @@
+.allResultsBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  border: none;
+  background-color: transparent;
+  color: var(--plyr-color-main);
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 0;
+  transition: 0.3s;
+  width: -moz-max-content;
+  width: max-content;
+  width: 100%;
+  border-top: 1px solid var(--background-color);
+}

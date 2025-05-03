@@ -7,6 +7,7 @@ import { useMedia } from "react-use";
 import { useEffect, useRef, useState } from "react";
 
 import MenuModal from "../MenuModal/MenuModal.jsx";
+import SearchInHeader from "../SearchInHeader/SearchInHeader.jsx";
 
 import css from "./AppBar.module.css";
 
@@ -58,6 +59,7 @@ export default function AppBar() {
     <header ref={headerRef} className={`${css.header} ${!isVisible ? css.hidden : ""}`}>
       <div className={css.container}>
         <Navigation openModal={openModal} isLoggedIn={isLoggedIn} onClose={closeModal} modalIsOpen={modalIsOpen} />
+        {isDesktop && <SearchInHeader />}
         {isDesktop && (isLoggedIn ? <UserMenu onClose={closeModal} /> : <AuthNav onClose={closeModal} />)}
         <MenuModal isOpen={modalIsOpen} onClose={closeModal} />
       </div>

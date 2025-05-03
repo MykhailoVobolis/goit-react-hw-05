@@ -1,13 +1,20 @@
 import debounce from "lodash.debounce";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
-import { IoCloseCircleOutline } from "react-icons/io5";
+import { MdClose } from "react-icons/md";
 
 import css from "./SearchBar.module.css";
 
 export default function SearchBar({ onSearch }) {
   const [search, setSearch] = useState(() => localStorage.getItem("searchValue") || "");
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    localStorage.setItem("searchValue", value);
+    setSearch(value);
+    debouncedSearch(value.trim());
+  };
 
   const debouncedSearch = useMemo(
     () =>
@@ -23,18 +30,27 @@ export default function SearchBar({ onSearch }) {
     [onSearch]
   );
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    localStorage.setItem("searchValue", value);
-    setSearch(value);
-    debouncedSearch(value.trim());
-  };
-
-  const handleClick = () => {
+  const clearSearchInput = () => {
     localStorage.removeItem("searchValue");
     setSearch("");
     onSearch("");
   };
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const newValue = localStorage.getItem("searchValue") || "";
+      setSearch(newValue);
+    };
+
+    // Слухачі змін у localStorage:
+    window.addEventListener("storage", handleStorageChange); // інші вкладки
+    window.addEventListener("local-search-updated", handleStorageChange); // поточна вкладка
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener("local-search-updated", handleStorageChange);
+    };
+  }, []);
 
   return (
     <div className={css.searchContainer}>
@@ -47,8 +63,8 @@ export default function SearchBar({ onSearch }) {
         placeholder="Введіть назву фільму"
       />
       {search && (
-        <button className={css.clearBtn} onClick={handleClick}>
-          <IoCloseCircleOutline size={24} />
+        <button className={css.clearBtn} onClick={clearSearchInput}>
+          <MdClose size={24} />
         </button>
       )}
     </div>

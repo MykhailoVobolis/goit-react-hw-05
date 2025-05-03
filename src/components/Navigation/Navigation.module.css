@@ -19,12 +19,6 @@
   margin-right: 15px;
 }
 
-.searchIcon {
-  width: 24px;
-  height: 24px;
-  vertical-align: text-top;
-}
-
 .link {
   text-decoration: none;
 }
@@ -36,12 +30,6 @@
 .userContainer {
   display: flex;
   gap: 15px;
-}
-
-@media screen and (min-width: 768px) {
-  .nav {
-    margin-right: 22px;
-  }
 }
 
 @media screen and (min-width: 1280px) {

@@ -1,0 +1,11 @@
+.moviesList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 411px;
+  overflow-y: scroll;
+}
+
+.moviesList > :last-child {
+  margin-bottom: 15px;
+}

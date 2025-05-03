@@ -4,12 +4,6 @@
   line-height: 1.2;
   color: #fafafa99;
   text-align: center;
-  padding-top: 25px;
-  margin-bottom: 10px;
-}
-
-@media screen and (min-width: 768px) {
-  .noResultsText {
-    font-size: 18px;
-  }
+  padding-top: 15px;
+  padding-bottom: 35px;
 }
