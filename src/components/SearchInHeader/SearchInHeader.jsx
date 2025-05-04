@@ -109,7 +109,7 @@ export default function SearchInHeader() {
   }, []);
 
   return (
-    <>
+    <div className={css.searchWrapper}>
       <div className={clsx(css.searchContainer, menuOpen && css.open)}>
         <IoSearchOutline className={css.searchIcon} size={22} />
         <input
@@ -138,6 +138,6 @@ export default function SearchInHeader() {
       <button className={clsx(css.openSearchBtn, menuOpen && css.open)} onClick={toggleMenu}>
         <IoSearchOutline className={css.searchBtnIcon} size={22} />
       </button>
-    </>
+    </div>
   );
 }

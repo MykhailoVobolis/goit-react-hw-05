@@ -1,8 +1,12 @@
+.searchWrapper {
+  position: relative;
+}
+
 .searchContainer {
   position: absolute;
-  top: 12px;
-  right: 79px;
-  width: 380px;
+  top: -12px;
+  right: 22px;
+  width: 320px;
   transform: scaleX(0);
   opacity: 0;
   transition: transform 400ms ease-out, opacity 300ms ease-out;
