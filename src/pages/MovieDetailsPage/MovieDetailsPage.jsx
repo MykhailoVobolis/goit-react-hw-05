@@ -13,7 +13,7 @@ import GenresOfMovie from "../../components/GenresOfMovie/GenresOfMovie.jsx";
 import defaultBg from "../../img/header.png";
 
 import { useUser } from "../../userContext.jsx";
-import { useParams, useLocation, Outlet, Link, NavLink } from "react-router-dom";
+import { useParams, useLocation, Outlet, Link, NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef, Suspense } from "react";
 import { AiFillLike } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
@@ -35,8 +35,8 @@ const defaultUrl = "https://www.youtube.com/watch?v=KVZA8xsnC28";
 
 export default function MovieDetailsPage() {
   const { isLoggedIn } = useUser();
-
   const { movieId } = useParams();
+  const navigate = useNavigate();
 
   const [movies, setMovies] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -60,6 +60,16 @@ export default function MovieDetailsPage() {
       backLink.current = "/";
     }
   }, [location.state]);
+
+  // Логіка автоматичного редіректу на /cast при переході на MovieDetailsPage
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const hasSubRoute = currentPath.endsWith("/cast") || currentPath.endsWith("/reviews");
+
+    if (!hasSubRoute) {
+      navigate(`/movies/${movieId}/cast`, { replace: true, state: location.state });
+    }
+  }, [location.pathname, movieId, navigate, location.state]);
 
   function handleClikAddMovie() {
     const favoriteMovies = {
