@@ -20,7 +20,7 @@
   height: 44px;
   border-radius: 8px;
   border: transparent;
-  background-color: var(--input-background);
+  background-color: var(--dropdown-background);
   color: #f7f6f1;
   padding-left: 45px;
   font-family: inherit;
@@ -57,7 +57,7 @@
 }
 
 .searchIcon {
-  stroke: #6d6d6d;
+  stroke: #f7f6f1;
   position: absolute;
   top: 11px;
   left: 12px;
