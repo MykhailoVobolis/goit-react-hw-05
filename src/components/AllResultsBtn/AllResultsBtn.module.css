@@ -10,10 +10,6 @@
   line-height: 1.2;
   font-weight: 500;
   font-family: inherit;
-  padding: 0;
-  transition: 0.3s;
-  width: -moz-max-content;
-  width: max-content;
   width: 100%;
   border-top: 1px solid rgba(247, 246, 241, 0.13);
 }
