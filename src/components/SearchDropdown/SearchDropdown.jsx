@@ -9,6 +9,7 @@ export default function SearchDropdown({ foundMovies, toggleMenu, updateSearchIn
     <div className={css.wrapperSearchDropdown}>
       {foundMovies?.length > 0 ? (
         <>
+          <p className={css.messageIsFound}>Ми знайшли</p>
           <FoundMoviesList foundMovies={foundMovies} toggleMenu={toggleMenu} />
           <AllResultsBtn toggleMenu={toggleMenu} updateSearchInLocalStorage={updateSearchInLocalStorage} />
         </>
