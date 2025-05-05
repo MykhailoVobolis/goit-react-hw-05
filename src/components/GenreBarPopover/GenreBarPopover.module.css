@@ -1,7 +1,7 @@
 .container {
   border-radius: 10px;
   width: 320px;
-  background: var(--plyr-video-background);
+  background: var(--dropdown-background);
   position: absolute;
   top: 105px;
   left: -2px;
@@ -33,7 +33,7 @@
 
 .container:before {
   border: 15px solid transparent;
-  border-bottom: 10px solid var(--plyr-video-background);
+  border-bottom: 10px solid var(--dropdown-background);
   bottom: 100%;
   content: "";
   left: 65px;

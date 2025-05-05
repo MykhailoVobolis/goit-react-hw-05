@@ -7,8 +7,6 @@ import { FaRegStar } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
 import { MdLogin } from "react-icons/md";
 
-import LogoutButton from "../LogoutButton/LogoutButton.jsx";
-
 import css from "./NavBottomMenu.module.css";
 
 const getNavLinkClass = ({ isActive }) => {

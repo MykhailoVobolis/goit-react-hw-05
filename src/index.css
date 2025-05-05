@@ -18,7 +18,8 @@
 
   --background-color: #1e1f22;
   --input-background: #2a2b2e;
-  --input-auth-form: #1a1a1a;
+  --input-auth-form: rgba(20, 22, 28, 1);
+  --dropdown-background: rgba(20, 22, 28, 1);
   --plyr-color-main: #fec90c; /* Основний колір (кнопки, активні елементи) */
   --plyr-control-hover: #eeb104; /* Колір кнопок при наведенні */
   --plyr-video-background: #000000; /* Фон плеєра */

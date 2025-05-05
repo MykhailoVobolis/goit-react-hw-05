@@ -1,8 +1,5 @@
 import clsx from "clsx";
 
-import { NavLink } from "react-router-dom";
-
-import { IoSearchOutline } from "react-icons/io5";
 import { useUser } from "../../userContext.jsx";
 import { useMedia } from "react-use";
 
@@ -12,10 +9,6 @@ import UserAvatar from "../UserAvatar/UserAvatar.jsx";
 import Logo from "../Logo/Logo.jsx";
 
 import css from "./Navigation.module.css";
-
-const getNavLinkClass = ({ isActive }) => {
-  return clsx(css.link, isActive && css.active);
-};
 
 export default function Navigation({ openModal, isLoggedIn, onClose, modalIsOpen }) {
   const { user } = useUser();
@@ -30,11 +23,11 @@ export default function Navigation({ openModal, isLoggedIn, onClose, modalIsOpen
           <Logo />
           {isDesktop && <NavigationList isLoggedIn={isLoggedIn} onClose={onClose} />}
         </div>
-        {isDesktop && (
+        {/* {isDesktop && (
           <NavLink to="/search" aria-label="Go to search movies page" className={getNavLinkClass}>
             <IoSearchOutline className={css.searchIcon} />
           </NavLink>
-        )}
+        )} */}
       </nav>
       <div className={css.userContainer}>
         {isMobile && isLoggedIn && <UserAvatar user={user} />}

@@ -1,0 +1,15 @@
+.allResultsBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  border: none;
+  background-color: transparent;
+  color: var(--plyr-color-main);
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 500;
+  font-family: inherit;
+  width: 100%;
+  border-top: 1px solid rgba(247, 246, 241, 0.13);
+}

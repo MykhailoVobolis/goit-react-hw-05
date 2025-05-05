@@ -5,8 +5,9 @@ import { GiMagickTrick } from "react-icons/gi";
 import { FaTheaterMasks } from "react-icons/fa";
 import { GiPistolGun } from "react-icons/gi";
 
-import css from "./ShortGenresList.module.css";
 import GenreButton from "../GenreButton/GenreButton.jsx";
+
+import css from "./ShortGenresList.module.css";
 
 export default function ShortGenresList({ genres }) {
   const shortList = genres.slice(0, 5);

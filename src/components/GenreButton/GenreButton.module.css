@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: var(--plyr-video-background);
+  background-color: var(--dropdown-background);
   color: #f7f6f1;
   border: none;
   border-radius: 10px;
