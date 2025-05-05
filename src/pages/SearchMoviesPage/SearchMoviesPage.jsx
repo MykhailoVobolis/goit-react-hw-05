@@ -19,7 +19,6 @@ export default function SearchMoviesPage() {
   const [totalPages, setTotalPages] = useState(0);
   const [paginate, setPaginate] = useState(false);
   const [genresMovies, setGenresMovies] = useState([]);
-  const [moviesFetched, setMoviesFetched] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const inputValue = searchParams.get("name");
   const page = Number(searchParams.get("page")) || 1;
@@ -54,7 +53,7 @@ export default function SearchMoviesPage() {
   useEffect(() => {
     async function fetchMovies() {
       if (!inputValue) return;
-      setMoviesFetched(false);
+
       try {
         setLoading(true);
         setError(false);
@@ -68,28 +67,26 @@ export default function SearchMoviesPage() {
         setError(true);
       } finally {
         setLoading(false);
-        setMoviesFetched(true);
       }
     }
     fetchMovies();
   }, [inputValue, page]);
 
   useEffect(() => {
-    const shouldLoadGenres = moviesFetched && !loading && movies.length === 0 && genresMovies.length === 0;
-
-    if (!shouldLoadGenres) return;
-
     async function fetchGenres() {
       try {
+        setLoading(true);
+        setError(false);
         const data = await getGenresMovies();
         setGenresMovies(data.genres);
       } catch (error) {
         setError(true);
+      } finally {
+        setLoading(false);
       }
     }
-
     fetchGenres();
-  }, [moviesFetched, loading, movies, genresMovies]);
+  }, []);
 
   return (
     <>
