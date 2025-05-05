@@ -57,7 +57,7 @@ export default function MoviesPage() {
             <h2 className={css.pageTitle}>Фільми</h2>
           </div>
           {upcomingMovies.length > 0 && <SliderMoviesMain items={upcomingMovies} />}
-          <GenresForMoviesBar genres={genresMovies} />
+          <GenresForMoviesBar genres={genresMovies} description="Обери фільм на будь-який смак" />
           <div className={css.nowPlayMoviesContainer}>
             {moviesNowPlaying.length > 0 && (
               <div className={css.container}>

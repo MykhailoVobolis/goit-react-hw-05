@@ -4,10 +4,11 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import MoviesPagination from "../../components/MoviesPagination/MoviesPagination.jsx";
 import NoResults from "../../components/NoResults/NoResults.jsx";
+import GenresForMoviesBar from "../../components/GenresForMoviesBar/GenresForMoviesBar.jsx";
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { searchMovies } from "../../tmdb-api";
+import { getGenresMovies, searchMovies } from "../../tmdb-api";
 
 import css from "./SearchMoviesPage.module.css";
 
@@ -17,6 +18,8 @@ export default function SearchMoviesPage() {
   const [error, setError] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const [paginate, setPaginate] = useState(false);
+  const [genresMovies, setGenresMovies] = useState([]);
+  const [moviesFetched, setMoviesFetched] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const inputValue = searchParams.get("name");
   const page = Number(searchParams.get("page")) || 1;
@@ -51,6 +54,7 @@ export default function SearchMoviesPage() {
   useEffect(() => {
     async function fetchMovies() {
       if (!inputValue) return;
+      setMoviesFetched(false);
       try {
         setLoading(true);
         setError(false);
@@ -64,10 +68,28 @@ export default function SearchMoviesPage() {
         setError(true);
       } finally {
         setLoading(false);
+        setMoviesFetched(true);
       }
     }
     fetchMovies();
   }, [inputValue, page]);
+
+  useEffect(() => {
+    const shouldLoadGenres = moviesFetched && !loading && movies.length === 0 && genresMovies.length === 0;
+
+    if (!shouldLoadGenres) return;
+
+    async function fetchGenres() {
+      try {
+        const data = await getGenresMovies();
+        setGenresMovies(data.genres);
+      } catch (error) {
+        setError(true);
+      }
+    }
+
+    fetchGenres();
+  }, [moviesFetched, loading, movies, genresMovies]);
 
   return (
     <>
@@ -92,6 +114,7 @@ export default function SearchMoviesPage() {
             </>
           )}
         </div>
+        {!movies.length > 0 && !loading && <GenresForMoviesBar genres={genresMovies} description="Популярні жанри" />}
       </section>
     </>
   );

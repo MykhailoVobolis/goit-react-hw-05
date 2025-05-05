@@ -183,7 +183,7 @@ export default function MovieDetailsPage() {
   ) : (
     <div className={css.movieDetailsPage}>
       <section className={css.heroSection}>
-        {!isDesktop && (
+        {!isDesktop && backgroundImage && (
           <Link className={css.linkGoBackMobile} to={backLink.current}>
             <MdKeyboardBackspace size={27} />
           </Link>
