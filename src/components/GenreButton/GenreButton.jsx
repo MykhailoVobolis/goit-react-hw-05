@@ -1,8 +1,9 @@
 import { IoChevronDown } from "react-icons/io5";
 import { useEffect, useState } from "react";
 
-import css from "./GenreButton.module.css";
 import GenreBarPopover from "../GenreBarPopover/GenreBarPopover.jsx";
+
+import css from "./GenreButton.module.css";
 
 export default function GenreButton({ genres }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,7 +12,7 @@ export default function GenreButton({ genres }) {
     setMenuOpen(!menuOpen);
   };
 
-  // Закриття UserBarPopover при кліку у будь яке місце екрану
+  // Закриття GenreBarPopover при кліку у будь яке місце екрану
   useEffect(() => {
     // Функція, яка викликається при кліку
     function handleClick(event) {
@@ -19,14 +20,25 @@ export default function GenreButton({ genres }) {
       if (event.target.closest("button")) {
         return;
       }
-      // Клік на екран
       setMenuOpen(false);
     }
+    // Функція, яка викликається при Escape
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        // Прибирання фокусу з активного елемена
+        document.activeElement?.blur();
+      }
+    }
+
     // Додаємо обробник подій на документ при завантаженні компонента
     document.addEventListener("click", handleClick);
+    document.addEventListener("keydown", handleKeyDown);
+
     // Видаляємо обробник подій при демонтажі компонента
     return () => {
       document.removeEventListener("click", handleClick);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
 

@@ -88,7 +88,7 @@ export default function SearchInHeader() {
     setIsVisibleDropdown(false);
   };
 
-  // Закриття UserBarPopover при кліку у будь яке місце екрану
+  // Закриття SearchWrapper при кліку у будь яке місце екрану
   useEffect(() => {
     function handleClick(event) {
       // Перевіряємо, чи клік був не на кнопці чи її дочірніх елементах
@@ -100,11 +100,24 @@ export default function SearchInHeader() {
       // Інакше — закриваємо меню
       setMenuOpen(false);
     }
+
+    // Функція, яка викликається при Escape
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        // Прибирання фокусу з активного елемена
+        document.activeElement?.blur();
+      }
+    }
+
     // Додаємо обробник подій на документ при завантаженні компонента
     document.addEventListener("click", handleClick);
+    document.addEventListener("keydown", handleKeyDown);
+
     // Видаляємо обробник подій при демонтажі компонента
     return () => {
       document.removeEventListener("click", handleClick);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
 
