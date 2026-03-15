@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { lazy, useEffect, useState } from "react";
 import { refreshUser, serverPing } from "../../cinema-server-api.js";
 import { useUser } from "../../userContext.jsx";
+import { initLenis } from "../../utils/lenis.js";
 
 import Loader from "../Loader/Loader.jsx";
 import RestrictedRoute from "../RestrictedRoute.jsx";
@@ -33,6 +34,10 @@ export default function App() {
   const { authContext } = useUser();
   const [loading, setLoading] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
+
+  useEffect(() => {
+    initLenis();
+  }, []);
 
   useEffect(() => {
     // Пінгуємо сервер при завантаженні додатка

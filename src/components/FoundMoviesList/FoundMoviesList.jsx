@@ -6,7 +6,7 @@ export default function FoundMoviesList({ foundMovies, toggleMenu }) {
   const sortedMovies = foundMovies.sort((a, b) => b.popularity - a.popularity);
 
   return (
-    <ul className={css.moviesList}>
+    <ul className={css.moviesList} data-lenis-prevent>
       {sortedMovies.map((movie) => (
         <FoundMovieItem key={movie.id} movie={movie} toggleMenu={toggleMenu} />
       ))}
