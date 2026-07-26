@@ -80,7 +80,12 @@ export async function getUpcomingMovies(page) {
 }
 
 export async function getGenresMovies() {
-  const response = await axios.get("/genre/movie/list?language=en", options);
+  const response = await axios.get("/genre/movie/list", {
+    ...options,
+    params: {
+      language: "uk-UA",
+    },
+  });
   return response.data;
 }
 

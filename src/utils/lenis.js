@@ -7,10 +7,10 @@ export function initLenis() {
 
   if (!lenis) {
     lenis = new Lenis({
-      lerp: 0.08,
+      lerp: 0.12,
       smoothWheel: true,
       smoothTouch: false,
-      wheelMultiplier: 1,
+      wheelMultiplier: 1.15,
       touchMultiplier: 2,
     });
 
